@@ -59,7 +59,7 @@ export function EventCard({ id, title, date, location, category, imageUrl, index
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       whileHover={{ y: -8 }}
-      className="group flex flex-col bg-card/80 backdrop-blur-md rounded-3xl overflow-hidden shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/30"
+      className="group flex flex-col bg-card/80 backdrop-blur-md rounded-3xl overflow-hidden shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/40 hover:shadow-[0_0_20px_rgba(183,152,74,0.08)]"
     >
       {/* Image Area */}
       <div className="relative h-48 w-full bg-secondary overflow-hidden">

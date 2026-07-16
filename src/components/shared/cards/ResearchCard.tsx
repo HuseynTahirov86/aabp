@@ -25,7 +25,7 @@ export function ResearchCard({ id, title, abstract, authors, field, date, link, 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="group relative bg-card p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-all duration-300 border border-border/50"
+      className={`group relative bg-card p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-all duration-300 border border-border/50 hover:border-accent/50${id ? " cursor-pointer" : ""}`}
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
       

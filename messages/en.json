@@ -322,6 +322,33 @@
     "countries": "Countries",
     "countriesDesc": "International reach"
   },
+  "Hero": {
+    "badge": "Bridging the UK & Azerbaijan",
+    "heroLine1": "Empowering",
+    "heroLine2": "Azerbaijani-British",
+    "heroLine3": "Professionals",
+    "heroSubtitle": "Connecting professionals across medical science, natural science, life science, social science, and engineering. Join a community that drives collaboration between the UK and Azerbaijan.",
+    "applyBtn": "Apply for Membership",
+    "learnBtn": "Learn About Us",
+    "scrollHint": "Scroll to explore"
+  },
+  "Fields": {
+    "title": "Fields of Expertise",
+    "subtitle": "Our Disciplines",
+    "medical": { "name": "Medical Science", "desc": "Supporting healthcare professionals, researchers, and clinicians bridging UK and Azerbaijani medicine." },
+    "natural": { "name": "Natural Science", "desc": "Advancing physics, chemistry, mathematics and earth sciences through cross-border collaboration." },
+    "life": { "name": "Life Science", "desc": "Uniting biologists, biotechnologists and life science researchers across both nations." },
+    "social": { "name": "Social Science", "desc": "Connecting economists, political scientists, sociologists and policy experts internationally." },
+    "engineering": { "name": "Engineering", "desc": "Empowering civil, mechanical, electrical and software engineers to innovate globally." }
+  },
+  "Benefits": {
+    "title": "Why Join AABP?",
+    "subtitle": "Member Benefits",
+    "network": { "title": "Global Professional Network", "desc": "Connect with 200+ professionals across the UK and Azerbaijan spanning five key disciplines." },
+    "career": { "title": "Career Opportunities", "desc": "Access exclusive job postings, internships, and mentorship programmes curated for AABP members." },
+    "research": { "title": "Research Collaboration", "desc": "Collaborate on cross-border academic research and publish through our Research Hub." },
+    "events": { "title": "Exclusive Events", "desc": "Gain access to conferences, networking evenings, webinars, and professional development sessions." }
+  },
   "Terms": {
     "title": "Terms of Service",
     "sec1Title": "1. Acceptance of Terms",

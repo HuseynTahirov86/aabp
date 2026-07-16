@@ -323,6 +323,33 @@
     "countries": "Ölkə",
     "countriesDesc": "Beynəlxalq əlçatımlılıq"
   },
+  "Hero": {
+    "badge": "Böyük Britaniya və Azərbaycan arasında körpü",
+    "heroLine1": "Gücləndiririk",
+    "heroLine2": "Azərbaycan-Britaniya",
+    "heroLine3": "Peşəkarlarını",
+    "heroSubtitle": "Tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrindəki peşəkarları bir araya gətiririk. Böyük Britaniya ilə Azərbaycan arasında əməkdaşlığı irəliləyən bir icmaya qoşulun.",
+    "applyBtn": "Üzvlük üçün Müraciət et",
+    "learnBtn": "Haqqımızda Öyrənin",
+    "scrollHint": "Kəşf etmək üçün sürüşdürün"
+  },
+  "Fields": {
+    "title": "Fəaliyyət Sahələri",
+    "subtitle": "Sahələrimiz",
+    "medical": { "name": "Tibb Elmləri", "desc": "Böyük Britaniya və Azərbaycan tibbini əlaqələndirən səhiyyə mütəxəssislərini, tədqiqatçıları və klinisistləri dəstəkləyirik." },
+    "natural": { "name": "Təbiət Elmləri", "desc": "Sərhədlərarası əməkdaşlıq vasitəsilə fizika, kimya, riyaziyyat və yer elmlərini inkişaf etdiririk." },
+    "life": { "name": "Həyat Elmləri", "desc": "Hər iki ölkədəki bioloqları, biotexnoloqları və həyat elmləri tədqiqatçılarını birləşdiririk." },
+    "social": { "name": "Sosial Elmlər", "desc": "İqtisadçıları, siyasi elmlər mütəxəssislərini, sosioloqları və siyasət ekspertlərini beynəlxalq miqyasda əlaqələndiririk." },
+    "engineering": { "name": "Mühəndislik", "desc": "Mülki, mexaniki, elektrik və proqram mühəndislərinə qlobal miqyasda innovasiya etmək üçün güc veririk." }
+  },
+  "Benefits": {
+    "title": "Niyə AABP-yə Qoşulmalısınız?",
+    "subtitle": "Üzv Üstünlükləri",
+    "network": { "title": "Qlobal Peşəkar Şəbəkə", "desc": "Böyük Britaniya və Azərbaycanda beş əsas sahədə 200+ peşəkarla əlaqə qurun." },
+    "career": { "title": "Karyera İmkanları", "desc": "AABP üzvləri üçün hazırlanmış eksklüziv iş elanlarına, təcrübə proqramlarına və mentorluq imkanlarına giriş əldə edin." },
+    "research": { "title": "Tədqiqat Əməkdaşlığı", "desc": "Sərhədlərarası akademik tədqiqatlarda iştirak edin və Tədqiqat Mərkəzimiz vasitəsilə nəşr edin." },
+    "events": { "title": "Eksklüziv Tədbirlər", "desc": "Konfranslara, şəbəkə axşamlarına, vebinarlara və peşəkar inkişaf sessiyalarına giriş əldə edin." }
+  },
   "Terms": {
     "title": "İstifadə Şərtləri",
     "sec1Title": "1. Şərtlərin Qəbulu",

@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
-import { NewsCarouselHero } from '@/components/blocks/NewsCarouselHero';
+import { HeroSection } from '@/components/blocks/HeroSection';
+import { FieldsSection } from '@/components/blocks/FieldsSection';
+import { BenefitsSection } from '@/components/blocks/BenefitsSection';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { HomeEvents } from '@/components/blocks/home-events';
 import { HomeResearch } from '@/components/blocks/home-research';
@@ -15,7 +17,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
-      <NewsCarouselHero />
+      <HeroSection />
       
       {/* Mission Section */}
       <Section className="bg-card">
@@ -40,13 +42,19 @@ export default function Home() {
       {/* Statistics */}
       <StatsSection />
 
+      {/* Fields of Expertise */}
+      <FieldsSection />
+
+      {/* Benefits / Why Join */}
+      <BenefitsSection />
+
       {/* Featured Events */}
-      <Section className="bg-secondary/30">
+      <Section className="bg-card">
         <HomeEvents />
       </Section>
 
       {/* Latest Research */}
-      <Section className="bg-card">
+      <Section className="bg-background">
         <HomeResearch />
       </Section>
 

@@ -11,6 +11,7 @@ import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { BackToTop } from "@/components/ui/BackToTop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { SmoothScroller } from "@/components/ui/SmoothScroller";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
@@ -113,6 +114,7 @@ export default async function RootLayout({
                   {children}
                 </div>
                 <Footer />
+                <BackToTop />
               </TooltipProvider>
               <Toaster richColors position="bottom-right" />
             </NextIntlClientProvider>

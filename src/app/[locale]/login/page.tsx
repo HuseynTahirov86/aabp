@@ -84,7 +84,7 @@ export default function LoginPage() {
           className="w-full max-w-md"
         >
           <div className="text-left mb-10">
-            <h1 className="font-serif text-4xl font-bold text-primary mb-3">{t('signInTitle')}</h1>
+            <h1 className="font-serif text-4xl font-bold text-foreground mb-3">{t('signInTitle')}</h1>
             <p className="text-muted-foreground text-base">{t('signInSubtitle')}</p>
           </div>
 
@@ -92,22 +92,22 @@ export default function LoginPage() {
 
           <form onSubmit={handleEmailSignIn} className="space-y-5 mb-8">
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('emailLabel')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('emailLabel')}</label>
               <Input 
                 type="email" 
                 placeholder="email@example.com" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('passwordLabel')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('passwordLabel')}</label>
               <Input 
                 type="password" 
                 placeholder="••••••••" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

@@ -38,7 +38,7 @@ export default function MissionPage() {
         backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <SectionHeader 
@@ -73,17 +73,17 @@ export default function MissionPage() {
         <div className="mt-12">
           <div className="text-center mb-16">
             <h2 className="text-sm font-bold tracking-widest text-accent uppercase mb-3">Core Values</h2>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary">What Drives Us Forward</h3>
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-foreground">What Drives Us Forward</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, idx) => {
               const Icon = value.icon;
               return (
                 <div key={idx} className="p-8 rounded-3xl bg-secondary/30 hover:bg-secondary/50 border border-border/50 hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary mb-6 shadow-sm">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-accent mb-6 shadow-sm">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h4 className="text-xl font-bold text-primary mb-3">{value.title}</h4>
+                  <h4 className="text-xl font-bold text-foreground mb-3">{value.title}</h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">{value.desc}</p>
                 </div>
               );

@@ -60,7 +60,7 @@ export function ContactClient() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-serif font-bold text-primary mb-4">{tContact("heading")}</h2>
+              <h2 className="text-3xl font-serif font-bold text-foreground mb-4">{tContact("heading")}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 {tContact("desc")}
               </p>
@@ -68,29 +68,29 @@ export function ContactClient() {
 
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-primary">
+                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-sm text-accent">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-medium text-primary">{tContact("emailLabel")}</p>
+                  <p className="font-medium text-foreground">{tContact("emailLabel")}</p>
                   <p className="text-muted-foreground">contact@aabporg.uk</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-primary">
+                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-sm text-accent">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-medium text-primary">{tContact("phoneLabel")}</p>
+                  <p className="font-medium text-foreground">{tContact("phoneLabel")}</p>
                   <p className="text-muted-foreground">+44 7454 776856</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-primary">
+                <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-sm text-accent">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-medium text-primary">{tContact("officeLabel")}</p>
+                  <p className="font-medium text-foreground">{tContact("officeLabel")}</p>
                   <p className="text-muted-foreground">{tContact("officeLocation")}</p>
                 </div>
               </div>
@@ -98,12 +98,12 @@ export function ContactClient() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-3xl shadow-glass border border-border">
-            <h3 className="text-2xl font-bold text-primary mb-6">{tContact("formHeading")}</h3>
+          <div className="bg-card p-8 rounded-3xl shadow-glass border border-border">
+            <h3 className="text-2xl font-bold text-foreground mb-6">{tContact("formHeading")}</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-primary">{tContact("nameLabel")}</label>
+                  <label className="text-sm font-medium text-foreground">{tContact("nameLabel")}</label>
                   <Input
                     name="name"
                     value={formData.name}
@@ -114,7 +114,7 @@ export function ContactClient() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-primary">{tContact("emailLabel")}</label>
+                  <label className="text-sm font-medium text-foreground">{tContact("emailLabel")}</label>
                   <Input
                     name="email"
                     type="email"
@@ -127,7 +127,7 @@ export function ContactClient() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-primary">{tContact("subjectLabel")}</label>
+                <label className="text-sm font-medium text-foreground">{tContact("subjectLabel")}</label>
                 <Input
                   name="subject"
                   value={formData.subject}
@@ -138,7 +138,7 @@ export function ContactClient() {
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-primary">{tContact("messageLabel")}</label>
+                <label className="text-sm font-medium text-foreground">{tContact("messageLabel")}</label>
                 <Textarea
                   name="message"
                   value={formData.message}

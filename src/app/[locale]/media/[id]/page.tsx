@@ -58,7 +58,7 @@ export default function ArticlePage() {
         backgroundImage={article.imageUrl || "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"}
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="max-w-4xl mx-auto">
           <Link href="/media" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-accent mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" /> {t('backToNews')}
@@ -76,7 +76,7 @@ export default function ArticlePage() {
             </div>
           </div>
           
-          <div className="prose prose-lg max-w-none text-primary" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div className="prose prose-lg max-w-none text-foreground" dangerouslySetInnerHTML={{ __html: article.content }} />
         </div>
       </Section>
     </main>

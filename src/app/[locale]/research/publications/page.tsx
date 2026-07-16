@@ -30,7 +30,7 @@ export default function PublicationsPage() {
         backgroundImage="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <SectionHeader 
           title={t('recentPubs')}
           subtitle={t('networkOutput')}

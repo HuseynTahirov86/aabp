@@ -37,7 +37,7 @@ export default function HistoryPage() {
         backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeader 

@@ -198,7 +198,7 @@ export default function AdminCMSPage() {
                         <h4 className="font-semibold text-primary">{article.title}</h4>
                         <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{article.summary}</p>
                         <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
-                          <span className="bg-white px-2 py-1 rounded">{article.status}</span>
+                          <span className="bg-secondary px-2 py-1 rounded">{article.status}</span>
                           <span className="px-2 py-1">{new Date(article.createdAt?.toDate?.() || article.createdAt).toLocaleDateString()}</span>
                         </div>
                       </div>

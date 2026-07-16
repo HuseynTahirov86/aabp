@@ -82,7 +82,7 @@ export function SectionHeader({
       <motion.h2 
         variants={slideUpVariants}
         custom={2}
-        className="font-serif text-3xl md:text-5xl font-bold text-primary"
+        className="font-serif text-3xl md:text-5xl font-bold text-foreground"
       >
         {title}
       </motion.h2>

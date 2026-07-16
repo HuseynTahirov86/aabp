@@ -56,7 +56,7 @@ export function AboutClient() {
       />
 
       {/* Mission & Vision */}
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeader
@@ -95,7 +95,7 @@ export function AboutClient() {
       </Section>
 
       {/* Committee */}
-      <Section className="bg-white">
+      <Section className="bg-card">
         <SectionHeader
           title={t('committeeTitle')}
           subtitle={t('committeeSubtitle')}

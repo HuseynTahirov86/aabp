@@ -59,7 +59,7 @@ export function EventCard({ id, title, date, location, category, imageUrl, index
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       whileHover={{ y: -8 }}
-      className="group flex flex-col bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/30"
+      className="group flex flex-col bg-card/80 backdrop-blur-md rounded-3xl overflow-hidden shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/30"
     >
       {/* Image Area */}
       <div className="relative h-48 w-full bg-secondary overflow-hidden">
@@ -74,7 +74,7 @@ export function EventCard({ id, title, date, location, category, imageUrl, index
         ) : (
           <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
         )}
-        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary uppercase tracking-wider shadow-sm">
+        <div className="absolute top-4 left-4 bg-card/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-foreground uppercase tracking-wider shadow-sm">
           {category}
         </div>
       </div>
@@ -82,7 +82,7 @@ export function EventCard({ id, title, date, location, category, imageUrl, index
       {/* Content Area */}
       <div className="p-6 flex flex-col flex-1">
         <Link href={`/events/${id}`}>
-          <h3 className="font-serif text-xl font-bold text-primary mb-3 line-clamp-2 group-hover:text-accent transition-colors cursor-pointer">
+          <h3 className="font-serif text-xl font-bold text-foreground mb-3 line-clamp-2 group-hover:text-accent transition-colors cursor-pointer">
             {title}
           </h3>
         </Link>
@@ -101,7 +101,7 @@ export function EventCard({ id, title, date, location, category, imageUrl, index
         <div className="mt-auto">
           <Button 
             variant="ghost" 
-            className="w-full justify-between hover:bg-secondary/50 text-primary group-hover:text-accent transition-colors"
+            className="w-full justify-between hover:bg-secondary/50 text-foreground group-hover:text-accent transition-colors"
             onClick={handleRegister}
             disabled={isRegistering || registered}
           >

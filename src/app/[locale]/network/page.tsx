@@ -50,7 +50,7 @@ export default function NetworkPage() {
                 backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
             />
             <Section className="bg-secondary/10 pt-10 pb-24">
-                <div className="max-w-4xl mx-auto mb-16 bg-white p-4 rounded-2xl shadow-glass">
+                <div className="max-w-4xl mx-auto mb-16 bg-card p-4 rounded-2xl shadow-glass">
                     <div className="relative w-full">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
                         <Input 

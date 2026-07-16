@@ -32,7 +32,7 @@ export default function ProjectsPage() {
         backgroundImage="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <SectionHeader 
           title={t('ongoingProjects')}
           subtitle={t('collaborations')}
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
                     </div>
                   )}
                   <CardHeader>
-                    <CardTitle className="text-xl text-primary line-clamp-2">
+                    <CardTitle className="text-xl text-foreground line-clamp-2">
                       {project.title}
                     </CardTitle>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">

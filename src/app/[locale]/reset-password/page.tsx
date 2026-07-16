@@ -41,10 +41,10 @@ export default function ResetPasswordPage() {
         variants={fadeVariants}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-md bg-white rounded-3xl shadow-glass p-8 md:p-10 border border-border"
+        className="w-full max-w-md bg-card rounded-3xl shadow-glass p-8 md:p-10 border border-border"
       >
         <div className="text-center mb-8">
-          <h1 className="font-serif text-3xl font-bold text-primary mb-2">{t('resetTitle')}</h1>
+          <h1 className="font-serif text-3xl font-bold text-foreground mb-2">{t('resetTitle')}</h1>
           <p className="text-muted-foreground text-sm">{t('resetSubtitle')}</p>
         </div>
 
@@ -57,7 +57,7 @@ export default function ResetPasswordPage() {
 
         <form onSubmit={handleReset} className="space-y-4 mb-6">
           <div>
-            <label className="block text-sm font-medium text-primary mb-1">{t('emailLabel')}</label>
+            <label className="block text-sm font-medium text-foreground mb-1">{t('emailLabel')}</label>
             <Input 
               type="email" 
               placeholder="email@example.com" 

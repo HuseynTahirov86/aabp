@@ -25,7 +25,7 @@ export function ResearchCard({ id, title, abstract, authors, field, date, link, 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="group relative bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-all duration-300 border border-border/50"
+      className="group relative bg-card p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-all duration-300 border border-border/50"
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-t-2xl" />
       
@@ -36,12 +36,12 @@ export function ResearchCard({ id, title, abstract, authors, field, date, link, 
       
       {id ? (
         <Link href={`/research/${id}`}>
-          <h3 className="font-serif text-xl font-bold text-primary mb-4 leading-snug group-hover:text-primary/80 transition-colors cursor-pointer">
+          <h3 className="font-serif text-xl font-bold text-foreground mb-4 leading-snug group-hover:text-foreground/80 transition-colors cursor-pointer">
             {title}
           </h3>
         </Link>
       ) : (
-        <h3 className="font-serif text-xl font-bold text-primary mb-4 leading-snug group-hover:text-primary/80 transition-colors">
+        <h3 className="font-serif text-xl font-bold text-foreground mb-4 leading-snug group-hover:text-foreground/80 transition-colors">
           {title}
         </h3>
       )}
@@ -50,7 +50,7 @@ export function ResearchCard({ id, title, abstract, authors, field, date, link, 
         {abstract}
       </p>
       
-      <div className="flex items-center gap-2 text-sm text-primary/80 font-medium mb-6">
+      <div className="flex items-center gap-2 text-sm text-foreground/70 font-medium mb-6">
         <Users className="w-4 h-4 text-accent" />
         <span className="line-clamp-1">{authors.join(", ")}</span>
       </div>
@@ -60,7 +60,7 @@ export function ResearchCard({ id, title, abstract, authors, field, date, link, 
           href={link} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-accent transition-colors"
         >
           <FileText className="w-4 h-4" />
           Read Publication

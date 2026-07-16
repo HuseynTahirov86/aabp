@@ -73,7 +73,7 @@ export default function AdminMembersPage() {
                 </thead>
                 <tbody>
                   {users.map((user) => (
-                    <tr key={user.id} className="bg-white border-b border-border">
+                    <tr key={user.id} className="bg-card border-b border-border">
                       <td className="px-6 py-4 font-medium text-primary whitespace-nowrap">
                         {user.firstName} {user.lastName}
                       </td>

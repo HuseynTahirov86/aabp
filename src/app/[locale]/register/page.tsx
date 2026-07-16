@@ -145,7 +145,7 @@ export default function RegisterPage() {
           </button>
 
           <div className="text-left mb-10">
-            <h1 className="font-serif text-4xl font-bold text-primary mb-3">{t('registerTitle')}</h1>
+            <h1 className="font-serif text-4xl font-bold text-foreground mb-3">{t('registerTitle')}</h1>
             <p className="text-muted-foreground text-base">{t('registerSubtitle')}</p>
           </div>
 
@@ -154,22 +154,22 @@ export default function RegisterPage() {
           <form onSubmit={handleRegister} className="space-y-5 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2">{t('firstName')}</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">{t('firstName')}</label>
                 <Input 
                   type="text" 
                   placeholder="John" 
-                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-primary mb-2">{t('lastName')}</label>
+                <label className="block text-sm font-semibold text-foreground mb-2">{t('lastName')}</label>
                 <Input 
                   type="text" 
                   placeholder="Smith" 
-                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   required
@@ -181,7 +181,7 @@ export default function RegisterPage() {
               <Input 
                 type="text" 
                 placeholder="e.g. Software Engineer, Medical Researcher" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={profession}
                 onChange={(e) => setProfession(e.target.value)}
                 required
@@ -192,7 +192,7 @@ export default function RegisterPage() {
               <Input 
                 type="text" 
                 placeholder="A brief description of your background..." 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={bio}
                 onChange={(e) => setBio(e.target.value)}
               />
@@ -202,7 +202,7 @@ export default function RegisterPage() {
               <Input 
                 type="email" 
                 placeholder="john.smith@example.com" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -213,7 +213,7 @@ export default function RegisterPage() {
               <Input 
                 type="url" 
                 placeholder="https://linkedin.com/in/..." 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={linkedin}
                 onChange={(e) => setLinkedin(e.target.value)}
               />
@@ -223,7 +223,7 @@ export default function RegisterPage() {
               <Input 
                 type="password" 
                 placeholder="••••••••" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-white focus:border-accent transition-all duration-300"
+                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

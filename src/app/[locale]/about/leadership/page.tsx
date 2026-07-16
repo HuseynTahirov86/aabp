@@ -30,7 +30,7 @@ export default function LeadershipPage() {
         backgroundImage="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <SectionHeader 
             title={t('execCommittee')}

@@ -113,7 +113,7 @@ export default function SettingsPage() {
           <p className="text-muted-foreground mt-1">{t('settingsDesc')}</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-border p-8 space-y-6">
+        <div className="bg-card rounded-2xl shadow-sm border border-border p-8 space-y-6">
           
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="w-24 h-24 rounded-full bg-secondary overflow-hidden shrink-0 relative">

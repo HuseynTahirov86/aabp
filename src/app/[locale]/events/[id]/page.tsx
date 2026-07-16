@@ -80,7 +80,7 @@ export default function EventDetailsPage() {
         backgroundImage={event.imageUrl || "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"}
       />
       
-      <Section className="bg-white">
+      <Section className="bg-card">
         <div className="max-w-4xl mx-auto">
           <Link href="/events" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-accent mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Events
@@ -101,7 +101,7 @@ export default function EventDetailsPage() {
             </div>
           </div>
           
-          <div className="prose prose-lg max-w-none text-primary mb-12">
+          <div className="prose prose-lg max-w-none text-foreground mb-12">
             {event.description ? (
               <div dangerouslySetInnerHTML={{ __html: event.description }} />
             ) : (

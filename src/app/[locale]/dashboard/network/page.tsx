@@ -71,7 +71,7 @@ export default function MyNetworkPage() {
             subtitle="Member Directory"
           />
           
-          <div className="mb-12 bg-white p-6 rounded-2xl shadow-sm border border-border">
+          <div className="mb-12 bg-card p-6 rounded-2xl shadow-sm border border-border">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
@@ -119,7 +119,7 @@ export default function MyNetworkPage() {
               <Loader2 className="w-8 h-8 animate-spin text-primary" />
             </div>
           ) : filteredUsers.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-2xl border border-border">
+            <div className="text-center py-20 bg-card rounded-2xl border border-border">
               <p className="text-xl text-muted-foreground">{tNet('noMembers') || "No members found matching your criteria."}</p>
             </div>
           ) : (

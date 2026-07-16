@@ -38,7 +38,7 @@ export function MediaClient() {
         backgroundImage="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
 
-      <Section className="bg-white">
+      <Section className="bg-card">
         <SectionHeader
           title={t('latestNews')}
           subtitle={t('updates')}
@@ -63,7 +63,7 @@ export function MediaClient() {
                   </div>
                 )}
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary line-clamp-2">
+                  <CardTitle className="text-xl text-foreground line-clamp-2">
                     <Link href={`/media/${article.id}`} className="hover:text-accent transition-colors">
                       {article.title}
                     </Link>

@@ -24,7 +24,7 @@ export function CommitteeCard({ name, role, bio, imageUrl, linkedinUrl, email, i
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       whileHover={{ y: -8 }}
-      className="group flex flex-col items-center text-center p-8 bg-white/80 backdrop-blur-md rounded-3xl shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/30"
+      className="group flex flex-col items-center text-center p-8 bg-card/80 backdrop-blur-md rounded-3xl shadow-soft hover:shadow-glass transition-all duration-500 border border-border/50 hover:border-accent/30"
     >
       <Avatar className="w-32 h-32 mb-6 border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-500">
         <AvatarImage src={imageUrl} alt={name} className="object-cover" />
@@ -33,7 +33,7 @@ export function CommitteeCard({ name, role, bio, imageUrl, linkedinUrl, email, i
         </AvatarFallback>
       </Avatar>
       
-      <h3 className="font-serif text-xl font-bold text-primary mb-1">{name}</h3>
+      <h3 className="font-serif text-xl font-bold text-foreground mb-1">{name}</h3>
       <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-4">{role}</p>
       
       <p className="text-muted-foreground text-sm leading-relaxed mb-6">

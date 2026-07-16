@@ -126,7 +126,7 @@ export default function AdminCareerPage() {
         </Dialog>
       </div>
 
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-border">
+      <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
         <div className="flex items-center gap-4 mb-6">
           <div className="relative flex-1 max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />

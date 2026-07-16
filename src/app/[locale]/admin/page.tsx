@@ -109,7 +109,7 @@ export default function AdminDashboardPage() {
                     <p className="font-semibold text-primary text-sm">{user.firstName} {user.lastName}</p>
                     <p className="text-xs text-muted-foreground">{user.email}</p>
                   </div>
-                  <span className="text-xs bg-white border border-border px-2 py-1 rounded text-primary">{user.role}</span>
+                  <span className="text-xs bg-secondary border border-border px-2 py-1 rounded text-foreground">{user.role}</span>
                 </div>
               ))}
             </div>

@@ -27,13 +27,13 @@ export function Timeline({ events }: TimelineProps) {
           className="mb-12 ml-8 md:ml-12 relative"
         >
           {/* Node dot */}
-          <div className="absolute -left-[41px] md:-left-[57px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-accent shadow-sm" />
+          <div className="absolute -left-[41px] md:-left-[57px] top-1.5 w-5 h-5 rounded-full border-4 border-card bg-accent shadow-sm" />
           
-          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-shadow border border-border/50">
-            <span className="inline-block py-1 px-3 rounded-full bg-secondary text-primary text-sm font-bold tracking-widest mb-4">
+          <div className="bg-card p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-glass transition-shadow border border-border/50">
+            <span className="inline-block py-1 px-3 rounded-full bg-secondary text-foreground text-sm font-bold tracking-widest mb-4">
               {event.year}
             </span>
-            <h3 className="font-serif text-2xl font-bold text-primary mb-3">
+            <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
               {event.title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">

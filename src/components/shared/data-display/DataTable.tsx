@@ -64,7 +64,7 @@ export function DataTable<T>({
         </div>
       )}
 
-      <div className="rounded-md border bg-white">
+      <div className="rounded-md border bg-card">
         <Table>
           <TableHeader>
             <TableRow className="bg-secondary/20 hover:bg-secondary/20">

@@ -69,7 +69,7 @@ export default function Home() {
             </MagneticElement>
             <a href="mailto:contact@aabporg.uk">
               <MagneticElement>
-                <Button size="lg" className="w-full sm:w-auto rounded-full h-14 px-8 text-lg bg-white text-primary hover:bg-gray-100 border-none group transition-all">
+                <Button size="lg" className="w-full sm:w-auto rounded-full h-14 px-8 text-lg bg-white text-primary hover:bg-white/90 border-none group transition-all">
                   {t('contactUs')}
                   <Mail className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
                 </Button>

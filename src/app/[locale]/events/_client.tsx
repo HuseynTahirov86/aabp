@@ -48,7 +48,7 @@ export function EventsClient() {
 
       <Section className="bg-secondary/20 pt-10">
         {/* Filter / Search Bar */}
-        <div className="max-w-4xl mx-auto mb-16 bg-white p-4 rounded-2xl shadow-glass flex flex-col sm:flex-row gap-4 items-center">
+        <div className="max-w-4xl mx-auto mb-16 bg-card p-4 rounded-2xl shadow-glass flex flex-col sm:flex-row gap-4 items-center">
           <div className="relative flex-1 w-full">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
             <Input

@@ -30,7 +30,7 @@ export async function HomeResearch() {
       });
     }
   } catch (error) {
-    console.log("Failed to load research for home:", error instanceof Error ? error.message : error);
+    console.error("Failed to load research for home:", error instanceof Error ? error.message : error);
   }
 
   return (

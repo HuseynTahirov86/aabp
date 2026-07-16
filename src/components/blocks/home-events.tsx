@@ -31,7 +31,7 @@ export async function HomeEvents() {
       });
     }
   } catch (error) {
-    console.log("Failed to load events for home:", error instanceof Error ? error.message : error);
+    console.error("Failed to load events for home:", error instanceof Error ? error.message : error);
   }
 
   return (

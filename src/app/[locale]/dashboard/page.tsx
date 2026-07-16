@@ -99,7 +99,7 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {/* Quick Stat Cards */}
-          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white/50 backdrop-blur-sm">
+          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">{t('myEvents')}</CardTitle>
               <Calendar className="w-4 h-4 text-accent" />
@@ -110,7 +110,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
           
-          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-white/50 backdrop-blur-sm">
+          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">{t('publications')}</CardTitle>
               <FileText className="w-4 h-4 text-accent" />
@@ -122,7 +122,7 @@ export default function DashboardPage() {
           </Card>
 
           <Link href="/dashboard/network" className="block group">
-            <Card className="shadow-sm border-border transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 h-full cursor-pointer bg-white/50 backdrop-blur-sm relative overflow-hidden">
+            <Card className="shadow-sm border-border transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 h-full cursor-pointer bg-card/50 backdrop-blur-sm relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardHeader className="flex flex-row items-center justify-between pb-2 relative z-10">
                 <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function DashboardPage() {
             ) : (
               <div className="grid gap-4">
                 {userEvents.map(ev => (
-                  <Card key={ev.id} className="shadow-sm border-border p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center hover:shadow-md transition-all duration-300 group bg-white/50 backdrop-blur-sm">
+                  <Card key={ev.id} className="shadow-sm border-border p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center hover:shadow-md transition-all duration-300 group bg-card/50 backdrop-blur-sm">
                     <div>
                       <h4 className="font-semibold text-primary group-hover:text-accent transition-colors">{ev.title}</h4>
                       <p className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
@@ -181,7 +181,7 @@ export default function DashboardPage() {
           
           <div>
             <h2 className="text-2xl font-bold font-serif text-primary mb-6">{t('quickLinks')}</h2>
-            <div className="bg-white/50 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-border flex flex-col gap-3">
+            <div className="bg-card/50 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-border flex flex-col gap-3">
               <a href="mailto:research@aabporg.uk" className="w-full">
                 <Button variant="ghost" className="justify-start w-full text-primary hover:text-accent hover:bg-secondary group transition-all">
                   {t('submitResearch')}

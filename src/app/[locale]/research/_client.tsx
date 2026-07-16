@@ -42,8 +42,8 @@ export function ResearchClient() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
           {/* Sidebar / Filters */}
           <aside className="w-full lg:w-1/4">
-            <div className="bg-white p-6 rounded-2xl shadow-soft sticky top-32 border border-border/50">
-              <h3 className="font-serif font-bold text-xl text-primary mb-6">{t('filterTitle')}</h3>
+            <div className="bg-card p-6 rounded-2xl shadow-soft sticky top-32 border border-border/50">
+              <h3 className="font-serif font-bold text-xl text-foreground mb-6">{t('filterTitle')}</h3>
 
               <div className="space-y-6">
                 <div>
@@ -68,7 +68,7 @@ export function ResearchClient() {
           {/* Research List */}
           <div className="w-full lg:w-3/4">
             <div className="flex justify-between items-end mb-8">
-              <h2 className="text-2xl font-bold text-primary font-serif">
+              <h2 className="text-2xl font-bold text-foreground font-serif">
                 {selectedField === "All Fields" ? t('latestPubs') : `${selectedField} ${t('pubs')}`}
                 {!isLoading && ` (${filteredResearch.length})`}
               </h2>

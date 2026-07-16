@@ -4,23 +4,27 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Preloader() {
+  const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let currentProgress = 0;
+    if (sessionStorage.getItem("aabp_loaded")) {
+      return;
+    }
+    setIsLoading(true);
+    let current = 0;
     const interval = setInterval(() => {
-      currentProgress += Math.random() * 15;
-      if (currentProgress > 100) {
-        currentProgress = 100;
+      current += Math.random() * 20;
+      if (current >= 100) {
+        current = 100;
         clearInterval(interval);
         setTimeout(() => {
           setIsLoading(false);
-        }, 500);
+          sessionStorage.setItem("aabp_loaded", "1");
+        }, 400);
       }
-      setProgress(Math.floor(currentProgress));
-    }, 100);
-
+      setProgress(Math.floor(current));
+    }, 80);
     return () => clearInterval(interval);
   }, []);
 
@@ -30,7 +34,7 @@ export function Preloader() {
         <motion.div
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
-          transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.9, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[100000] flex flex-col items-center justify-center bg-primary text-white"
         >
           <div className="font-serif text-[10vw] font-bold tracking-tighter mix-blend-difference">

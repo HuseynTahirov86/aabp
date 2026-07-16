@@ -36,5 +36,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.log('Error generating dynamic sitemap for events:', error);
   }
 
+  // Add dynamic article/media pages
+  try {
+    if (adminDb) {
+      const articlesSnapshot = await adminDb
+        .collection('articles')
+        .where('status', '==', 'Published')
+        .get();
+      const articleRoutes = articlesSnapshot.docs.flatMap(doc =>
+        locales.map(locale => ({
+          url: `${baseUrl}/${locale}/media/${doc.id}`,
+          lastModified: new Date().toISOString(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+        }))
+      );
+      routes.push(...articleRoutes);
+    }
+  } catch (error) {
+    console.log('Error generating dynamic sitemap for articles:', error);
+  }
+
   return routes;
 }

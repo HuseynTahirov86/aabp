@@ -310,6 +310,18 @@
     "sec5Title": "5. Contact Us",
     "sec5Desc": "If you have any questions about this Privacy Policy, please contact us at contact@aabporg.uk."
   },
+  "Stats": {
+    "title": "AABP by the Numbers",
+    "subtitle": "Our Impact",
+    "members": "Members",
+    "membersDesc": "Growing community of professionals",
+    "events": "Events",
+    "eventsDesc": "Conferences, webinars & networking",
+    "fields": "Fields",
+    "fieldsDesc": "Areas of professional expertise",
+    "countries": "Countries",
+    "countriesDesc": "International reach"
+  },
   "Terms": {
     "title": "Terms of Service",
     "sec1Title": "1. Acceptance of Terms",

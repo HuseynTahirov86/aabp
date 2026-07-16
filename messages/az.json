@@ -311,6 +311,18 @@
     "sec5Title": "5. Bizimlə Əlaqə",
     "sec5Desc": "Bu Məxfilik Siyasəti ilə bağlı hər hansı sualınız varsa, lütfən contact@aabporg.uk ünvanı ilə bizimlə əlaqə saxlayın."
   },
+  "Stats": {
+    "title": "AABP Rəqəmlərlə",
+    "subtitle": "Təsirimiz",
+    "members": "Üzv",
+    "membersDesc": "Böyüyən peşəkarlar icması",
+    "events": "Tədbir",
+    "eventsDesc": "Konfranslar, vebinarlar və şəbəkələşmə",
+    "fields": "Sahə",
+    "fieldsDesc": "Peşəkar fəaliyyət sahələri",
+    "countries": "Ölkə",
+    "countriesDesc": "Beynəlxalq əlçatımlılıq"
+  },
   "Terms": {
     "title": "İstifadə Şərtləri",
     "sec1Title": "1. Şərtlərin Qəbulu",

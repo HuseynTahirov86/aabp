@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Mail } from 'lucide-react';
 import { ParticlesBg } from '@/components/blocks/ParticlesBg';
+import { StatsSection } from '@/components/blocks/StatsSection';
 import { MagneticElement } from '@/components/ui/MagneticElement';
 
 export default function Home() {
@@ -35,6 +36,9 @@ export default function Home() {
           </MagneticElement>
         </div>
       </Section>
+
+      {/* Statistics */}
+      <StatsSection />
 
       {/* Featured Events */}
       <Section className="bg-secondary/30">

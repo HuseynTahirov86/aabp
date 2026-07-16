@@ -45,65 +45,34 @@
 }
 
 :root {
-  /* Colors - Light Mode Focus */
-  --background: #FFFFFF;
-  --foreground: #122036; /* Deep Navy */
-  
-  --card: #FFFFFF;
-  --card-foreground: #122036;
-  
-  --popover: #FFFFFF;
-  --popover-foreground: #122036;
-  
-  --primary: #122036; /* Deep Navy */
-  --primary-foreground: #FFFFFF;
-  
-  --secondary: #F3F4F6; /* Soft Gray */
-  --secondary-foreground: #122036;
-  
-  --muted: #F9FAFB;
-  --muted-foreground: #6B7280;
-  
-  --accent: #B7984A; /* Gold Accent */
-  --accent-foreground: #FFFFFF;
-  
-  --destructive: #C8102E; /* British Red */
-  
-  --border: #E5E7EB;
-  --input: #E5E7EB;
-  --ring: #D4AF37;
-  
-  --radius: 0.25rem; /* 4px for official, formal feel */
-}
-
-.dark {
-  /* Optional Dark Mode (Not the main focus, but supported) */
   --background: #060e1a;
   --foreground: #F3F4F6;
-  
+
   --card: #0A192F;
   --card-foreground: #F3F4F6;
-  
+
   --popover: #0A192F;
   --popover-foreground: #F3F4F6;
-  
-  --primary: #FFFFFF;
-  --primary-foreground: #0A192F;
-  
+
+  --primary: #122036; /* Deep Navy */
+  --primary-foreground: #FFFFFF;
+
   --secondary: #1E293B;
   --secondary-foreground: #F3F4F6;
-  
+
   --muted: #1E293B;
   --muted-foreground: #94A3B8;
-  
-  --accent: #D4AF37;
+
+  --accent: #B7984A; /* Gold Accent */
   --accent-foreground: #FFFFFF;
-  
+
   --destructive: #EF4444;
-  
+
   --border: #1E293B;
   --input: #1E293B;
   --ring: #D4AF37;
+
+  --radius: 0.25rem;
 }
 
 @layer base {

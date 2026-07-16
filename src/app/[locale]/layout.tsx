@@ -97,8 +97,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[190px]">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <AuthProvider>

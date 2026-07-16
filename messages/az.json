@@ -351,7 +351,10 @@
     "events": { "title": "Eksklüziv Tədbirlər", "desc": "Konfranslara, şəbəkə axşamlarına, vebinarlara və peşəkar inkişaf sessiyalarına giriş əldə edin." }
   },
   "Partners": {
-    "label": "Üzv Qurum və Tərəfdaşlar"
+    "label": "Üzv Qurum və Tərəfdaşlar",
+    "eyebrow": "Əməkdaşlıq",
+    "title": "Tərəfdaşlarımız",
+    "subtitle": "Missiyamızı irəli aparmaq üçün Azərbaycan, Böyük Britaniya və Avropanın aparıcı qurumları ilə əməkdaşlıq edirik."
   },
   "Newsletter": {
     "subtitle": "Əlaqədə Qalın",

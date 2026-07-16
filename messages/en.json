@@ -350,7 +350,10 @@
     "events": { "title": "Exclusive Events", "desc": "Gain access to conferences, networking evenings, webinars, and professional development sessions." }
   },
   "Partners": {
-    "label": "Member Institutions & Partners"
+    "label": "Member Institutions & Partners",
+    "eyebrow": "Collaboration",
+    "title": "Our Partners & Collaborators",
+    "subtitle": "We work with leading institutions across Azerbaijan, the UK, and Europe to advance our mission."
   },
   "Newsletter": {
     "subtitle": "Stay Connected",

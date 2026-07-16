@@ -3,7 +3,6 @@
 import * as React from "react";
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import {
@@ -145,7 +144,7 @@ export function Navbar() {
       {/* Top Tier: Hidden when scrolled */}
       <div 
         className={cn(
-          "w-full bg-white transition-all duration-300 overflow-hidden hidden lg:block border-b border-border shadow-sm",
+          "w-full bg-card transition-all duration-300 overflow-hidden hidden lg:block border-b border-border shadow-sm",
           isScrolled ? "h-0 opacity-0" : "h-[90px] opacity-100"
         )}
       >
@@ -155,7 +154,7 @@ export function Navbar() {
               <Image src="/logo.png" alt="AABP Logo" width={56} height={56} className="object-contain" priority />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-2xl tracking-tighter text-primary leading-tight">
+              <span className="font-serif font-bold text-2xl tracking-tighter text-accent leading-tight">
                 AABP
               </span>
               <span className="text-xs text-muted-foreground font-semibold uppercase tracking-[0.15em] mt-0.5">
@@ -165,10 +164,10 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-5">
-            <span className="italic font-serif text-base text-primary/80 pr-5 border-r border-border">
+            <span className="italic font-serif text-base text-foreground/70 pr-5 border-r border-border">
               {tIndex('empoweringTitle')}
             </span>
-            <div className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-primary shadow-sm">
+            <div className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-foreground shadow-sm">
               <UsersRound className="w-5 h-5" />
             </div>
           </div>
@@ -217,7 +216,7 @@ export function Navbar() {
                     {t('discover')}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-card">
                       {components.map((component) => (
                         <ListItem
                           key={component.title}
@@ -244,9 +243,8 @@ export function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* Theme Toggle & Language */}
+            {/* Language */}
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <LanguageSwitcher />
             </div>
 
@@ -255,7 +253,7 @@ export function Navbar() {
               <CommandPalette />
               <Link href={user ? "/dashboard" : "/login"}>
                 <Button
-                  className="rounded-full px-6 font-medium shadow-sm transition-all bg-white text-primary hover:bg-gray-100"
+                  className="rounded-full px-6 font-medium shadow-sm transition-all bg-accent text-white hover:bg-accent/90"
                   disabled={loading}
                 >
                   {loading ? "..." : user ? t('dashboard') : t('signIn')}
@@ -267,26 +265,25 @@ export function Navbar() {
           {/* Mobile Nav */}
           <div className="flex lg:hidden items-center gap-2">
             <MobileSearch />
-            <ThemeToggle />
             <LanguageSwitcher />
             <Sheet>
               <SheetTrigger className="p-2 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors text-white">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card border-border">
                 <nav className="flex flex-col gap-4 mt-8">
                   {components.map((comp) => (
                     <Link
                       key={comp.href}
                       href={comp.href}
-                      className="block px-2 py-1 text-lg font-medium text-primary hover:text-accent transition-colors"
+                      className="block px-2 py-1 text-lg font-medium text-foreground hover:text-accent transition-colors"
                     >
                       {comp.title}
                     </Link>
                   ))}
                   <Link
                     href="/network"
-                    className="block px-2 py-1 text-lg font-medium text-primary hover:text-accent transition-colors"
+                    className="block px-2 py-1 text-lg font-medium text-foreground hover:text-accent transition-colors"
                   >
                     {t('memberDirectory')}
                   </Link>
@@ -316,12 +313,12 @@ const ListItem = React.forwardRef<
       <Link
         ref={ref}
         className={cn(
-          "block select-none space-y-1 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-primary focus:bg-secondary focus:text-primary",
+          "block select-none space-y-1 rounded-md p-4 leading-none no-underline outline-none transition-colors hover:bg-secondary hover:text-foreground focus:bg-secondary focus:text-foreground",
           className
         )}
         {...props}
       >
-          <div className="text-sm font-semibold leading-none text-primary relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:-bottom-1 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left group-hover:after:scale-x-100 group-hover:after:origin-bottom-left">
+          <div className="text-sm font-semibold leading-none text-foreground relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:-bottom-1 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left group-hover:after:scale-x-100 group-hover:after:origin-bottom-left">
             {title}
           </div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-2">

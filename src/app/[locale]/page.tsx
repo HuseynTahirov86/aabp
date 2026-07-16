@@ -18,7 +18,7 @@ export default function Home() {
       <NewsCarouselHero />
       
       {/* Mission Section */}
-      <Section className="bg-white">
+      <Section className="bg-card">
         <SectionHeader 
           title={t('empoweringTitle')}
           subtitle={t('ourMission')}
@@ -46,7 +46,7 @@ export default function Home() {
       </Section>
 
       {/* Latest Research */}
-      <Section className="bg-white">
+      <Section className="bg-card">
         <HomeResearch />
       </Section>
 

@@ -31,7 +31,7 @@ const FALLBACK_NEWS = [
     date: "2024-01-01",
     description:
       "AABP was founded to bridge the gap between Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering. Join our growing network today.",
-    image: "/hero-1.jpg",
+    image: "/logo.png",
     link: "/about",
   },
   {
@@ -41,7 +41,7 @@ const FALLBACK_NEWS = [
     date: "2024-06-01",
     description:
       "Become part of an elite community of professionals, academics, and industry leaders bridging the UK and Azerbaijan. AABP members gain access to exclusive events, career opportunities, and research collaborations.",
-    image: "/hero-2.jpg",
+    image: "/logo.png",
     link: "/auth/register",
   },
 ];

@@ -1,0 +1,17 @@
+{
+  "name": "Association of Azerbaijani British Professionals",
+  "short_name": "AABP",
+  "description": "A prestigious, globally connected, modern organization representing excellence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A192F",
+  "theme_color": "#0A192F",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "192x192 512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}

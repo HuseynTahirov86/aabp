@@ -1,0 +1,72 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (getUserRole() == "ADMIN" || getUserRole() == "SUPER_ADMIN");
+    }
+    
+    function isEditor() {
+      return isAuthenticated() && (getUserRole() == "EDITOR" || getUserRole() == "ADMIN" || getUserRole() == "SUPER_ADMIN");
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin() || (isAuthenticated() && resource.data.publicProfile == true) || (isAuthenticated() && resource.data.role == "COMMITTEE");
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Events Collection
+    match /events/{eventId} {
+      allow read: if (resource == null) || (resource.data.status == "Published") || isEditor(); 
+      allow write: if isEditor();
+    }
+
+    // Event Registrations
+    match /event_registrations/{registrationId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isEditor());
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update, delete: if isEditor();
+    }
+
+    // Jobs Collection
+    match /jobs/{jobId} {
+      allow read: if (resource == null) || (resource.data.status == "Published") || isEditor();
+      allow write: if isEditor();
+    }
+
+    // Articles Collection
+    match /articles/{articleId} {
+      allow read: if (resource == null) || (resource.data.status == "Published") || isEditor();
+      allow write: if isEditor();
+    }
+
+    // Research Collection
+    match /research/{researchId} {
+      // Research items are strictly published
+      allow read: if (resource == null) || (resource.data.status == "Published") || isEditor();
+      allow write: if isEditor();
+    }
+
+    // Projects Collection
+    match /projects/{projectId} {
+      allow read: if (resource == null) || (resource.data.status == "Published") || isEditor();
+      allow write: if isEditor();
+    }
+  }
+}

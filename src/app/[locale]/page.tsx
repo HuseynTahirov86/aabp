@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl';
 import { HeroSection } from '@/components/blocks/HeroSection';
 import { FieldsSection } from '@/components/blocks/FieldsSection';
 import { BenefitsSection } from '@/components/blocks/BenefitsSection';
+import { PartnersSection } from '@/components/blocks/PartnersSection';
+import { NewsletterSection } from '@/components/blocks/NewsletterSection';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { HomeEvents } from '@/components/blocks/home-events';
 import { HomeResearch } from '@/components/blocks/home-research';
@@ -48,6 +50,8 @@ export default function Home() {
       {/* Benefits / Why Join */}
       <BenefitsSection />
 
+      <PartnersSection />
+
       {/* Featured Events */}
       <Section className="bg-card">
         <HomeEvents />
@@ -57,6 +61,8 @@ export default function Home() {
       <Section className="bg-background">
         <HomeResearch />
       </Section>
+
+      <NewsletterSection />
 
       {/* CTA Section */}
       <Section className="relative bg-primary text-white overflow-hidden" animate={false}>

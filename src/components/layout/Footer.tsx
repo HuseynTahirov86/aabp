@@ -30,6 +30,7 @@ export async function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-primary text-white pt-20 pb-10">
+      <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand & Intro */}
@@ -144,6 +145,11 @@ export async function Footer() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
+        <p className="text-white/20 text-xs">
+          Built with ❤️ for the Azerbaijani-British professional community
+        </p>
       </div>
     </footer>
   );

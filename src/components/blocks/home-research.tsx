@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { adminDb } from "@/lib/firebase/admin";
 import { AABPResearch } from "@/lib/firebase/db-research";
+import { BookX } from "lucide-react";
 
 export async function HomeResearch() {
   let researchList: AABPResearch[] = [];
@@ -47,8 +48,11 @@ export async function HomeResearch() {
       </div>
 
       {researchList.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground">
-          No research publications available at the moment.
+        <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center mb-4">
+            <BookX className="w-8 h-8 text-muted-foreground/40" />
+          </div>
+          <p className="text-muted-foreground text-sm">No research publications available at the moment.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

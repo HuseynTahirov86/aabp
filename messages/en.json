@@ -349,6 +349,18 @@
     "research": { "title": "Research Collaboration", "desc": "Collaborate on cross-border academic research and publish through our Research Hub." },
     "events": { "title": "Exclusive Events", "desc": "Gain access to conferences, networking evenings, webinars, and professional development sessions." }
   },
+  "Partners": {
+    "label": "Member Institutions & Partners"
+  },
+  "Newsletter": {
+    "subtitle": "Stay Connected",
+    "title": "Get AABP Updates",
+    "desc": "Receive the latest news, event announcements, and opportunities directly in your inbox.",
+    "placeholder": "your@email.com",
+    "btn": "Subscribe",
+    "success": "Thank you! We'll be in touch.",
+    "note": "No spam. Unsubscribe at any time."
+  },
   "Terms": {
     "title": "Terms of Service",
     "sec1Title": "1. Acceptance of Terms",

@@ -350,6 +350,18 @@
     "research": { "title": "Tədqiqat Əməkdaşlığı", "desc": "Sərhədlərarası akademik tədqiqatlarda iştirak edin və Tədqiqat Mərkəzimiz vasitəsilə nəşr edin." },
     "events": { "title": "Eksklüziv Tədbirlər", "desc": "Konfranslara, şəbəkə axşamlarına, vebinarlara və peşəkar inkişaf sessiyalarına giriş əldə edin." }
   },
+  "Partners": {
+    "label": "Üzv Qurum və Tərəfdaşlar"
+  },
+  "Newsletter": {
+    "subtitle": "Əlaqədə Qalın",
+    "title": "AABP Yeniliklərini Alın",
+    "desc": "Ən son xəbərləri, tədbir elanlarını və imkanları birbaşa gelen qutunuza alın.",
+    "placeholder": "email@nümunə.com",
+    "btn": "Abunə ol",
+    "success": "Təşəkkür edirik! Tezliklə əlaqə saxlayacağıq.",
+    "note": "Spam yoxdur. İstənilən vaxt abunəliyi ləğv edə bilərsiniz."
+  },
   "Terms": {
     "title": "İstifadə Şərtləri",
     "sec1Title": "1. Şərtlərin Qəbulu",

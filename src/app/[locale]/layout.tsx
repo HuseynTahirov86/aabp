@@ -29,20 +29,35 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "AABP | Association of Azerbaijani British Professionals",
-  description: "A prestigious, globally connected, modern organization representing excellence.",
+  title: {
+    default: "AABP | Association of Azerbaijani British Professionals",
+    template: "%s | AABP",
+  },
+  description:
+    "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering. Based in London, UK.",
+  keywords: [
+    "Azerbaijani professionals",
+    "British professionals",
+    "AABP",
+    "Azerbaijan UK",
+    "professional association",
+    "networking London",
+    "medical science",
+    "engineering",
+  ],
   openGraph: {
     title: "Association of Azerbaijani British Professionals",
-    description: "A prestigious, globally connected, modern organization representing excellence.",
+    description:
+      "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering.",
     url: "https://aabporg.uk",
     siteName: "AABP",
     images: [
       {
-        url: "https://aabporg.uk/logo.png",
+        url: "https://aabporg.uk/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AABP Open Graph Image",
-      }
+        alt: "AABP — Association of Azerbaijani British Professionals",
+      },
     ],
     locale: "en_GB",
     type: "website",
@@ -51,9 +66,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AABP | Association of Azerbaijani British Professionals",
-    description: "A prestigious, globally connected, modern organization representing excellence.",
-    images: ["https://aabporg.uk/logo.png"],
-  }
+    description:
+      "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering.",
+    images: ["https://aabporg.uk/og-image.png"],
+  },
 };
 
 export default async function RootLayout({

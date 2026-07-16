@@ -25,14 +25,25 @@ interface NewsItem {
 
 const FALLBACK_NEWS = [
   {
-    id: 'fallback-1',
-    title: "Global Summit of Azerbaijani Professionals",
-    category: "Events",
-    date: "Upcoming",
-    description: "Join us in London for the biggest gathering of Azerbaijani-British professionals across medicine, engineering, and business sectors.",
-    image: "https://images.unsplash.com/photo-1540575467063-1126a7081aaf?q=80&w=2070&auto=format&fit=crop",
-    link: "/events",
-  }
+    id: "aabp-launch",
+    title: "Association of Azerbaijani British Professionals — Connecting Talent Across Borders",
+    category: "About",
+    date: "2024-01-01",
+    description:
+      "AABP was founded to bridge the gap between Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering. Join our growing network today.",
+    image: "/hero-1.jpg",
+    link: "/about",
+  },
+  {
+    id: "aabp-membership",
+    title: "Apply for AABP Membership — Build Your Professional Network",
+    category: "Membership",
+    date: "2024-06-01",
+    description:
+      "Become part of an elite community of professionals, academics, and industry leaders bridging the UK and Azerbaijan. AABP members gain access to exclusive events, career opportunities, and research collaborations.",
+    image: "/hero-2.jpg",
+    link: "/auth/register",
+  },
 ];
 
 export function NewsCarouselHero() {

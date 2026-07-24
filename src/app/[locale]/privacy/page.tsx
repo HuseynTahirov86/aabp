@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import { Section } from '@/components/shared/Section';
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Read the AABP privacy policy to understand how the Association of Azerbaijani British Professionals collects, uses, and protects your personal data.",
+};
 
 export default function PrivacyPage() {
   const t = useTranslations('Privacy');

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import { Section } from '@/components/shared/Section';
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Review the terms of service governing membership and use of the AABP (Association of Azerbaijani British Professionals) website and community.",
+};
 
 export default function TermsPage() {
   const t = useTranslations('Terms');

@@ -1,5 +1,6 @@
 {
   "Index": {
+    "loadingText": "AABP Yüklənir...",
     "title": "Azərbaycan-Britaniya Peşəkarları Assosiasiyası",
     "description": "Tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrində Azərbaycan və Britaniya peşəkarlarını bir araya gətiririk.",
     "empoweringTitle": "Azərbaycan-Britaniya Peşəkarlarını Gücləndiririk",
@@ -12,6 +13,7 @@
     "comingSoon": "Tezliklə"
   },
   "Navbar": {
+    "officialWebsite": "Azərbaycan-Britaniya Peşəkarları Assosiasiyasının Rəsmi Saytı",
     "discover": "Kəşf et",
     "about": "Haqqımızda",
     "aboutDesc": "AABP-yə rəhbərlik edən missiyamız, baxışımız və icraiyyə komitəsi haqqında öyrənin.",
@@ -50,6 +52,7 @@
     "signIn": "Daxil Ol"
   },
   "Footer": {
+    "tagline": "Azərbaycan-Britaniya peşəkar icması üçün ❤️ ilə hazırlanıb",
     "description": "Azərbaycan-Britaniya Peşəkarları Assosiasiyası elm, tibb, mühəndislik, təhsil və beynəlxalq əməkdaşlıqda mükəmməlliyi təmsil edir.",
     "platform": "Platforma",
     "about": "Haqqımızda",
@@ -101,7 +104,21 @@
     "execCommittee": "İcraiyyə Komitəsi",
     "ourLeaders": "Liderlərimiz",
     "noCommittee": "İcraiyyə komitəsi üzvü tapılmadı.",
-    "committeeMember": "Komitə Üzvü"
+    "committeeMember": "Komitə Üzvü",
+    "historyP1": "Azərbaycan-Britaniya Peşəkarları Assosiasiyası Londonda yerli mütəxəssisləri birləşdirmək üçün kiçik bir təşəbbüs kimi başladı və o vaxtdan bəri müxtəlif sektorlarda minlərlə peşəkarı təmsil edən qlobal bir qüvvəyə çevrildi.",
+    "historyP2": "Böyüməmiz üzvlərimizin sədaqətinin və Böyük Britaniya ilə Azərbaycan arasındakı davamlı əlaqələrin sübutudur. Aşağıda ən mühüm nailiyyətlərimizin xronologiyası verilmişdir.",
+    "leadershipDesc": "İcraiyyə Komitəsi AABP-nin hərəkətverici qüvvəsidir və strateji istiqamətimizi müəyyənləşdirmək, əsas tədbirlərimizi təşkil etmək və üzvlərimizin ən yüksək keyfiyyətli peşəkar dəstək almasını təmin etmək üçün məsuliyyət daşıyır. Müxtəlif sektorlardan liderlərdən ibarət komitəmiz mükəmməlliyi təşviq etmək üçün ortaq bir sədaqətlə birləşib.",
+    "heroQuote": "Gələcək nəsil liderləri gücləndiririk.",
+    "coreValuesLabel": "Əsas Dəyərlərimiz",
+    "coreValuesTitle": "Bizi İrəli Aparan Dəyərlər",
+    "value1Title": "Mükəmməllik",
+    "value1Desc": "Peşəkar və akademik nailiyyətlərdə ən yüksək standartlara can atmaq.",
+    "value2Title": "Əməkdaşlıq",
+    "value2Desc": "Böyük Britaniya ilə Azərbaycan arasında komanda işini və tərəfdaşlıqları inkişaf etdirmək.",
+    "value3Title": "İnnovasiya",
+    "value3Desc": "Bütün sənayelərdə irəliyə baxan ideya və həlləri təşviq etmək.",
+    "value4Title": "Qlobal Təsir",
+    "value4Desc": "Sərhədləri aşan və dünya miqyasında fərq yaradan bir şəbəkə qurmaq."
   },
   "Research": {
     "title": "Tədqiqat Mərkəzi",
@@ -162,6 +179,10 @@
     "signInTitle": "Yenidən Xoş Gəlmisiniz",
     "signInSubtitle": "AABP Üzv Portalına daxil olun",
     "signInBtn": "E-poçt ilə daxil ol",
+    "loginHeroTitle": "Peşəkarları Qlobal Miqyasda Gücləndiririk",
+    "loginHeroDesc": "Böyük Britaniya və Azərbaycandan aparıcı düşüncə sahibləri ilə əlaqə qurmaq, əməkdaşlıq etmək və inkişaf etmək üçün Azərbaycan-Britaniya Peşəkarları Assosiasiyasına qoşulun.",
+    "registerHeroTitle": "Şəbəkəyə Qoşulun",
+    "registerHeroDesc": "Eksklüziv tədbirlərə giriş əldə etmək, həmkarlarınızla əlaqə saxlamaq və icmaya töhfə vermək üçün hesab yaradın.",
     "rememberMe": "Məni xatırla",
     "forgotPassword": "Şifrəni unutmusunuz?",
     "orContinueWith": "Və ya bunlarla davam et",
@@ -269,6 +290,8 @@
     "errorMsg": "Mesajınızı göndərərkən xəta baş verdi."
   },
   "CommandPalette": {
+    "dialogTitle": "Komanda Paneli",
+    "dialogDescription": "İcra etmək üçün bir komanda axtarın...",
     "searchPrompt": "AABP-də axtar...",
     "placeholder": "Komanda yazın və ya axtarın...",
     "noResults": "Nəticə tapılmadı.",

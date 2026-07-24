@@ -46,10 +46,10 @@ export default function HistoryPage() {
               className="mb-6"
             />
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              The Association of Azerbaijani British Professionals began as a small initiative in London to connect local experts, and has since blossomed into a global powerhouse representing thousands of professionals across various sectors.
+              {t('historyP1')}
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Our growth is a testament to the dedication of our members and the enduring bonds between the UK and Azerbaijan. Below is a timeline of our most significant milestones.
+              {t('historyP2')}
             </p>
           </div>
           <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl">

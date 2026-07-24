@@ -119,10 +119,10 @@ export default function RegisterPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h2 className="text-5xl font-serif font-bold mb-6 leading-tight">
-              Join the Network
+              {t('registerHeroTitle')}
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Create an account to access exclusive events, network with peers, and contribute to the community.
+              {t('registerHeroDesc')}
             </p>
           </motion.div>
         </div>

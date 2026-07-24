@@ -39,7 +39,7 @@ export default function LeadershipPage() {
             className="mb-6"
           />
           <p className="text-lg text-muted-foreground leading-relaxed">
-            The Executive Committee is the driving force behind AABP, responsible for setting our strategic direction, organizing our flagship events, and ensuring that our members receive the highest quality of professional support. Comprising leaders from diverse sectors, our committee is united by a shared dedication to fostering excellence.
+            {t('leadershipDesc')}
           </p>
         </div>
         

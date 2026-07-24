@@ -1,5 +1,6 @@
 {
   "Index": {
+    "loadingText": "Loading AABP...",
     "title": "Association of Azerbaijani British Professionals",
     "description": "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering.",
     "empoweringTitle": "Empowering Azerbaijani-British Professionals",
@@ -12,6 +13,7 @@
     "comingSoon": "Coming Soon"
   },
   "Navbar": {
+    "officialWebsite": "Official Website of the Association of Azerbaijani British Professionals",
     "discover": "Discover",
     "about": "About Us",
     "aboutDesc": "Learn about our mission, vision, and the executive committee leading AABP.",
@@ -50,6 +52,7 @@
     "signIn": "Sign In"
   },
   "Footer": {
+    "tagline": "Built with ❤️ for the Azerbaijani-British professional community",
     "description": "The Association of Azerbaijani British Professionals represents excellence in science, medicine, engineering, education, and international collaboration.",
     "platform": "Platform",
     "about": "About Us",
@@ -101,7 +104,21 @@
     "execCommittee": "Executive Committee",
     "ourLeaders": "Our Leaders",
     "noCommittee": "No executive committee members found.",
-    "committeeMember": "Committee Member"
+    "committeeMember": "Committee Member",
+    "historyP1": "The Association of Azerbaijani British Professionals began as a small initiative in London to connect local experts, and has since blossomed into a global powerhouse representing thousands of professionals across various sectors.",
+    "historyP2": "Our growth is a testament to the dedication of our members and the enduring bonds between the UK and Azerbaijan. Below is a timeline of our most significant milestones.",
+    "leadershipDesc": "The Executive Committee is the driving force behind AABP, responsible for setting our strategic direction, organizing our flagship events, and ensuring that our members receive the highest quality of professional support. Comprising leaders from diverse sectors, our committee is united by a shared dedication to fostering excellence.",
+    "heroQuote": "Empowering the next generation of leaders.",
+    "coreValuesLabel": "Core Values",
+    "coreValuesTitle": "What Drives Us Forward",
+    "value1Title": "Excellence",
+    "value1Desc": "Striving for the highest standards in professional and academic achievements.",
+    "value2Title": "Collaboration",
+    "value2Desc": "Fostering teamwork and partnerships between the UK and Azerbaijan.",
+    "value3Title": "Innovation",
+    "value3Desc": "Encouraging forward-thinking ideas and solutions across all industries.",
+    "value4Title": "Global Impact",
+    "value4Desc": "Building a network that transcends borders and makes a worldwide difference."
   },
   "Research": {
     "title": "Research Hub",
@@ -161,6 +178,10 @@
     "signInTitle": "Welcome Back",
     "signInSubtitle": "Sign in to the AABP Member Portal",
     "signInBtn": "Sign In with Email",
+    "loginHeroTitle": "Empowering Professionals Globally",
+    "loginHeroDesc": "Join the Association of Azerbaijani British Professionals to connect, collaborate, and grow with leading minds across industries.",
+    "registerHeroTitle": "Join the Network",
+    "registerHeroDesc": "Create an account to access exclusive events, network with peers, and contribute to the community.",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot Password?",
     "orContinueWith": "Or continue with",
@@ -268,6 +289,8 @@
     "errorMsg": "An error occurred while sending your message."
   },
   "CommandPalette": {
+    "dialogTitle": "Command Palette",
+    "dialogDescription": "Search for a command to run...",
     "searchPrompt": "Search AABP...",
     "placeholder": "Type a command or search...",
     "noResults": "No results found.",

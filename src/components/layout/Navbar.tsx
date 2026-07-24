@@ -131,7 +131,7 @@ export function Navbar() {
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Globe className="w-3.5 h-3.5" />
-            <span>Official Website of the Association of Azerbaijani British Professionals</span>
+            <span>{t('officialWebsite')}</span>
           </div>
           <div className="flex items-center gap-4">
             <a href="mailto:contact@aabporg.uk" className="hover:text-white transition-colors">contact@aabporg.uk</a>

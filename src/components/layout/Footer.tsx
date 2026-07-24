@@ -148,7 +148,7 @@ export async function Footer() {
       </div>
       <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
         <p className="text-white/20 text-xs">
-          Built with ❤️ for the Azerbaijani-British professional community
+          {t('tagline')}
         </p>
       </div>
     </footer>

@@ -66,10 +66,10 @@ export default function LoginPage() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <h2 className="text-5xl font-serif font-bold mb-6 leading-tight">
-              Empowering Professionals Globally
+              {t('loginHeroTitle')}
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Join the Association of Azerbaijani British Professionals to connect, collaborate, and grow with leading minds across industries.
+              {t('loginHeroDesc')}
             </p>
           </motion.div>
         </div>

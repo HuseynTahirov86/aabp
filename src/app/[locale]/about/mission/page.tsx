@@ -10,23 +10,23 @@ export default function MissionPage() {
   const values = [
     {
       icon: Target,
-      title: "Excellence",
-      desc: "Striving for the highest standards in professional and academic achievements."
+      title: t('value1Title'),
+      desc: t('value1Desc')
     },
     {
       icon: Users,
-      title: "Collaboration",
-      desc: "Fostering teamwork and partnerships between the UK and Azerbaijan."
+      title: t('value2Title'),
+      desc: t('value2Desc')
     },
     {
       icon: Lightbulb,
-      title: "Innovation",
-      desc: "Encouraging forward-thinking ideas and solutions across all industries."
+      title: t('value3Title'),
+      desc: t('value3Desc')
     },
     {
       icon: Globe,
-      title: "Global Impact",
-      desc: "Building a network that transcends borders and makes a worldwide difference."
+      title: t('value4Title'),
+      desc: t('value4Desc')
     }
   ];
 
@@ -63,7 +63,7 @@ export default function MissionPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
               <h3 className="text-2xl font-serif font-bold text-white max-w-sm">
-                Empowering the next generation of leaders.
+                {t('heroQuote')}
               </h3>
             </div>
           </div>
@@ -72,8 +72,8 @@ export default function MissionPage() {
         {/* Core Values Bento Grid */}
         <div className="mt-12">
           <div className="text-center mb-16">
-            <h2 className="text-sm font-bold tracking-widest text-accent uppercase mb-3">Core Values</h2>
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-foreground">What Drives Us Forward</h3>
+            <h2 className="text-sm font-bold tracking-widest text-accent uppercase mb-3">{t('coreValuesLabel')}</h2>
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-foreground">{t('coreValuesTitle')}</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, idx) => {

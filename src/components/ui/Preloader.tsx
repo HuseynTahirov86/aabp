@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export function Preloader() {
+  const t = useTranslations("Index");
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -41,7 +43,7 @@ export function Preloader() {
             {progress}%
           </div>
           <div className="absolute bottom-10 text-sm tracking-widest uppercase opacity-50">
-            Association of Azerbaijani British Professionals
+            {t("title")}
           </div>
         </motion.div>
       )}

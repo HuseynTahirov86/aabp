@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push(...eventRoutes);
     }
   } catch (error) {
-    console.log('Error generating dynamic sitemap for events:', error);
+    console.error('Error generating dynamic sitemap for events:', error);
   }
 
   // Add dynamic article/media pages
@@ -54,7 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push(...articleRoutes);
     }
   } catch (error) {
-    console.log('Error generating dynamic sitemap for articles:', error);
+    console.error('Error generating dynamic sitemap for articles:', error);
   }
 
   return routes;

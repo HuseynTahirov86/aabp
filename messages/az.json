@@ -219,6 +219,13 @@
     "settingsTitle": "Profil Tənzimləmələri",
     "settingsDesc": "Şəxsi məlumatlarınızı və açıq profilinizi yeniləyin.",
     "backToDashboard": "Panelə Qayıt",
+    "myNetworkTitle": "Şəbəkəm",
+    "myNetworkSearchPlaceholder": "Ad, peşə və ya qurum üzrə axtar...",
+    "filters": "Filtrlər",
+    "countryLabel": "Ölkə",
+    "countryPlaceholder": "məs. Böyük Britaniya",
+    "professionLabel": "Peşə",
+    "professionPlaceholder": "məs. Mühəndis",
     "profilePhoto": "Profil Şəkli",
     "selectImage": "Birbaşa serverə yükləmək üçün şəkil faylı seçin.",
     "firstName": "Ad",
@@ -241,6 +248,7 @@
     "browseUpcoming": "Gələcək Tədbirlərə Bax"
   },
   "Contact": {
+    "heroSubtitle": "AABP komandası ilə əlaqə saxlayın",
     "heading": "Sizi eşitməkdən məmnun olarıq",
     "desc": "Üzvlük, qarşıdan gələn tədbirlərimiz və ya potensial əməkdaşlıqlar haqqında suallarınız varsa, komandamız bütün suallarınızı cavablandırmağa hazırdır.",
     "emailLabel": "E-poçt",

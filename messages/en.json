@@ -218,6 +218,13 @@
     "settingsTitle": "Profile Settings",
     "settingsDesc": "Update your personal information and public profile.",
     "backToDashboard": "Back to Dashboard",
+    "myNetworkTitle": "My Network",
+    "myNetworkSearchPlaceholder": "Search by name, profession, or institution...",
+    "filters": "Filters",
+    "countryLabel": "Country",
+    "countryPlaceholder": "e.g. United Kingdom",
+    "professionLabel": "Profession",
+    "professionPlaceholder": "e.g. Engineer",
     "profilePhoto": "Profile Photo",
     "selectImage": "Select an image file to upload directly to the server.",
     "firstName": "First Name",
@@ -240,6 +247,7 @@
     "browseUpcoming": "Browse Upcoming Events"
   },
   "Contact": {
+    "heroSubtitle": "Get in touch with the AABP team",
     "heading": "We'd love to hear from you",
     "desc": "Whether you have a question about membership, our upcoming events, or potential partnerships, our team is ready to answer all your questions.",
     "emailLabel": "Email",

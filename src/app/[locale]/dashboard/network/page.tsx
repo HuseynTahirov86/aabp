@@ -66,46 +66,46 @@ export default function MyNetworkPage() {
             <ArrowLeft className="w-4 h-4 mr-2" /> {t('backToDashboard')}
           </Link>
           
-          <SectionHeader 
-            title="My Network"
-            subtitle="Member Directory"
+          <SectionHeader
+            title={t('myNetworkTitle')}
+            subtitle={tNet('title')}
           />
-          
+
           <div className="mb-12 bg-card p-6 rounded-2xl shadow-sm border border-border">
             <div className="flex flex-col md:flex-row gap-4">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
-                <Input 
-                  type="text" 
-                  placeholder="Search by name, profession, or institution..." 
+                <Input
+                  type="text"
+                  placeholder={t('myNetworkSearchPlaceholder')}
                   className="pl-12 h-12 bg-secondary/30"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="h-12 px-6"
                 onClick={() => setShowFilters(!showFilters)}
               >
-                <Filter className="w-4 h-4 mr-2" /> Filters
+                <Filter className="w-4 h-4 mr-2" /> {t('filters')}
               </Button>
             </div>
-            
+
             {showFilters && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t border-border animate-in fade-in slide-in-from-top-2">
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Country</label>
-                  <Input 
-                    placeholder="e.g. United Kingdom" 
+                  <label className="text-xs font-medium text-muted-foreground mb-1 block">{t('countryLabel')}</label>
+                  <Input
+                    placeholder={t('countryPlaceholder')}
                     value={countryFilter}
                     onChange={(e) => setCountryFilter(e.target.value)}
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Profession</label>
-                  <Input 
-                    placeholder="e.g. Engineer" 
+                  <label className="text-xs font-medium text-muted-foreground mb-1 block">{t('professionLabel')}</label>
+                  <Input
+                    placeholder={t('professionPlaceholder')}
                     value={professionFilter}
                     onChange={(e) => setProfessionFilter(e.target.value)}
                   />

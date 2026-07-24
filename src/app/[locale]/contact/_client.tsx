@@ -51,7 +51,7 @@ export function ContactClient() {
     <main className="flex min-h-screen flex-col bg-background">
       <Hero
         title={t("contactUs") || "Contact Us"}
-        subtitle="Get in touch with the AABP team"
+        subtitle={tContact("heroSubtitle")}
         backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
 

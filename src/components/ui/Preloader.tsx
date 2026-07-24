@@ -13,9 +13,9 @@ export function Preloader() {
     if (sessionStorage.getItem("aabp_loaded")) {
       return;
     }
-    setIsLoading(true);
     let current = 0;
     const interval = setInterval(() => {
+      setIsLoading(true);
       current += Math.random() * 20;
       if (current >= 100) {
         current = 100;

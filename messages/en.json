@@ -364,6 +364,18 @@
     "success": "Thank you! We'll be in touch.",
     "note": "No spam. Unsubscribe at any time."
   },
+  "HomeEvents": {
+    "title": "Upcoming Events",
+    "subtitle": "Connect & Grow",
+    "viewAll": "View All Events",
+    "empty": "No upcoming events at the moment."
+  },
+  "HomeResearch": {
+    "title": "Recent Publications",
+    "subtitle": "Research Hub",
+    "viewAll": "View All Research",
+    "empty": "No research publications available at the moment."
+  },
   "Terms": {
     "title": "Terms of Service",
     "sec1Title": "1. Acceptance of Terms",

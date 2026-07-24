@@ -7,16 +7,11 @@ import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { ParticlesBg } from "@/components/blocks/ParticlesBg";
 
-const FIELD_TAGS = [
-  "Medical Science",
-  "Natural Science",
-  "Life Science",
-  "Social Science",
-  "Engineering",
-];
+const FIELD_KEYS = ["medical", "natural", "life", "social", "engineering"] as const;
 
 export function HeroSection() {
   const t = useTranslations("Hero");
+  const tFields = useTranslations("Fields");
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-background flex flex-col items-center justify-center text-center px-6 py-32">
@@ -107,15 +102,15 @@ export function HeroSection() {
 
         {/* Field tags */}
         <div className="flex flex-wrap justify-center gap-3 mt-16">
-          {FIELD_TAGS.map((tag, i) => (
+          {FIELD_KEYS.map((key, i) => (
             <motion.span
-              key={tag}
+              key={key}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 1.0 + i * 0.1 }}
               className="bg-card border border-border text-muted-foreground text-xs font-medium px-4 py-2 rounded-full"
             >
-              {tag}
+              {tFields(`${key}.name`)}
             </motion.span>
           ))}
         </div>

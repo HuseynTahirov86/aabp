@@ -365,6 +365,18 @@
     "success": "Təşəkkür edirik! Tezliklə əlaqə saxlayacağıq.",
     "note": "Spam yoxdur. İstənilən vaxt abunəliyi ləğv edə bilərsiniz."
   },
+  "HomeEvents": {
+    "title": "Yaxınlaşan Tədbirlər",
+    "subtitle": "Əlaqə Qur və Böyü",
+    "viewAll": "Bütün Tədbirlərə Bax",
+    "empty": "Hazırda yaxınlaşan tədbir yoxdur."
+  },
+  "HomeResearch": {
+    "title": "Son Nəşrlər",
+    "subtitle": "Tədqiqat Mərkəzi",
+    "viewAll": "Bütün Tədqiqatlara Bax",
+    "empty": "Hazırda mövcud tədqiqat nəşri yoxdur."
+  },
   "Terms": {
     "title": "İstifadə Şərtləri",
     "sec1Title": "1. Şərtlərin Qəbulu",

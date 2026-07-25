@@ -148,7 +148,9 @@ export async function Footer() {
       </div>
       <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
         <p className="text-white/20 text-xs">
-          {t('tagline')}
+          <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="text-white/20 text-xs hover:text-accent transition-colors">
+            Hüseyn Tahirov
+          </a>
         </p>
       </div>
     </footer>

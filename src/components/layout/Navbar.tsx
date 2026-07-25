@@ -20,7 +20,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Search, Globe, Menu, UsersRound } from "lucide-react";
+import { Search, Globe, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CommandPalette } from "@/components/shared/CommandPalette";
 import { useAuth } from "@/lib/firebase/useAuth";
@@ -142,34 +142,31 @@ export function Navbar() {
       </div>
 
       {/* Top Tier: Hidden when scrolled */}
-      <div 
+      <div
         className={cn(
           "w-full bg-card transition-all duration-300 overflow-hidden hidden lg:block border-b border-border shadow-sm",
-          isScrolled ? "h-0 opacity-0" : "h-[90px] opacity-100"
+          isScrolled ? "h-0 opacity-0" : "h-[60px] opacity-100"
         )}
       >
         <div className="container mx-auto px-6 h-full flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-3">
             <div className="flex items-center justify-center">
-              <Image src="/logo.png" alt="AABP Logo" width={56} height={56} className="object-contain" priority />
+              <Image src="/logo.png" alt="AABP Logo" width={38} height={38} className="object-contain" priority />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-2xl tracking-tighter text-accent leading-tight">
+              <span className="font-serif font-bold text-lg tracking-tighter text-accent leading-tight">
                 AABP
               </span>
-              <span className="text-xs text-muted-foreground font-semibold uppercase tracking-[0.15em] mt-0.5">
+              <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.15em] mt-0.5">
                 Association of Azerbaijani British Professionals
               </span>
             </div>
           </Link>
 
           <div className="flex items-center gap-5">
-            <span className="italic font-serif text-base text-foreground/70 pr-5 border-r border-border">
+            <span className="italic font-serif text-base text-foreground/70">
               {tIndex('empoweringTitle')}
             </span>
-            <div className="w-10 h-10 rounded-sm bg-secondary flex items-center justify-center text-foreground shadow-sm">
-              <UsersRound className="w-5 h-5" />
-            </div>
           </div>
         </div>
       </div>
@@ -177,9 +174,9 @@ export function Navbar() {
       {/* Bottom Tier: Sticky Navbar */}
       <div className={cn(
         "w-full transition-all duration-300",
-        isScrolled 
-          ? "bg-primary shadow-md py-3" 
-          : "bg-primary py-4 shadow-md"
+        isScrolled
+          ? "bg-primary shadow-md py-2.5"
+          : "bg-primary py-3 shadow-md"
       )}>
         <div className="container mx-auto px-6 flex items-center justify-between">
           

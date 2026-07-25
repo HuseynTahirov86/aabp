@@ -14,7 +14,7 @@ export function HeroSection() {
   const tFields = useTranslations("Fields");
 
   return (
-    <section className="min-h-[calc(100vh-72px)] lg:min-h-[calc(100vh-190px)] relative overflow-hidden bg-background flex flex-col items-center justify-center text-center px-6 py-4 md:py-8">
+    <section className="min-h-[calc(100vh-72px)] lg:min-h-[calc(100vh-150px)] relative overflow-hidden bg-background flex flex-col items-center justify-center text-center px-6 py-10 md:py-16">
       {/* Background layers */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(183,152,74,0.12)_0%,transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(18,32,54,0.8)_0%,transparent_70%)]" />
@@ -35,13 +35,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-accent text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-3"
+          className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-accent text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
         >
           🇬🇧 · 🇦🇿 {t("badge")}
         </motion.div>
 
         {/* Headline */}
-        <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.08] mb-2">
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] mb-5">
           <motion.span
             className="block"
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +73,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-4 leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed"
         >
           {t("heroSubtitle")}
         </motion.p>
@@ -87,21 +87,21 @@ export function HeroSection() {
         >
           <Button
             render={<Link href="/register" />}
-            className="bg-accent text-white hover:bg-accent/90 rounded-full h-11 px-7 text-base font-semibold"
+            className="bg-accent text-white hover:bg-accent/90 rounded-full h-14 px-9 text-base font-semibold"
           >
             {t("applyBtn")}
           </Button>
           <Button
             render={<Link href="/about" />}
             variant="outline"
-            className="border border-foreground/20 text-foreground hover:bg-foreground/5 rounded-full h-11 px-7 text-base"
+            className="border border-foreground/20 text-foreground hover:bg-foreground/5 rounded-full h-14 px-9 text-base"
           >
             {t("learnBtn")}
           </Button>
         </motion.div>
 
         {/* Field tags */}
-        <div className="flex flex-wrap justify-center gap-3 mt-4">
+        <div className="flex flex-wrap justify-center gap-3 mt-10">
           {FIELD_KEYS.map((key, i) => (
             <motion.span
               key={key}

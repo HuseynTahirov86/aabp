@@ -93,7 +93,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${merriweather.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[190px]">
+      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px]">
         <ThemeProvider
           attribute="class"
           forcedTheme="dark"

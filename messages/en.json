@@ -84,7 +84,7 @@
     "rights": "© {year} AABP. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "developedBy": "Developed with dedication by"
+    "developedBy": "Developed with dedication by {name}"
   },
   "About": {
     "title": "About Us",

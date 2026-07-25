@@ -84,7 +84,7 @@
     "rights": "© {year} AABP. Bütün hüquqlar qorunur.",
     "privacy": "Məxfilik Siyasəti",
     "terms": "İstifadə Şərtləri",
-    "developedBy": "ilə hazırlanıb"
+    "developedBy": "{name} tərəfindən hazırlanıb."
   },
   "About": {
     "title": "Haqqımızda",

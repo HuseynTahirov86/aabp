@@ -2,7 +2,7 @@ import { SectionHeader } from "@/components/shared/Section";
 import { ResearchCard } from "@/components/shared/cards/ResearchCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { adminDb } from "@/lib/firebase/admin";
+import { getAdminDb } from "@/lib/firebase/admin";
 import { AABPResearch } from "@/lib/firebase/db-research";
 import { BookX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -11,6 +11,7 @@ export async function HomeResearch() {
   const t = await getTranslations("HomeResearch");
   let researchList: AABPResearch[] = [];
   try {
+    const adminDb = await getAdminDb();
     if (!adminDb) {
       console.warn("Firebase Admin DB not initialized. Skipping research fetch.");
     } else {

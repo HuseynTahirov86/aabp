@@ -2,7 +2,7 @@ import { SectionHeader } from "@/components/shared/Section";
 import { EventCard } from "@/components/shared/cards/EventCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { adminDb } from "@/lib/firebase/admin";
+import { getAdminDb } from "@/lib/firebase/admin";
 import { AABPEvent } from "@/lib/firebase/db-events";
 import { CalendarX } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -11,6 +11,7 @@ export async function HomeEvents() {
   const t = await getTranslations("HomeEvents");
   let events: AABPEvent[] = [];
   try {
+    const adminDb = await getAdminDb();
     if (!adminDb) {
       console.warn("Firebase Admin DB not initialized. Skipping events fetch.");
     } else {

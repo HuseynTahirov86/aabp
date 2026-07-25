@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
-import { adminDb } from '@/lib/firebase/admin';
+import { getAdminDb } from '@/lib/firebase/admin';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const adminDb = await getAdminDb();
   const baseUrl = 'https://aabporg.uk';
   const locales = ['en', 'az', 'ru'];
 

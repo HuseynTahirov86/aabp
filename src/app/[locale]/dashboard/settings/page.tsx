@@ -124,7 +124,7 @@ export default function SettingsPage() {
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="w-24 h-24 rounded-full bg-secondary overflow-hidden shrink-0 relative">
               {photoUrl ? (
-                <Image src={photoUrl} alt="Profile" fill className="object-cover" />
+                <Image src={photoUrl} alt="Profile" fill sizes="96px" className="object-cover" />
               ) : (
                 <div className="w-full h-full bg-muted flex items-center justify-center text-3xl font-bold text-muted-foreground">
                   {firstName.charAt(0)}{lastName.charAt(0)}

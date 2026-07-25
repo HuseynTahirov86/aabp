@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                 <Card key={project.id} className="shadow-sm border-border overflow-hidden flex flex-col hover:shadow-md transition-shadow">
                   {project.imageUrl ? (
                     <div className="w-full h-48 bg-muted overflow-hidden relative">
-                      <Image src={project.imageUrl} alt={project.title} fill className="object-cover" />
+                      <Image src={project.imageUrl} alt={project.title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                     </div>
                   ) : (
                     <div className="w-full h-48 bg-secondary/50 flex items-center justify-center text-muted-foreground">

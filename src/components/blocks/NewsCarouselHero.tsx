@@ -133,6 +133,7 @@ export function NewsCarouselHero() {
                   src={news.image} 
                   alt={news.title}
                   fill
+                  sizes="100vw"
                   className={cn(
                     "object-cover transition-transform ease-out",
                     index === selectedIndex ? "scale-110 duration-[15000ms]" : "scale-100 duration-1000"

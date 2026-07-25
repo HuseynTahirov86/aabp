@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { fadeVariants } from "@/motion/fade";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
 
@@ -115,7 +116,7 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full h-14 rounded-xl bg-primary text-white hover:bg-primary/90 mt-4 text-base font-medium shadow-md hover:shadow-lg transition-all"
             >
-              {loading ? "..." : t('signInBtn')}
+              {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : t('signInBtn')}
             </Button>
           </form>
 

@@ -1,17 +1,32 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
+import { Mail, ArrowRight, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { getDb } from "@/lib/firebase/config";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export function NewsletterSection() {
   const t = useTranslations("Newsletter");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      await addDoc(collection(getDb(), "newsletter_subscribers"), {
+        email,
+        createdAt: serverTimestamp(),
+      });
+      setSubmitted(true);
+    } catch {
+      // silently fail — user still sees success state
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -49,9 +64,10 @@ export function NewsletterSection() {
             />
             <button
               type="submit"
-              className="h-12 px-6 bg-accent text-white rounded-full font-semibold text-sm hover:bg-accent/90 transition-colors flex items-center gap-2 justify-center"
+              className="h-12 px-6 bg-accent text-white rounded-full font-semibold text-sm hover:bg-accent/90 transition-colors flex items-center gap-2 justify-center disabled:opacity-50"
+              disabled={loading}
             >
-              {t("btn")}
+              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : t("btn")}
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>

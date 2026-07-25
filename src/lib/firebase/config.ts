@@ -13,14 +13,18 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase only if it hasn't been initialized already
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
-const db = getFirestore(app);
+const app = getApps().length
+  ? getApp()
+  : process.env.NEXT_PUBLIC_FIREBASE_API_KEY
+    ? initializeApp(firebaseConfig)
+    : null;
+
+const auth = (app ? getAuth(app) : null) as ReturnType<typeof getAuth>;
+const db = (app ? getFirestore(app) : null) as ReturnType<typeof getFirestore>;
 
 // Initialize Analytics conditionally (only runs in browser)
 let analytics = null;
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && app) {
   isSupported().then((supported) => {
     if (supported) {
       analytics = getAnalytics(app);

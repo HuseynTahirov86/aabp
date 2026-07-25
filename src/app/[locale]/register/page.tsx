@@ -138,7 +138,7 @@ export default function RegisterPage() {
         >
           <button 
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-primary transition-colors mb-8"
+            className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-accent transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             {t('back')}
@@ -177,7 +177,7 @@ export default function RegisterPage() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('profession')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('profession')}</label>
               <Input 
                 type="text" 
                 placeholder="e.g. Software Engineer, Medical Researcher" 
@@ -188,7 +188,7 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('bio')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('bio')}</label>
               <Input 
                 type="text" 
                 placeholder="A brief description of your background..." 
@@ -198,7 +198,7 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('profEmail')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('profEmail')}</label>
               <Input 
                 type="email" 
                 placeholder="john.smith@example.com" 
@@ -209,7 +209,7 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('linkedin')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('linkedin')}</label>
               <Input 
                 type="url" 
                 placeholder="https://linkedin.com/in/..." 
@@ -219,7 +219,7 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-primary mb-2">{t('passwordLabel')}</label>
+              <label className="block text-sm font-semibold text-foreground mb-2">{t('passwordLabel')}</label>
               <Input 
                 type="password" 
                 placeholder="••••••••" 
@@ -269,7 +269,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-base text-muted-foreground">
             {t('alreadyAccount')}{" "}
-            <Link href="/login" className="text-primary font-bold hover:text-accent transition-colors">
+            <Link href="/login" className="text-accent font-bold hover:text-foreground transition-colors">
               {t('signIn')}
             </Link>
           </p>

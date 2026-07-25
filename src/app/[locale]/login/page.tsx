@@ -118,7 +118,7 @@ export default function LoginPage() {
                 <input type="checkbox" className="rounded text-accent focus:ring-accent w-4 h-4" />
                 <span className="text-muted-foreground font-medium">{t('rememberMe')}</span>
               </label>
-              <Link href="/reset-password" className="text-accent hover:text-primary transition-colors font-semibold">
+              <Link href="/reset-password" className="text-accent hover:text-foreground transition-colors font-semibold">
                 {t('forgotPassword')}
               </Link>
             </div>
@@ -171,7 +171,7 @@ export default function LoginPage() {
 
           <p className="text-center text-base text-muted-foreground mt-10">
             {t('notMember')}{" "}
-            <Link href="/register" className="text-primary font-bold hover:text-accent transition-colors">
+            <Link href="/register" className="text-accent font-bold hover:text-foreground transition-colors">
               {t('applyMembership')}
             </Link>
           </p>

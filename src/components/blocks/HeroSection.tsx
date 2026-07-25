@@ -30,16 +30,6 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 bg-accent/10 border border-accent/30 text-accent text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
-        >
-          🇬🇧 · 🇦🇿 {t("badge")}
-        </motion.div>
-
         {/* Headline */}
         <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] mb-5">
           <motion.span

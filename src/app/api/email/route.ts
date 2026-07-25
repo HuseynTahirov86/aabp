@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'mail.aabporg.uk',
-  port: 465,
+  port: Number(process.env.SMTP_PORT) || 465,
   secure: true, // true for 465, false for other ports
   auth: {
     user: process.env.SMTP_EMAIL || 'contact@aabporg.uk',

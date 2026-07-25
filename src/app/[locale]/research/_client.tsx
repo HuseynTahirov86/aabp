@@ -5,7 +5,7 @@ import { Hero } from '@/components/shared/Hero';
 import { Section } from '@/components/shared/Section';
 import { ResearchCard } from '@/components/shared/cards/ResearchCard';
 import { Button } from '@/components/ui/button';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertTriangle } from 'lucide-react';
 import { getResearch, AABPResearch } from '@/lib/firebase/db-research';
 import { useTranslations } from 'next-intl';
 
@@ -13,13 +13,19 @@ export function ResearchClient() {
   const t = useTranslations('Research');
   const [researchList, setResearchList] = useState<AABPResearch[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedField, setSelectedField] = useState<string>("All Fields");
 
   useEffect(() => {
     const fetchAllResearch = async () => {
-      const data = await getResearch();
-      setResearchList(data);
-      setIsLoading(false);
+      try {
+        const data = await getResearch();
+        setResearchList(data);
+      } catch {
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchAllResearch();
   }, []);
@@ -77,6 +83,11 @@ export function ResearchClient() {
             {isLoading ? (
               <div className="flex justify-center items-center py-20">
                 <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              </div>
+            ) : error ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <AlertTriangle className="w-10 h-10 text-amber-500 mb-3" />
+                <p className="text-muted-foreground">{error}</p>
               </div>
             ) : filteredResearch.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">

@@ -49,6 +49,7 @@ function MobileSearch() {
 const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations('Navbar');
 
   const changeLanguage = (locale: string) => {
     router.replace(pathname, { locale });
@@ -62,9 +63,9 @@ const LanguageSwitcher = () => {
         <Globe className="h-5 w-5" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => changeLanguage('en')}>English</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage('az')}>Azərbaycan</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage('ru')}>Русский</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLanguage('en')}>{t('english')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLanguage('az')}>{t('azerbaijani')}</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => changeLanguage('ru')}>{t('russian')}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

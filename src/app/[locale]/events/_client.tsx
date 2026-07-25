@@ -6,7 +6,7 @@ import { Section } from '@/components/shared/Section';
 import { EventCard } from '@/components/shared/cards/EventCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search } from 'lucide-react';
+import { Search, AlertTriangle } from 'lucide-react';
 import { getEvents, AABPEvent } from '@/lib/firebase/db-events';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useTranslations } from 'next-intl';
@@ -15,14 +15,20 @@ export function EventsClient() {
   const t = useTranslations('Events');
   const [allEvents, setAllEvents] = useState<AABPEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     const fetchPublicEvents = async () => {
-      const data = await getEvents(true); // Fetch only published events
-      setAllEvents(data);
-      setIsLoading(false);
+      try {
+        const data = await getEvents(true);
+        setAllEvents(data);
+      } catch {
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchPublicEvents();
   }, []);
@@ -78,6 +84,11 @@ export function EventsClient() {
             <Skeleton className="h-[350px] w-full rounded-2xl" />
             <Skeleton className="h-[350px] w-full rounded-2xl" />
             <Skeleton className="h-[350px] w-full rounded-2xl" />
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <AlertTriangle className="w-10 h-10 text-amber-500 mb-3" />
+            <p className="text-muted-foreground">{error}</p>
           </div>
         ) : filteredEvents.length === 0 ? (
           <div className="text-center py-20 text-muted-foreground">

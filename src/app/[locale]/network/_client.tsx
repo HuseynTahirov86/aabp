@@ -5,7 +5,7 @@ import { Hero } from "@/components/shared/Hero";
 import { Section } from "@/components/shared/Section";
 import { CommitteeCard } from "@/components/shared/cards/CommitteeCard";
 import { Input } from "@/components/ui/input";
-import { Search, Loader2 } from "lucide-react";
+import { Search, Loader2, AlertTriangle } from "lucide-react";
 import { getPublicUsers, AABPUser } from "@/lib/firebase/db-users";
 import { useTranslations } from 'next-intl';
 
@@ -14,12 +14,18 @@ export function NetworkClient() {
     const [users, setUsers] = useState<AABPUser[]>([]);
     const [search, setSearch] = useState("");
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const data = await getPublicUsers();
-            setUsers(data);
-            setIsLoading(false);
+            try {
+                const data = await getPublicUsers();
+                setUsers(data);
+            } catch {
+                setError("Failed to load data. Please try again later.");
+            } finally {
+                setIsLoading(false);
+            }
         };
         fetchUsers();
     }, []);
@@ -66,6 +72,11 @@ export function NetworkClient() {
                 {isLoading ? (
                     <div className="flex justify-center items-center py-20">
                         <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                    </div>
+                ) : error ? (
+                    <div className="flex flex-col items-center justify-center py-12 text-center">
+                        <AlertTriangle className="w-10 h-10 text-amber-500 mb-3" />
+                        <p className="text-muted-foreground">{error}</p>
                     </div>
                 ) : filteredUsers.length === 0 ? (
                     <div className="text-center py-20">

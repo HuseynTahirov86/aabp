@@ -5,7 +5,7 @@ import { Hero } from "@/components/shared/Hero";
 import { Section } from "@/components/shared/Section";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, MapPin, Building, ExternalLink, Loader2 } from "lucide-react";
+import { Briefcase, MapPin, Building, ExternalLink, Loader2, AlertTriangle } from "lucide-react";
 import { getJobs, AABPJob } from "@/lib/firebase/db-jobs";
 import { useTranslations } from 'next-intl';
 
@@ -13,12 +13,18 @@ export function CareerClient() {
   const t = useTranslations('Career');
   const [jobs, setJobs] = useState<AABPJob[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const data = await getJobs();
-      setJobs(data);
-      setIsLoading(false);
+      try {
+        const data = await getJobs();
+        setJobs(data);
+      } catch {
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchJobs();
   }, []);
@@ -34,6 +40,11 @@ export function CareerClient() {
         {isLoading ? (
           <div className="flex justify-center items-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <AlertTriangle className="w-10 h-10 text-amber-500 mb-3" />
+            <p className="text-muted-foreground">{error}</p>
           </div>
         ) : jobs.length === 0 ? (
           <div className="text-center py-20">

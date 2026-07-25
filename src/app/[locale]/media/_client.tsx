@@ -7,25 +7,30 @@ import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { getArticles, AABPArticle } from '@/lib/firebase/db-articles';
 import { MOCK_ARTICLES } from '@/lib/mock/articles';
-import { Loader2 } from "lucide-react";
+import { Loader2, AlertTriangle, Calendar } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
 export function MediaClient() {
   const t = useTranslations('Media');
   const [articles, setArticles] = useState<AABPArticle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchArticles = async () => {
-      let data = await getArticles();
-      if (data.length === 0) {
-        data = MOCK_ARTICLES;
+      try {
+        let data = await getArticles();
+        if (data.length === 0) {
+          data = MOCK_ARTICLES;
+        }
+        setArticles(data.filter(a => a.status === 'Published'));
+      } catch {
+        setError("Failed to load data. Please try again later.");
+      } finally {
+        setIsLoading(false);
       }
-      setArticles(data.filter(a => a.status === 'Published'));
-      setIsLoading(false);
     };
     fetchArticles();
   }, []);
@@ -48,6 +53,11 @@ export function MediaClient() {
         {isLoading ? (
           <div className="flex justify-center py-12">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <AlertTriangle className="w-10 h-10 text-amber-500 mb-3" />
+            <p className="text-muted-foreground">{error}</p>
           </div>
         ) : articles.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">

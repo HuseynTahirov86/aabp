@@ -12,6 +12,16 @@
     "contactUs": "Bizimlə Əlaqə",
     "comingSoon": "Tezliklə"
   },
+  "Common": {
+    "errorTitle": "Xəta baş verdi!",
+    "errorDesc": "Səhifə yüklənərkən gözlənilməz xəta baş verdi.",
+    "tryAgain": "Yenidən cəhd et",
+    "returnHome": "Ana Səhifəyə Qayıt",
+    "notFoundTitle": "Səhifə Tapılmadı",
+    "notFoundDesc": "Axtardığınız səhifə mövcud deyil və ya köçürülmüş ola bilər.",
+    "backToHome": "Ana Səhifəyə Qayıt",
+    "aboutAabp": "AABP Haqqında"
+  },
   "Navbar": {
     "officialWebsite": "Azərbaycan-Britaniya Peşəkarları Assosiasiyasının Rəsmi Saytı",
     "discover": "Kəşf et",
@@ -49,7 +59,10 @@
     "mediaDesc": "Ən son yeniliklər və press-relizlər",
     "memberDirectory": "Üzvlər Kataloqu",
     "dashboard": "İdarə Paneli",
-    "signIn": "Daxil Ol"
+    "signIn": "Daxil Ol",
+    "english": "English",
+    "azerbaijani": "Azərbaycan",
+    "russian": "Русский"
   },
   "Footer": {
     "tagline": "Azərbaycan-Britaniya peşəkar icması üçün ❤️ ilə hazırlanıb",
@@ -70,7 +83,8 @@
     "phone": "+44 7454 776856",
     "rights": "© {year} AABP. Bütün hüquqlar qorunur.",
     "privacy": "Məxfilik Siyasəti",
-    "terms": "İstifadə Şərtləri"
+    "terms": "İstifadə Şərtləri",
+    "developedBy": "ilə hazırlanıb"
   },
   "About": {
     "title": "Haqqımızda",
@@ -169,6 +183,7 @@
     "updates": "Yeniliklər",
     "noNews": "Xəbər tapılmadı.",
     "readMore": "Daha Çox Oxu",
+    "readFullStory": "Tam Məqaləni Oxu",
     "notFound": "Məqalə Tapılmadı",
     "returnToMedia": "Media bölməsinə qayıt",
     "backToNews": "Xəbərlərə Qayıt"

@@ -12,6 +12,16 @@
     "contactUs": "Contact Us",
     "comingSoon": "Coming Soon"
   },
+  "Common": {
+    "errorTitle": "Something went wrong!",
+    "errorDesc": "An unexpected error occurred while loading this page.",
+    "tryAgain": "Try again",
+    "returnHome": "Return Home",
+    "notFoundTitle": "Page Not Found",
+    "notFoundDesc": "The page you're looking for doesn't exist or may have been moved.",
+    "backToHome": "Back to Home",
+    "aboutAabp": "About AABP"
+  },
   "Navbar": {
     "officialWebsite": "Official Website of the Association of Azerbaijan British Professionals",
     "discover": "Discover",
@@ -49,7 +59,10 @@
     "mediaDesc": "Latest updates and press releases",
     "memberDirectory": "Member Directory",
     "dashboard": "Dashboard",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "english": "English",
+    "azerbaijani": "Azərbaycan",
+    "russian": "Русский"
   },
   "Footer": {
     "tagline": "Built with ❤️ for the Azerbaijan-British professional community",
@@ -70,7 +83,8 @@
     "phone": "+44 7454 776856",
     "rights": "© {year} AABP. All rights reserved.",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "terms": "Terms of Service",
+    "developedBy": "Developed with dedication by"
   },
   "About": {
     "title": "About Us",
@@ -168,6 +182,7 @@
     "updates": "Updates",
     "noNews": "No news articles found.",
     "readMore": "Read More",
+    "readFullStory": "Read Full Story",
     "notFound": "Article Not Found",
     "returnToMedia": "Return to Media",
     "backToNews": "Back to News"

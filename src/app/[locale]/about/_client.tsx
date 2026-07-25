@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { CommitteeCard } from '@/components/shared/cards/CommitteeCard';
-import { Timeline } from '@/components/shared/data-display/Timeline';
 import { getCommitteeMembers, AABPCommitteeMember } from '@/lib/firebase/db-committee';
 import { Loader2 } from "lucide-react";
 import { useTranslations } from 'next-intl';
@@ -23,29 +22,6 @@ export function AboutClient() {
     };
     fetchCommittee();
   }, []);
-
-  const historyEvents = [
-    {
-      year: "2015",
-      title: t('event1Title'),
-      description: t('event1Desc')
-    },
-    {
-      year: "2018",
-      title: t('event2Title'),
-      description: t('event2Desc')
-    },
-    {
-      year: "2021",
-      title: t('event3Title'),
-      description: t('event3Desc')
-    },
-    {
-      year: "2026",
-      title: t('event4Title'),
-      description: t('event4Desc')
-    }
-  ];
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
@@ -79,18 +55,6 @@ export function AboutClient() {
               className="object-cover"
             />
           </div>
-        </div>
-      </Section>
-
-      {/* History Timeline */}
-      <Section className="bg-secondary/30">
-        <SectionHeader
-          title={t('journeyTitle')}
-          subtitle={t('journeySubtitle')}
-          centered
-        />
-        <div className="max-w-3xl mx-auto">
-          <Timeline events={historyEvents} />
         </div>
       </Section>
 

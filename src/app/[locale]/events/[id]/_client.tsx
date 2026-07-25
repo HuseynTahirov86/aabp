@@ -11,6 +11,7 @@ import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { getAuthInstance } from "@/lib/firebase/config";
 import { toast } from "sonner";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function EventDetailsClient() {
   const params = useParams();
@@ -76,6 +77,25 @@ export function EventDetailsClient() {
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: event.title,
+          description: event.description?.replace(/<[^>]+>/g, "") ?? "",
+          startDate: event.date,
+          location: {
+            "@type": "Place",
+            name: event.location,
+          },
+          image: event.imageUrl,
+          organizer: {
+            "@type": "Organization",
+            name: "AABP",
+            url: "https://aabporg.uk",
+          },
+        }}
+      />
       <Hero
         title={event.title}
         subtitle={event.category}

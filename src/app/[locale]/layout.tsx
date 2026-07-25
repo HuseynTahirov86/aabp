@@ -14,6 +14,7 @@ import { BackToTop } from "@/components/ui/BackToTop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 import { Preloader } from "@/components/ui/Preloader";
+import { JsonLd } from "@/components/shared/JsonLd";
 import "../globals.css";
 
 const inter = Inter({
@@ -99,6 +100,29 @@ export default async function RootLayout({
       className={`${inter.variable} ${merriweather.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Association of Azerbaijan British Professionals",
+            alternateName: "AABP",
+            url: "https://aabporg.uk",
+            email: "contact@aabporg.uk",
+            telephone: "+44 7454 776856",
+            foundingDate: "2015",
+            description:
+              "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
+            sameAs: ["https://linkedin.com/company/aabporg"],
+            logo: "https://aabporg.uk/logo.png",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "London",
+              addressCountry: "United Kingdom",
+            },
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px]">
         <ThemeProvider
           attribute="class"

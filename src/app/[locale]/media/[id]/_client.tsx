@@ -11,6 +11,7 @@ import { Loader2, ArrowLeft, Calendar, User } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export function ArticleClient() {
   const t = useTranslations('Media');
@@ -52,6 +53,26 @@ export function ArticleClient() {
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: article.summary ?? "",
+          image: article.imageUrl,
+          author: article.authorName
+            ? { "@type": "Person", name: article.authorName }
+            : undefined,
+          datePublished: article.createdAt
+            ? new Date(article.createdAt.toDate?.() || article.createdAt).toISOString()
+            : undefined,
+          publisher: {
+            "@type": "Organization",
+            name: "AABP",
+            url: "https://aabporg.uk",
+          },
+        }}
+      />
       <Hero
         title={article.title}
         subtitle=""

@@ -137,11 +137,6 @@ export function Navbar() {
             <a href="mailto:contact@aabporg.uk" className="hover:text-white transition-colors">contact@aabporg.uk</a>
             <span className="opacity-50">|</span>
             <a href="tel:+447454776856" className="hover:text-white transition-colors">+44 7454 776856</a>
-            <span className="opacity-50">|</span>
-            <span className="opacity-50 text-white/50 font-sans text-[11px]">Developed with dedication by</span>
-            <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/80 hover:text-accent transition-colors text-base ml-1">
-              Hüseyn Tahirov
-            </a>
           </div>
         </div>
       </div>

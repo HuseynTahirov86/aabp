@@ -148,7 +148,8 @@ export async function Footer() {
       </div>
       <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
         <p className="text-white/20 text-xs">
-          <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="text-white/20 text-xs hover:text-accent transition-colors">
+          <span className="opacity-60">Developed with dedication by </span>
+          <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/70 hover:text-accent transition-colors text-lg">
             Hüseyn Tahirov
           </a>
         </p>

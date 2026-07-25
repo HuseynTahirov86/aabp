@@ -10,10 +10,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { CustomCursor } from "@/components/ui/CustomCursor";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
-import { SmoothScroller } from "@/components/ui/SmoothScroller";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
 import { Preloader } from "@/components/ui/Preloader";
 import "../globals.css";
@@ -105,10 +103,8 @@ export default async function RootLayout({
             <NextIntlClientProvider messages={messages} locale={locale}>
               <TooltipProvider>
                 <Preloader />
-                <SmoothScroller />
                 <NoiseOverlay />
                 <ScrollProgress />
-                <CustomCursor />
                 <Navbar />
                 <div className="flex-1">
                   {children}

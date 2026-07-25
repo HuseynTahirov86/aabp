@@ -17,7 +17,7 @@ export default function AdminDashboardPage() {
     const fetchAdminData = async () => {
       try {
         const membersCount = await getTotalUsersCount();
-        const allEvents = await getEvents();
+        const allEvents = await getEvents(true); // Published only
         const allResearch = await getResearch();
         
         setStats({

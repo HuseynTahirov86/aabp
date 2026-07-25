@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, getDocs, addDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
 
 export interface AABPResearch {
   id?: string;
@@ -44,6 +44,16 @@ export const addResearch = async (research: Omit<AABPResearch, 'id' | 'createdAt
     return docRef.id;
   } catch (error) {
     console.error("Error adding research:", error);
+    throw error;
+  }
+};
+
+export const updateResearch = async (id: string, updates: Partial<AABPResearch>): Promise<void> => {
+  try {
+    const docRef = doc(getDb(), RESEARCH_COLLECTION, id);
+    await updateDoc(docRef, updates);
+  } catch (error) {
+    console.error("Error updating research:", error);
     throw error;
   }
 };

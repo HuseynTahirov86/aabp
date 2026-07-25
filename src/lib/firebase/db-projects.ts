@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, getDocs, addDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
 
 export interface AABPProject {
   id?: string;
@@ -42,6 +42,16 @@ export const addProject = async (project: Omit<AABPProject, 'id' | 'createdAt'>)
     return docRef.id;
   } catch (error) {
     console.error("Error adding project:", error);
+    throw error;
+  }
+};
+
+export const updateProject = async (id: string, updates: Partial<AABPProject>): Promise<void> => {
+  try {
+    const docRef = doc(getDb(), PROJECTS_COLLECTION, id);
+    await updateDoc(docRef, updates);
+  } catch (error) {
+    console.error("Error updating project:", error);
     throw error;
   }
 };

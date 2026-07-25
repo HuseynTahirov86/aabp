@@ -1,7 +1,8 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
-import { LayoutDashboard, CalendarDays, Users, FileText, LogOut, Newspaper, Menu, Database } from "lucide-react";
+import { usePathname } from "@/i18n/routing";
+import { LayoutDashboard, CalendarDays, Users, FileText, LogOut, Newspaper, Menu, Database, Briefcase } from "lucide-react";
 import { useRouter } from "@/i18n/routing";
 import { getAuthInstance } from "@/lib/firebase/config";
 import { signOut } from "firebase/auth";
@@ -13,6 +14,7 @@ const sidebarLinks = [
   { name: "Leadership CMS", href: "/admin/leadership", icon: Users },
   { name: "Articles CMS", href: "/admin/articles", icon: Newspaper },
   { name: "Events CMS", href: "/admin/events", icon: CalendarDays },
+  { name: "Career CMS", href: "/admin/career", icon: Briefcase },
   { name: "Members", href: "/admin/members", icon: Users },
   { name: "Publications", href: "/admin/research", icon: FileText },
   { name: "Projects", href: "/admin/projects", icon: FileText },
@@ -21,6 +23,7 @@ const sidebarLinks = [
 
 const SidebarContent = () => {
   const router = useRouter();
+  const pathname = usePathname();
   
   const handleSignOut = async () => {
     await signOut(getAuthInstance());
@@ -40,11 +43,12 @@ const SidebarContent = () => {
       <nav className="flex-1 px-4 space-y-2 mt-8">
         {sidebarLinks.map((link) => {
           const Icon = link.icon;
+          const isActive = pathname === link.href;
           return (
             <Link
               key={link.name}
               href={link.href}
-              className="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors ${isActive ? "bg-white/20 text-white" : ""}`}
             >
               <Icon className="w-5 h-5" />
               <span className="font-medium">{link.name}</span>

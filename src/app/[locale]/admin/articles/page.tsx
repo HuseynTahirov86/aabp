@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { useAuth } from "@/lib/firebase/useAuth";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 
 export default function AdminCMSPage() {
   const { userData } = useAuth();
@@ -17,6 +18,8 @@ export default function AdminCMSPage() {
   const [isAdding, setIsAdding] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [editingArticleId, setEditingArticleId] = useState<string | null>(null);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   const [newArticle, setNewArticle] = useState<{ title: string, summary: string, content: string, imageUrl: string, status: 'Published' | 'Draft' }>({ title: '', summary: '', content: '', imageUrl: '', status: 'Published' });
 
   useEffect(() => {
@@ -80,15 +83,22 @@ export default function AdminCMSPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this article?")) {
-      try {
-        await deleteArticle(id);
-        toast.success("Article deleted");
-        fetchArticles();
-      } catch (err) {
-        console.error(err);
-        toast.error("Failed to delete article");
-      }
+    setDeleteTargetId(id);
+    setIsDeleteOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTargetId) return;
+    try {
+      await deleteArticle(deleteTargetId);
+      toast.success("Article deleted");
+      fetchArticles();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to delete article");
+    } finally {
+      setIsDeleteOpen(false);
+      setDeleteTargetId(null);
     }
   };
 
@@ -101,6 +111,19 @@ export default function AdminCMSPage() {
         </div>
         <Button onClick={fetchArticles} variant="outline">Refresh List</Button>
       </div>
+
+      <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogHeader>
+            <DialogTitle>Confirm Delete</DialogTitle>
+          </DialogHeader>
+          <p className="text-muted-foreground">Are you sure you want to delete this article? This action cannot be undone.</p>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
+            <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Create new article form */}

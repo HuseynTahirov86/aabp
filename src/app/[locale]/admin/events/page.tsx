@@ -24,6 +24,8 @@ export default function AdminEventsPage() {
   const [status, setStatus] = useState<'Published' | 'Draft'>("Published");
   const [imageUrl, setImageUrl] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -91,15 +93,22 @@ export default function AdminEventsPage() {
   };
 
   const handleDeleteEvent = async (id: string) => {
-    if (confirm("Are you sure you want to delete this event?")) {
-      try {
-        await deleteEvent(id);
-        fetchEvents();
-        toast.success("Event deleted");
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to delete event");
-      }
+    setDeleteTargetId(id);
+    setIsDeleteOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTargetId) return;
+    try {
+      await deleteEvent(deleteTargetId);
+      fetchEvents();
+      toast.success("Event deleted");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete event");
+    } finally {
+      setIsDeleteOpen(false);
+      setDeleteTargetId(null);
     }
   };
 
@@ -199,6 +208,19 @@ export default function AdminEventsPage() {
           </DialogContent>
         </Dialog>
       </div>
+
+      <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogHeader>
+            <DialogTitle>Confirm Delete</DialogTitle>
+          </DialogHeader>
+          <p className="text-muted-foreground">Are you sure you want to delete this event? This action cannot be undone.</p>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
+            <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
         <div className="flex items-center gap-4 mb-6">

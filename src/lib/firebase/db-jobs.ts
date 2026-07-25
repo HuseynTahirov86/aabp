@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, getDocs, addDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 
 export interface AABPJob {
   id?: string;
@@ -39,6 +39,16 @@ export const addJob = async (job: Omit<AABPJob, 'id' | 'createdAt'>): Promise<st
     return docRef.id;
   } catch (error) {
     console.error("Error adding job:", error);
+    throw error;
+  }
+};
+
+export const updateJob = async (id: string, updates: Partial<AABPJob>): Promise<void> => {
+  try {
+    const docRef = doc(getDb(), JOBS_COLLECTION, id);
+    await updateDoc(docRef, updates);
+  } catch (error) {
+    console.error("Error updating job:", error);
     throw error;
   }
 };

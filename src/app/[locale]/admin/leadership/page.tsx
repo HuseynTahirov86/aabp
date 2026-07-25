@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import Image from "next/image";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 
 export default function AdminLeadershipPage() {
   const [members, setMembers] = useState<AABPCommitteeMember[]>([]);
@@ -16,6 +17,8 @@ export default function AdminLeadershipPage() {
   const [isAdding, setIsAdding] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [editingMemberId, setEditingMemberId] = useState<string | null>(null);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   
   const [newMember, setNewMember] = useState<{ name: string, role: string, bio: string, imageUrl: string, linkedin: string, order: number }>({
     name: '', role: '', bio: '', imageUrl: '', linkedin: '', order: 0
@@ -71,15 +74,22 @@ export default function AdminLeadershipPage() {
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm("Are you sure you want to delete this member?")) {
-      try {
-        await deleteCommitteeMember(id);
-        toast.success("Member deleted");
-        fetchMembers();
-      } catch (err) {
-        console.error(err);
-        toast.error("Failed to delete member");
-      }
+    setDeleteTargetId(id);
+    setIsDeleteOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTargetId) return;
+    try {
+      await deleteCommitteeMember(deleteTargetId);
+      toast.success("Member deleted");
+      fetchMembers();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to delete member");
+    } finally {
+      setIsDeleteOpen(false);
+      setDeleteTargetId(null);
     }
   };
 
@@ -92,6 +102,19 @@ export default function AdminLeadershipPage() {
         </div>
         <Button onClick={fetchMembers} variant="outline">Refresh List</Button>
       </div>
+
+      <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogHeader>
+            <DialogTitle>Confirm Delete</DialogTitle>
+          </DialogHeader>
+          <p className="text-muted-foreground">Are you sure you want to delete this member? This action cannot be undone.</p>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
+            <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1">

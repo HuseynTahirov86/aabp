@@ -94,6 +94,8 @@ export default async function RootLayout({
 
   const messages = await getMessages();
 
+  const baseUrl = "https://aabporg.uk";
+
   return (
     <html
       lang={locale}
@@ -101,6 +103,15 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="canonical" href={`${baseUrl}/${locale}`} />
+        {routing.locales.map((alt) => (
+          <link
+            key={alt}
+            rel="alternate"
+            hrefLang={alt}
+            href={`${baseUrl}/${alt}`}
+          />
+        ))}
         <JsonLd
           data={{
             "@context": "https://schema.org",

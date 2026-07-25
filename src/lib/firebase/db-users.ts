@@ -11,6 +11,8 @@ export interface AABPUser {
   bio?: string;
   email: string;
   linkedin?: string;
+  phone?: string;
+  cvUrl?: string;
   photoUrl?: string;
   role: string;
   publicProfile: boolean;

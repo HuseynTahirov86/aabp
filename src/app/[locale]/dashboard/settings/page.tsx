@@ -23,6 +23,8 @@ export default function SettingsPage() {
   const [profession, setProfession] = useState("");
   const [bio, setBio] = useState("");
   const [linkedin, setLinkedin] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cvUrl, setCvUrl] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -37,6 +39,8 @@ export default function SettingsPage() {
       setProfession(userData.profession || "");
       setBio(userData.bio || "");
       setLinkedin(userData.linkedin || "");
+      setPhone(userData.phone || "");
+      setCvUrl(userData.cvUrl || "");
       setPhotoUrl(userData.photoUrl || "");
     }
   }, [user, loading, userData, router]);
@@ -51,6 +55,8 @@ export default function SettingsPage() {
         profession,
         bio,
         linkedin,
+        phone,
+        cvUrl,
         photoUrl
       });
       toast.success(t('profileUpdated'));
@@ -168,8 +174,18 @@ export default function SettingsPage() {
           </div>
 
           <div className="space-y-2">
+            <label className="text-sm font-medium">{t('phoneNumber')}</label>
+            <Input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+44 7000 000000" />
+          </div>
+
+          <div className="space-y-2">
             <label className="text-sm font-medium">{t('linkedin')}</label>
             <Input value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder={t('linkedinPlaceholder')} />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium">{t('cvUrlLabel')}</label>
+            <Input value={cvUrl} readOnly className="bg-muted/50" placeholder="CV uploaded during registration" />
           </div>
 
           <div className="pt-6 border-t border-border flex justify-end">

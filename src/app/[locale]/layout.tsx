@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Merriweather } from "next/font/google";
+import { Inter, Merriweather, Caveat } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -24,6 +24,12 @@ const inter = Inter({
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   weight: ["300", "400", "700"],
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -90,7 +96,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${merriweather.variable} h-full antialiased`}
+      className={`${inter.variable} ${merriweather.variable} ${caveat.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px]">

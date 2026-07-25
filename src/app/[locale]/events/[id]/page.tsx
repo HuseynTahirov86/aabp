@@ -14,6 +14,13 @@ export async function generateMetadata({
     description: event?.description
       ? event.description.replace(/<[^>]+>/g, "").slice(0, 160)
       : "AABP event details — join our upcoming networking events, conferences, and webinars.",
+    openGraph: {
+      title: event?.title ?? "AABP Event",
+      description: event?.description
+        ? event.description.replace(/<[^>]+>/g, "").slice(0, 160)
+        : "Join this AABP event to connect with professionals across the UK and Azerbaijan.",
+      images: event?.imageUrl ? [event.imageUrl] : [],
+    },
   };
 }
 

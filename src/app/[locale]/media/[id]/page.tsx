@@ -16,6 +16,13 @@ export async function generateMetadata({
     description:
       article?.summary ??
       "AABP news and articles — updates from the Association of Azerbaijan British Professionals.",
+    openGraph: {
+      title: article?.title ?? "AABP Article",
+      description:
+        article?.summary ??
+        "Read the latest AABP news and articles from our community of Azerbaijan and British professionals.",
+      images: article?.imageUrl ? [article.imageUrl] : [],
+    },
   };
 }
 

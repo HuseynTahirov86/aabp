@@ -1,8 +1,18 @@
+import type { Metadata } from "next";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { Timeline } from '@/components/shared/data-display/Timeline';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: "Our History — AABP",
+  description: "Founded in London in 2015, AABP has grown from a small initiative to a global network of Azerbaijan and British professionals across five key disciplines.",
+  openGraph: {
+    title: "Our History — AABP",
+    description: "From a small London initiative in 2015 to a global network — discover the journey of the Association of Azerbaijan British Professionals.",
+  },
+};
 
 export default function HistoryPage() {
   const t = useTranslations('About');

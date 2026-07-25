@@ -1,8 +1,18 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { useTranslations } from 'next-intl';
 import { Target, Lightbulb, Users, Globe } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Mission & Vision — AABP",
+  description: "AABP's mission is to facilitate networking and professional development across medical science, natural science, life science, social science, and engineering, building bridges between the UK and Azerbaijan.",
+  openGraph: {
+    title: "Mission & Vision — AABP",
+    description: "Discover AABP's mission and vision — building bridges between the UK and Azerbaijan through professional networking and development across five key disciplines.",
+  },
+};
 
 export default function MissionPage() {
   const t = useTranslations('About');

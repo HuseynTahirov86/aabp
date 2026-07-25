@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Read the AABP privacy policy to understand how the Association of Azerbaijan British Professionals collects, uses, and protects your personal data.",
+  openGraph: {
+    title: "Privacy Policy — AABP",
+    description:
+      "Read the AABP privacy policy — how we collect, use, and protect your personal data at the Association of Azerbaijan British Professionals.",
+  },
 };
 
 export default function PrivacyPage() {

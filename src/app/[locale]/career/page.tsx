@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Career Center",
   description:
     "Discover exclusive job opportunities, mentorships, and internships for AABP members across the UK and Azerbaijan.",
+  openGraph: {
+    title: "Career Center — AABP",
+    description:
+      "Discover exclusive job opportunities, mentorships, and internships for AABP members across the UK and Azerbaijan.",
+  },
 };
 
 export default function CareerPage() {

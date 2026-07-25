@@ -26,11 +26,11 @@ interface NewsItem {
 const FALLBACK_NEWS = [
   {
     id: "aabp-launch",
-    title: "Association of Azerbaijani British Professionals — Connecting Talent Across Borders",
+    title: "Association of Azerbaijan British Professionals — Connecting Talent Across Borders",
     category: "About",
     date: "2024-01-01",
     description:
-      "AABP was founded to bridge the gap between Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering. Join our growing network today.",
+      "AABP was founded to bridge the gap between Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering. Join our growing network today.",
     image: "/logo.png",
     link: "/about",
   },

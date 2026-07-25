@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 const SEED_EVENTS = [
   {
     title: "AABP Annual Networking Evening",
-    description: "Join us for an evening of networking with Azerbaijani and British professionals across all sectors.",
+    description: "Join us for an evening of networking with Azerbaijan and British professionals across all sectors.",
     date: "2025-03-15",
     location: "London, UK",
     type: "Networking",
@@ -35,7 +35,7 @@ const SEED_EVENTS = [
 const SEED_ARTICLES = [
   {
     title: "AABP Launches New Research Collaboration Portal",
-    content: "The Association of Azerbaijani British Professionals is proud to announce the launch of our new research collaboration portal, connecting academics and researchers across the UK and Azerbaijan.",
+    content: "The Association of Azerbaijan British Professionals is proud to announce the launch of our new research collaboration portal, connecting academics and researchers across the UK and Azerbaijan.",
     excerpt: "AABP unveils a new digital platform for cross-border research collaboration.",
     author: "AABP Editorial Team",
     category: "News",
@@ -114,7 +114,7 @@ const SEED_RESEARCH = [
   {
     title: "Cross-Border Cardiovascular Health Outcomes Study",
     authors: ["Dr. Farid Aliyev", "Prof. Sarah Chen"],
-    abstract: "A longitudinal study comparing cardiovascular health outcomes between Azerbaijani and British populations, examining lifestyle, genetic, and environmental factors.",
+    abstract: "A longitudinal study comparing cardiovascular health outcomes between Azerbaijan and British populations, examining lifestyle, genetic, and environmental factors.",
     field: "Medical Science",
     status: "Published",
     year: 2024,

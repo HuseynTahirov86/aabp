@@ -29,13 +29,13 @@ const merriweather = Merriweather({
 
 export const metadata: Metadata = {
   title: {
-    default: "AABP | Association of Azerbaijani British Professionals",
+    default: "AABP | Association of Azerbaijan British Professionals",
     template: "%s | AABP",
   },
   description:
-    "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering. Based in London, UK.",
+    "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering. Based in London, UK.",
   keywords: [
-    "Azerbaijani professionals",
+    "Azerbaijan professionals",
     "British professionals",
     "AABP",
     "Azerbaijan UK",
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     "engineering",
   ],
   openGraph: {
-    title: "Association of Azerbaijani British Professionals",
+    title: "Association of Azerbaijan British Professionals",
     description:
-      "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering.",
+      "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
     url: "https://aabporg.uk",
     siteName: "AABP",
     images: [
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: "https://aabporg.uk/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AABP — Association of Azerbaijani British Professionals",
+        alt: "AABP — Association of Azerbaijan British Professionals",
       },
     ],
     locale: "en_GB",
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   twitter: {
     card: "summary_large_image",
-    title: "AABP | Association of Azerbaijani British Professionals",
+    title: "AABP | Association of Azerbaijan British Professionals",
     description:
-      "Connecting Azerbaijani and British professionals across medical science, natural science, life science, social science, and engineering.",
+      "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
     images: ["https://aabporg.uk/og-image.png"],
   },
 };

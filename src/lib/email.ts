@@ -12,7 +12,7 @@ export async function sendWelcomeEmail(to: string, name: string) {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <h1 style="color: #0A192F;">Welcome, ${name}!</h1>
-          <p>Thank you for applying to the Association of Azerbaijani British Professionals (AABP).</p>
+          <p>Thank you for applying to the Association of Azerbaijan British Professionals (AABP).</p>
           <p>Your application has been received and is currently under review by our executive committee. We strive to process all applications within 3-5 business days.</p>
           <p>Once approved, you will gain full access to the member portal, research hub, and exclusive event registrations.</p>
           <br/>

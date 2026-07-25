@@ -31,7 +31,7 @@ export async function POST(req: Request) {
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <h2 style="color: #003366;">Welcome to AABP, ${firstName || 'Professional'}!</h2>
-          <p>Thank you for submitting your application to join the <strong>Association of Azerbaijani British Professionals</strong>.</p>
+          <p>Thank you for submitting your application to join the <strong>Association of Azerbaijan British Professionals</strong>.</p>
           <p>We have received your details and our team will review your application shortly. You can now access the member portal to complete your profile and explore our network.</p>
           <br/>
           <p>Best regards,<br/><strong>The AABP Executive Committee</strong></p>

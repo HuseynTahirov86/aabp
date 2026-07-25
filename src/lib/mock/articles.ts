@@ -8,7 +8,7 @@ export const MOCK_ARTICLES: AABPArticle[] = [
     content: `
 # AABP Annual Medical Symposium 2026
 
-The Association of Azerbaijani British Professionals (AABP) successfully hosted its highly anticipated Medical Symposium at the Royal College of Physicians in London. The event brought together leading experts from both countries to explore cutting-edge developments in healthcare.
+The Association of Azerbaijan British Professionals (AABP) successfully hosted its highly anticipated Medical Symposium at the Royal College of Physicians in London. The event brought together leading experts from both countries to explore cutting-edge developments in healthcare.
 
 ## Key Highlights
 
@@ -58,7 +58,7 @@ Applications are now open on the Member Portal.
   {
     id: "mock-3",
     title: "Understanding the UK Tier 2 Global Talent Visa Process",
-    summary: "A comprehensive guide for Azerbaijani academics and researchers looking to transition their careers to the United Kingdom under the Global Talent route.",
+    summary: "A comprehensive guide for Azerbaijan academics and researchers looking to transition their careers to the United Kingdom under the Global Talent route.",
     content: `
 # Navigating the Global Talent Visa
 
@@ -112,20 +112,20 @@ We thank all our keynote speakers and sponsors for making this event a resoundin
   {
     id: "mock-5",
     title: "AABP Announces Scholarship Fund for Masters Students",
-    summary: "Five outstanding Azerbaijani students will receive financial support to pursue their postgraduate studies at top UK universities this academic year.",
+    summary: "Five outstanding Azerbaijan students will receive financial support to pursue their postgraduate studies at top UK universities this academic year.",
     content: `
 # Supporting the Brightest Minds
 
 Education is the cornerstone of progress. AABP is incredibly proud to announce the launch of the **AABP Excellence Scholarship Fund**.
 
-This year, the fund will provide partial tuition support and living stipends to five exceptional Azerbaijani students pursuing Master's degrees in STEM (Science, Technology, Engineering, and Mathematics) at Russell Group universities.
+This year, the fund will provide partial tuition support and living stipends to five exceptional Azerbaijan students pursuing Master's degrees in STEM (Science, Technology, Engineering, and Mathematics) at Russell Group universities.
 
 ## Application Details
 
 Applications will open next month. Candidates will be evaluated based on:
 - Academic excellence
 - Leadership potential
-- Commitment to contributing to the UK-Azerbaijani professional community upon graduation.
+- Commitment to contributing to the UK-Azerbaijan professional community upon graduation.
 
 Detailed eligibility requirements will be published in our next newsletter.
     `,

@@ -1,4 +1,4 @@
-import { db } from './config';
+import { getDb } from './config';
 import { collection, getDocs, getDoc, query, where, orderBy, updateDoc, doc } from 'firebase/firestore';
 
 export interface AABPUser {
@@ -24,7 +24,7 @@ const USERS_COLLECTION = 'users';
 
 export const getPublicUsers = async (): Promise<AABPUser[]> => {
   try {
-    const usersRef = collection(db, USERS_COLLECTION);
+    const usersRef = collection(getDb(), USERS_COLLECTION);
     const q = query(
       usersRef,
       where('publicProfile', '==', true),
@@ -45,7 +45,7 @@ export const getPublicUsers = async (): Promise<AABPUser[]> => {
 export const getPublicUsersCount = async (): Promise<number> => {
   try {
     const { getCountFromServer } = await import('firebase/firestore');
-    const usersRef = collection(db, USERS_COLLECTION);
+    const usersRef = collection(getDb(), USERS_COLLECTION);
     const q = query(
       usersRef,
       where('publicProfile', '==', true)
@@ -60,7 +60,7 @@ export const getPublicUsersCount = async (): Promise<number> => {
 
 export const getCommitteeUsers = async (): Promise<AABPUser[]> => {
   try {
-    const usersRef = collection(db, USERS_COLLECTION);
+    const usersRef = collection(getDb(), USERS_COLLECTION);
     const q = query(
       usersRef,
       where('role', '==', 'COMMITTEE')
@@ -79,7 +79,7 @@ export const getCommitteeUsers = async (): Promise<AABPUser[]> => {
 
 export const getUserProfile = async (id: string): Promise<AABPUser | null> => {
   try {
-    const docRef = doc(db, USERS_COLLECTION, id);
+    const docRef = doc(getDb(), USERS_COLLECTION, id);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       return { id: snapshot.id, ...snapshot.data() } as AABPUser;
@@ -93,7 +93,7 @@ export const getUserProfile = async (id: string): Promise<AABPUser | null> => {
 
 export const updateUserProfile = async (id: string, updates: Partial<AABPUser>): Promise<void> => {
   try {
-    const docRef = doc(db, USERS_COLLECTION, id);
+    const docRef = doc(getDb(), USERS_COLLECTION, id);
     await updateDoc(docRef, updates);
   } catch (error) {
     console.error("Error updating user profile:", error);
@@ -104,7 +104,7 @@ export const updateUserProfile = async (id: string, updates: Partial<AABPUser>):
 export const getTotalUsersCount = async (): Promise<number> => {
   try {
     const { getCountFromServer } = await import('firebase/firestore');
-    const coll = collection(db, USERS_COLLECTION);
+    const coll = collection(getDb(), USERS_COLLECTION);
     const snapshot = await getCountFromServer(coll);
     return snapshot.data().count;
   } catch (error) {
@@ -115,7 +115,7 @@ export const getTotalUsersCount = async (): Promise<number> => {
 
 export const getAllUsers = async (maxLimit?: number): Promise<AABPUser[]> => {
   try {
-    const usersRef = collection(db, USERS_COLLECTION);
+    const usersRef = collection(getDb(), USERS_COLLECTION);
     const { limit } = await import('firebase/firestore');
     let q = query(usersRef, orderBy('createdAt', 'desc'));
 

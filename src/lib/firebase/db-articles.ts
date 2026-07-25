@@ -1,4 +1,4 @@
-import { db } from './config';
+import { getDb } from './config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
 
 export interface AABPArticle {
@@ -19,7 +19,7 @@ const ARTICLES_COLLECTION = 'articles';
 
 export const getArticles = async (maxLimit?: number): Promise<AABPArticle[]> => {
   try {
-    const articlesRef = collection(db, ARTICLES_COLLECTION);
+    const articlesRef = collection(getDb(), ARTICLES_COLLECTION);
     let q = query(articlesRef, orderBy('createdAt', 'desc'));
 
     if (maxLimit) {
@@ -40,7 +40,7 @@ export const getArticles = async (maxLimit?: number): Promise<AABPArticle[]> => 
 export const getArticleById = async (id: string): Promise<AABPArticle | null> => {
   try {
     const { getDoc } = await import('firebase/firestore');
-    const docRef = doc(db, ARTICLES_COLLECTION, id);
+    const docRef = doc(getDb(), ARTICLES_COLLECTION, id);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
       return { id: snapshot.id, ...snapshot.data() } as AABPArticle;
@@ -54,7 +54,7 @@ export const getArticleById = async (id: string): Promise<AABPArticle | null> =>
 
 export const addArticle = async (article: Omit<AABPArticle, 'id' | 'createdAt'>): Promise<string> => {
   try {
-    const docRef = await addDoc(collection(db, ARTICLES_COLLECTION), {
+    const docRef = await addDoc(collection(getDb(), ARTICLES_COLLECTION), {
       ...article,
       createdAt: serverTimestamp()
     });
@@ -67,7 +67,7 @@ export const addArticle = async (article: Omit<AABPArticle, 'id' | 'createdAt'>)
 
 export const updateArticle = async (id: string, updates: Partial<AABPArticle>): Promise<void> => {
   try {
-    const docRef = doc(db, ARTICLES_COLLECTION, id);
+    const docRef = doc(getDb(), ARTICLES_COLLECTION, id);
     await updateDoc(docRef, updates);
   } catch (error) {
     console.error("Error updating article:", error);
@@ -77,7 +77,7 @@ export const updateArticle = async (id: string, updates: Partial<AABPArticle>): 
 
 export const deleteArticle = async (id: string): Promise<void> => {
   try {
-    const docRef = doc(db, ARTICLES_COLLECTION, id);
+    const docRef = doc(getDb(), ARTICLES_COLLECTION, id);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting article:", error);

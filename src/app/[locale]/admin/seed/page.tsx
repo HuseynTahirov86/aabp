@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "@/lib/firebase/config";
+import { getDb } from "@/lib/firebase/config";
 import { Button } from "@/components/ui/button";
 
 const SEED_EVENTS = [
@@ -133,11 +133,11 @@ async function seedAll(setStatus: (s: string) => void) {
   setStatus("seeding");
   try {
     let count = 0;
-    for (const item of SEED_EVENTS) { await addDoc(collection(db, "events"), item); count++; }
-    for (const item of SEED_ARTICLES) { await addDoc(collection(db, "articles"), item); count++; }
-    for (const item of SEED_COMMITTEE) { await addDoc(collection(db, "committee"), item); count++; }
-    for (const item of SEED_JOBS) { await addDoc(collection(db, "jobs"), item); count++; }
-    for (const item of SEED_RESEARCH) { await addDoc(collection(db, "research"), item); count++; }
+    for (const item of SEED_EVENTS) { await addDoc(collection(getDb(), "events"), item); count++; }
+    for (const item of SEED_ARTICLES) { await addDoc(collection(getDb(), "articles"), item); count++; }
+    for (const item of SEED_COMMITTEE) { await addDoc(collection(getDb(), "committee"), item); count++; }
+    for (const item of SEED_JOBS) { await addDoc(collection(getDb(), "jobs"), item); count++; }
+    for (const item of SEED_RESEARCH) { await addDoc(collection(getDb(), "research"), item); count++; }
     setStatus(`success:${count}`);
   } catch (e) {
     setStatus(`error:${e instanceof Error ? e.message : String(e)}`);

@@ -9,7 +9,7 @@ import { fadeVariants } from "@/motion/fade";
 import { ArrowLeft, Upload, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "@/i18n/routing";
-import { auth, db } from "@/lib/firebase/config";
+import { getAuthInstance, getDb } from "@/lib/firebase/config";
 import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useTranslations } from 'next-intl';
@@ -59,7 +59,7 @@ export default function RegisterPage() {
 
       const { url: cvUrl } = await uploadRes.json();
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(getAuthInstance(), email, password);
       const user = userCredential.user;
 
       await updateProfile(user, {
@@ -68,7 +68,7 @@ export default function RegisterPage() {
 
       await sendEmailVerification(user);
 
-      await setDoc(doc(db, "users", user.uid), {
+      await setDoc(doc(getDb(), "users", user.uid), {
         firstName,
         lastName,
         profession,

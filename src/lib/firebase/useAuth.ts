@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "./config";
+import { getAuthInstance, getDb } from "./config";
 import { AABPUser } from "./db-users";
 
 export function useAuth() {
@@ -12,12 +12,12 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+    const unsubscribe = onAuthStateChanged(getAuthInstance(), async (authUser) => {
       setUser(authUser);
       
       if (authUser) {
         // Fetch custom user data from Firestore
-        const docRef = doc(db, "users", authUser.uid);
+        const docRef = doc(getDb(), "users", authUser.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = { id: docSnap.id, ...docSnap.data() } as AABPUser;
@@ -39,7 +39,7 @@ export function useAuth() {
   }, []);
 
   const logout = async () => {
-    await signOut(auth);
+    await signOut(getAuthInstance());
   };
 
   return { user, userData, loading, logout };

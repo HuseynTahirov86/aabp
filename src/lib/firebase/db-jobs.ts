@@ -1,4 +1,4 @@
-import { db } from './config';
+import { getDb } from './config';
 import { collection, getDocs, addDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 
 export interface AABPJob {
@@ -17,7 +17,7 @@ const JOBS_COLLECTION = 'jobs';
 
 export const getJobs = async (): Promise<AABPJob[]> => {
   try {
-    const jobsRef = collection(db, JOBS_COLLECTION);
+    const jobsRef = collection(getDb(), JOBS_COLLECTION);
     const q = query(jobsRef, orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({
@@ -32,7 +32,7 @@ export const getJobs = async (): Promise<AABPJob[]> => {
 
 export const addJob = async (job: Omit<AABPJob, 'id' | 'createdAt'>): Promise<string> => {
   try {
-    const docRef = await addDoc(collection(db, JOBS_COLLECTION), {
+    const docRef = await addDoc(collection(getDb(), JOBS_COLLECTION), {
       ...job,
       createdAt: new Date().toISOString()
     });
@@ -45,7 +45,7 @@ export const addJob = async (job: Omit<AABPJob, 'id' | 'createdAt'>): Promise<st
 
 export const deleteJob = async (id: string): Promise<void> => {
   try {
-    const docRef = doc(db, JOBS_COLLECTION, id);
+    const docRef = doc(getDb(), JOBS_COLLECTION, id);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting job:", error);

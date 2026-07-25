@@ -9,7 +9,7 @@ import { getEventById, AABPEvent, registerForEvent, checkUserRegistration } from
 import { Loader2, ArrowLeft, Calendar, MapPin, Tag } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
-import { auth } from "@/lib/firebase/config";
+import { getAuthInstance } from "@/lib/firebase/config";
 import { toast } from "sonner";
 
 export function EventDetailsClient() {
@@ -26,8 +26,9 @@ export function EventDetailsClient() {
         const data = await getEventById(params.id);
         setEvent(data);
 
-        if (data && auth.currentUser) {
-          const registered = await checkUserRegistration(params.id, auth.currentUser.uid);
+        const currentUser = getAuthInstance().currentUser;
+        if (data && currentUser) {
+          const registered = await checkUserRegistration(params.id, currentUser.uid);
           setIsRegistered(registered);
         }
       }
@@ -37,7 +38,8 @@ export function EventDetailsClient() {
   }, [params.id]);
 
   const handleRegister = async () => {
-    if (!auth.currentUser) {
+    const currentUser = getAuthInstance().currentUser;
+    if (!currentUser) {
       toast.error("Please sign in to register for events.");
       router.push('/login');
       return;
@@ -45,7 +47,7 @@ export function EventDetailsClient() {
 
     setIsRegistering(true);
     try {
-      await registerForEvent(params.id as string, auth.currentUser.uid);
+      await registerForEvent(params.id as string, currentUser.uid);
       setIsRegistered(true);
       toast.success("Successfully registered for the event!");
     } catch {

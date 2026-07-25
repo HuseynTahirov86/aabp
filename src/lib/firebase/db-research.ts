@@ -1,4 +1,4 @@
-import { db } from './config';
+import { getDb } from './config';
 import { collection, getDocs, addDoc, deleteDoc, doc, query, orderBy, limit, serverTimestamp } from 'firebase/firestore';
 
 export interface AABPResearch {
@@ -17,7 +17,7 @@ const RESEARCH_COLLECTION = 'research';
 
 export const getResearch = async (maxLimit?: number): Promise<AABPResearch[]> => {
   try {
-    const researchRef = collection(db, RESEARCH_COLLECTION);
+    const researchRef = collection(getDb(), RESEARCH_COLLECTION);
     let q = query(researchRef, orderBy('createdAt', 'desc'));
 
     if (maxLimit) {
@@ -37,7 +37,7 @@ export const getResearch = async (maxLimit?: number): Promise<AABPResearch[]> =>
 
 export const addResearch = async (research: Omit<AABPResearch, 'id' | 'createdAt'>): Promise<string> => {
   try {
-    const docRef = await addDoc(collection(db, RESEARCH_COLLECTION), {
+    const docRef = await addDoc(collection(getDb(), RESEARCH_COLLECTION), {
       ...research,
       createdAt: serverTimestamp()
     });
@@ -50,7 +50,7 @@ export const addResearch = async (research: Omit<AABPResearch, 'id' | 'createdAt
 
 export const deleteResearch = async (id: string): Promise<void> => {
   try {
-    const docRef = doc(db, RESEARCH_COLLECTION, id);
+    const docRef = doc(getDb(), RESEARCH_COLLECTION, id);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting research:", error);
@@ -61,7 +61,7 @@ export const deleteResearch = async (id: string): Promise<void> => {
 export const getResearchById = async (id: string): Promise<AABPResearch | null> => {
   try {
     const { getDoc } = await import('firebase/firestore');
-    const docRef = doc(db, RESEARCH_COLLECTION, id);
+    const docRef = doc(getDb(), RESEARCH_COLLECTION, id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return { id: docSnap.id, ...docSnap.data() } as AABPResearch;

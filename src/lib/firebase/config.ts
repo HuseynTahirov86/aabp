@@ -1,6 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
 import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
@@ -19,17 +19,31 @@ const app = getApps().length
     ? initializeApp(firebaseConfig)
     : null;
 
-const auth = (app ? getAuth(app) : null) as ReturnType<typeof getAuth>;
-const db = (app ? getFirestore(app) : null) as ReturnType<typeof getFirestore>;
+let _auth: Auth | null = null;
+let _db: Firestore | null = null;
+let analytics: ReturnType<typeof getAnalytics> | null = null;
 
-// Initialize Analytics conditionally (only runs in browser)
-let analytics = null;
-if (typeof window !== "undefined" && app) {
-  isSupported().then((supported) => {
-    if (supported) {
-      analytics = getAnalytics(app);
-    }
-  });
+if (app) {
+  _auth = getAuth(app);
+  _db = getFirestore(app);
+
+  if (typeof window !== "undefined") {
+    isSupported().then((supported) => {
+      if (supported) {
+        analytics = getAnalytics(app);
+      }
+    });
+  }
 }
 
-export { app, auth, db, analytics };
+export { app, analytics };
+
+export function getAuthInstance(): Auth {
+  if (!_auth) throw new Error("Firebase Auth not initialized. Check NEXT_PUBLIC_FIREBASE_* env vars.");
+  return _auth;
+}
+
+export function getDb(): Firestore {
+  if (!_db) throw new Error("Firestore not initialized. Check NEXT_PUBLIC_FIREBASE_* env vars.");
+  return _db;
+}

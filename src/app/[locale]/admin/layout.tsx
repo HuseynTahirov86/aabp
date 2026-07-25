@@ -3,7 +3,7 @@
 import { Link } from "@/i18n/routing";
 import { LayoutDashboard, CalendarDays, Users, FileText, LogOut, Newspaper, Menu, Database } from "lucide-react";
 import { useRouter } from "@/i18n/routing";
-import { auth } from "@/lib/firebase/config";
+import { getAuthInstance } from "@/lib/firebase/config";
 import { signOut } from "firebase/auth";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,7 @@ const SidebarContent = () => {
   const router = useRouter();
   
   const handleSignOut = async () => {
-    await signOut(auth);
+    await signOut(getAuthInstance());
     document.cookie = `userRole=; path=/; max-age=0; SameSite=Strict`;
     router.push("/login");
   };

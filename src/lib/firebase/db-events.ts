@@ -1,4 +1,4 @@
-import { db } from './config';
+import { getDb } from './config';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, orderBy, limit, where, serverTimestamp } from 'firebase/firestore';
 
 export interface AABPEvent {
@@ -18,7 +18,7 @@ const EVENTS_COLLECTION = 'events';
 
 export const getEvents = async (onlyPublished = false, maxLimit?: number): Promise<AABPEvent[]> => {
   try {
-    const eventsRef = collection(db, EVENTS_COLLECTION);
+    const eventsRef = collection(getDb(), EVENTS_COLLECTION);
     let q = query(eventsRef, orderBy('createdAt', 'desc'));
 
     if (onlyPublished) {
@@ -42,7 +42,7 @@ export const getEvents = async (onlyPublished = false, maxLimit?: number): Promi
 
 export const addEvent = async (event: Omit<AABPEvent, 'id' | 'createdAt'>): Promise<string> => {
   try {
-    const docRef = await addDoc(collection(db, EVENTS_COLLECTION), {
+    const docRef = await addDoc(collection(getDb(), EVENTS_COLLECTION), {
       ...event,
       createdAt: serverTimestamp()
     });
@@ -55,7 +55,7 @@ export const addEvent = async (event: Omit<AABPEvent, 'id' | 'createdAt'>): Prom
 
 export const updateEvent = async (id: string, updates: Partial<AABPEvent>): Promise<void> => {
   try {
-    const docRef = doc(db, EVENTS_COLLECTION, id);
+    const docRef = doc(getDb(), EVENTS_COLLECTION, id);
     await updateDoc(docRef, updates);
   } catch (error) {
     console.error("Error updating event:", error);
@@ -65,7 +65,7 @@ export const updateEvent = async (id: string, updates: Partial<AABPEvent>): Prom
 
 export const deleteEvent = async (id: string): Promise<void> => {
   try {
-    const docRef = doc(db, EVENTS_COLLECTION, id);
+    const docRef = doc(getDb(), EVENTS_COLLECTION, id);
     await deleteDoc(docRef);
   } catch (error) {
     console.error("Error deleting event:", error);
@@ -78,13 +78,13 @@ const REGISTRATIONS_COLLECTION = 'event_registrations';
 export const registerForEvent = async (eventId: string, userId: string): Promise<void> => {
   try {
     // Check if already registered
-    const q = query(collection(db, REGISTRATIONS_COLLECTION), where('eventId', '==', eventId), where('userId', '==', userId));
+    const q = query(collection(getDb(), REGISTRATIONS_COLLECTION), where('eventId', '==', eventId), where('userId', '==', userId));
     const snapshot = await getDocs(q);
     if (!snapshot.empty) {
       throw new Error("Already registered");
     }
 
-    await addDoc(collection(db, REGISTRATIONS_COLLECTION), {
+    await addDoc(collection(getDb(), REGISTRATIONS_COLLECTION), {
       eventId,
       userId,
       createdAt: serverTimestamp()
@@ -98,7 +98,7 @@ export const registerForEvent = async (eventId: string, userId: string): Promise
 export const getUserEvents = async (userId: string): Promise<AABPEvent[]> => {
   try {
     // 1. Get all registrations for user
-    const q = query(collection(db, REGISTRATIONS_COLLECTION), where('userId', '==', userId));
+    const q = query(collection(getDb(), REGISTRATIONS_COLLECTION), where('userId', '==', userId));
     const snapshot = await getDocs(q);
 
     if (snapshot.empty) return [];
@@ -106,7 +106,7 @@ export const getUserEvents = async (userId: string): Promise<AABPEvent[]> => {
     const eventIds = snapshot.docs.map(doc => doc.data().eventId);
 
     // 2. Fetch those events in chunks of 10 to bypass Firestore 'in' limitation
-    const eventsRef = collection(db, EVENTS_COLLECTION);
+    const eventsRef = collection(getDb(), EVENTS_COLLECTION);
     const events: AABPEvent[] = [];
 
     // Chunk array into size of 10
@@ -134,7 +134,7 @@ export const getUserEvents = async (userId: string): Promise<AABPEvent[]> => {
 export const getEventById = async (id: string): Promise<AABPEvent | null> => {
   try {
     const { getDoc } = await import('firebase/firestore');
-    const docRef = doc(db, EVENTS_COLLECTION, id);
+    const docRef = doc(getDb(), EVENTS_COLLECTION, id);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       return { id: docSnap.id, ...docSnap.data() } as AABPEvent;
@@ -149,7 +149,7 @@ export const getEventById = async (id: string): Promise<AABPEvent | null> => {
 export const checkUserRegistration = async (eventId: string, userId: string): Promise<boolean> => {
   try {
     const q = query(
-      collection(db, REGISTRATIONS_COLLECTION),
+      collection(getDb(), REGISTRATIONS_COLLECTION),
       where('eventId', '==', eventId),
       where('userId', '==', userId)
     );

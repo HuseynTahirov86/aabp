@@ -16,6 +16,7 @@ const sidebarLinks = [
   { name: "Events CMS", href: "/admin/events", icon: CalendarDays },
   { name: "Career CMS", href: "/admin/career", icon: Briefcase },
   { name: "Members", href: "/admin/members", icon: Users },
+  { name: "Resource Library", href: "/admin/resources", icon: FileText },
   { name: "Email Members", href: "/admin/email", icon: Mail },
   { name: "Publications", href: "/admin/research", icon: FileText },
   { name: "Projects", href: "/admin/projects", icon: FileText },

@@ -194,6 +194,24 @@ export default function DashboardPage() {
                   <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
                 </Button>
               </Link>
+              <Link href="/dashboard/mentorship" passHref className="w-full">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
+                  Mentorship
+                  <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                </Button>
+              </Link>
+              <Link href="/resources" passHref className="w-full">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
+                  Resource Library
+                  <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                </Button>
+              </Link>
+              <Link href="/forum" passHref className="w-full">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
+                  Forum
+                  <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
+                </Button>
+              </Link>
               <Link href="/dashboard/settings" passHref className="w-full">
                 <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
                   {t('updateProfile')}

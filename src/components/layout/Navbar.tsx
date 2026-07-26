@@ -107,6 +107,16 @@ export function Navbar() {
       description: t('mediaDesc'),
     },
     {
+      title: "Forum",
+      href: "/forum",
+      description: "Discuss with fellow members in the forum",
+    },
+    {
+      title: "Resources",
+      href: "/resources",
+      description: "Access educational materials and shared resources",
+    },
+    {
       title: t('career'),
       href: "/career",
       description: t('careerDesc'),

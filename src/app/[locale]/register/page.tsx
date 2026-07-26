@@ -130,6 +130,7 @@ export default function RegisterPage() {
           alt="Networking" 
           fill 
           priority
+          sizes="(max-width: 1024px) 0vw, 50vw"
           className="object-cover opacity-40 mix-blend-overlay"
         />
         <div className="relative z-10 p-12 text-center text-white max-w-xl">

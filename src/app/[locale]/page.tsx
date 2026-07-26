@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { HeroSection } from '@/components/blocks/HeroSection';
 import { FieldsSection } from '@/components/blocks/FieldsSection';
 import { BenefitsSection } from '@/components/blocks/BenefitsSection';
@@ -14,8 +14,8 @@ import { ParticlesBg } from '@/components/blocks/ParticlesBg';
 import { StatsSection } from '@/components/blocks/StatsSection';
 import { MagneticElement } from '@/components/ui/MagneticElement';
 
-export default function Home() {
-  const t = useTranslations('Index');
+export default async function Home() {
+  const t = await getTranslations('Index');
 
   return (
     <main className="flex min-h-screen flex-col bg-background">

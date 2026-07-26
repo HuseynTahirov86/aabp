@@ -45,3 +45,6 @@ next-env.d.ts
 
 # local storage uploads
 /storage
+
+# generated files
+tree.txt

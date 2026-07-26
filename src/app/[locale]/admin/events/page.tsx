@@ -24,6 +24,7 @@ export default function AdminEventsPage() {
   const [category, setCategory] = useState("Conference");
   const [status, setStatus] = useState<'Published' | 'Draft'>("Published");
   const [imageUrl, setImageUrl] = useState("");
+  const [maxAttendees, setMaxAttendees] = useState<number | undefined>(undefined);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
@@ -55,7 +56,8 @@ export default function AdminEventsPage() {
           location,
           category,
           status,
-          imageUrl
+          imageUrl,
+          maxAttendees
         });
         toast.success("Event updated successfully");
       } else {
@@ -65,7 +67,8 @@ export default function AdminEventsPage() {
           location,
           category,
           status,
-          imageUrl
+          imageUrl,
+          maxAttendees
         });
         toast.success("Event created successfully");
       }
@@ -84,6 +87,7 @@ export default function AdminEventsPage() {
     setLocation("");
     setCategory("Conference");
     setImageUrl("");
+    setMaxAttendees(undefined);
     setEditingEventId(null);
   };
 
@@ -94,6 +98,7 @@ export default function AdminEventsPage() {
     setLocation(event.location);
     setCategory(event.category);
     setImageUrl(event.imageUrl || "");
+    setMaxAttendees(event.maxAttendees);
     setIsDialogOpen(true);
   };
 
@@ -192,6 +197,16 @@ export default function AdminEventsPage() {
                   <option value="Published">Published</option>
                   <option value="Draft">Draft</option>
                 </select>
+              </div>
+              <div className="grid gap-2">
+                <label className="text-sm font-medium">Max Attendees (optional)</label>
+                <Input
+                  type="number"
+                  min={1}
+                  value={maxAttendees?.toString() || ""}
+                  onChange={e => setMaxAttendees(e.target.value ? parseInt(e.target.value) : undefined)}
+                  placeholder="Leave empty for unlimited"
+                />
               </div>
               <div className="grid gap-2">
                 <label className="text-sm font-medium">Event Image Upload</label>

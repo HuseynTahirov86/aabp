@@ -10,6 +10,7 @@ export interface AABPEvent {
   category: string;
   status: 'Published' | 'Draft';
   imageUrl?: string;
+  maxAttendees?: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createdAt?: any;
 }

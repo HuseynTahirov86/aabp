@@ -5,8 +5,8 @@ import { useParams } from "next/navigation";
 import { useRouter } from "@/i18n/routing";
 import { Hero } from '@/components/shared/Hero';
 import { Section } from '@/components/shared/Section';
-import { getEventById, AABPEvent, registerForEvent, checkUserRegistration } from '@/lib/firebase/db-events';
-import { Loader2, ArrowLeft, Calendar, MapPin, Tag } from "lucide-react";
+import { getEventById, AABPEvent, registerForEvent, checkUserRegistration, getEventRegistrations } from '@/lib/firebase/db-events';
+import { Loader2, ArrowLeft, Calendar, MapPin, Tag, Users } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { getAuthInstance } from "@/lib/firebase/config";
@@ -20,6 +20,8 @@ export function EventDetailsClient() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRegistering, setIsRegistering] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
+  const [registrationCount, setRegistrationCount] = useState(0);
+  const [isFull, setIsFull] = useState(false);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -29,8 +31,21 @@ export function EventDetailsClient() {
 
         const currentUser = getAuthInstance().currentUser;
         if (data && currentUser) {
-          const registered = await checkUserRegistration(params.id, currentUser.uid);
+          const [registered, regs] = await Promise.all([
+            checkUserRegistration(params.id, currentUser.uid),
+            getEventRegistrations(params.id)
+          ]);
           setIsRegistered(registered);
+          setRegistrationCount(regs.length);
+          if (data.maxAttendees && data.maxAttendees > 0) {
+            setIsFull(regs.length >= data.maxAttendees);
+          }
+        } else if (data) {
+          const regs = await getEventRegistrations(params.id);
+          setRegistrationCount(regs.length);
+          if (data.maxAttendees && data.maxAttendees > 0) {
+            setIsFull(regs.length >= data.maxAttendees);
+          }
         }
       }
       setIsLoading(false);
@@ -50,6 +65,10 @@ export function EventDetailsClient() {
     try {
       await registerForEvent(params.id as string, currentUser.uid);
       setIsRegistered(true);
+      setRegistrationCount(prev => prev + 1);
+      if (event?.maxAttendees && event.maxAttendees > 0 && registrationCount + 1 >= event.maxAttendees) {
+        setIsFull(true);
+      }
       toast.success("Successfully registered for the event!");
     } catch {
       toast.error("Failed to register. Please try again.");
@@ -74,6 +93,10 @@ export function EventDetailsClient() {
       </main>
     );
   }
+
+  const remainingSpots = event.maxAttendees && event.maxAttendees > 0
+    ? Math.max(0, event.maxAttendees - registrationCount)
+    : null;
 
   return (
     <main className="flex min-h-screen flex-col bg-background">
@@ -121,6 +144,12 @@ export function EventDetailsClient() {
               <Tag className="w-4 h-4" />
               {event.category}
             </div>
+            {remainingSpots !== null && (
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4" />
+                {remainingSpots} spot{remainingSpots !== 1 ? 's' : ''} remaining
+              </div>
+            )}
           </div>
 
           <div className="prose prose-lg max-w-none text-foreground mb-12">
@@ -132,14 +161,24 @@ export function EventDetailsClient() {
           </div>
 
           <div className="flex justify-center border-t border-border pt-10">
-            <Button
-              size="lg"
-              className="rounded-full bg-accent text-white hover:bg-accent/90 h-14 px-10 text-lg"
-              disabled={isRegistering || isRegistered}
-              onClick={handleRegister}
-            >
-              {isRegistering ? <Loader2 className="w-5 h-5 animate-spin" /> : isRegistered ? "Already Registered" : "Register for Event"}
-            </Button>
+            {isFull && !isRegistered ? (
+              <Button
+                size="lg"
+                className="rounded-full bg-muted text-muted-foreground cursor-not-allowed h-14 px-10 text-lg"
+                disabled
+              >
+                Event Full
+              </Button>
+            ) : (
+              <Button
+                size="lg"
+                className="rounded-full bg-accent text-white hover:bg-accent/90 h-14 px-10 text-lg"
+                disabled={isRegistering || isRegistered}
+                onClick={handleRegister}
+              >
+                {isRegistering ? <Loader2 className="w-5 h-5 animate-spin" /> : isRegistered ? "Already Registered" : "Register for Event"}
+              </Button>
+            )}
           </div>
         </div>
       </Section>

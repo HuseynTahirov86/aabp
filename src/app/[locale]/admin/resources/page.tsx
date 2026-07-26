@@ -117,8 +117,8 @@ export default function AdminResourcesPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Resource Library CMS</h1>
-          <p className="text-muted-foreground mt-1">Manage downloadable resources for members.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Resource Library CMS</h1>
+          <p className="text-white/70 mt-1">Manage downloadable resources for members.</p>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsDialogOpen(open); if (!open) resetForm(); }}>
@@ -163,7 +163,7 @@ export default function AdminResourcesPage() {
                   />
                 </div>
                 {uploading && (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-sm text-white/70">
                     <Loader2 className="w-4 h-4 animate-spin" /> Uploading...
                   </div>
                 )}
@@ -184,7 +184,7 @@ export default function AdminResourcesPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this resource?</p>
+          <p className="text-white/70">Are you sure you want to delete this resource?</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -192,11 +192,11 @@ export default function AdminResourcesPage() {
         </DialogContent>
       </Dialog>
 
-      <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
+      <div className="bg-white/10 p-6 rounded-2xl shadow-sm border border-white/10">
         <div className="rounded-md border">
           <Table>
             <TableHeader>
-              <TableRow className="bg-secondary/20">
+              <TableRow className="bg-white/5">
                 <TableHead>Title</TableHead>
                 <TableHead>Category</TableHead>
                 <TableHead>File</TableHead>
@@ -207,12 +207,12 @@ export default function AdminResourcesPage() {
               {isLoading ? (
                 <TableRow>
                   <TableCell colSpan={4} className="text-center py-8">
-                    <Loader2 className="w-6 h-6 animate-spin mx-auto text-muted-foreground" />
+                    <Loader2 className="w-6 h-6 animate-spin mx-auto text-white/70" />
                   </TableCell>
                 </TableRow>
               ) : resources.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center py-8 text-muted-foreground">No resources yet.</TableCell>
+                  <TableCell colSpan={4} className="text-center py-8 text-white/70">No resources yet.</TableCell>
                 </TableRow>
               ) : (
                 resources.map((r) => (

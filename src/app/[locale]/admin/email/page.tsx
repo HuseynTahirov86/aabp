@@ -51,21 +51,21 @@ export default function AdminEmailPage() {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="text-3xl font-bold font-serif text-primary">Email Members</h1>
-        <p className="text-muted-foreground mt-2">Send bulk emails to members based on role or to all members.</p>
+        <h1 className="text-3xl font-bold font-serif text-white">Email Members</h1>
+        <p className="text-white/70 mt-2">Send bulk emails to members based on role or to all members.</p>
       </div>
 
-      <Card className="shadow-sm border-border max-w-2xl">
+      <Card className="shadow-sm border-white/10 max-w-2xl">
         <CardHeader>
-          <CardTitle className="text-lg text-primary">Compose Email</CardTitle>
+          <CardTitle className="text-lg text-white">Compose Email</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-primary mb-2">Recipients</label>
+            <label className="block text-sm font-medium text-white mb-2">Recipients</label>
             <select
               value={recipientFilter}
               onChange={(e) => setRecipientFilter(e.target.value)}
-              className="w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full rounded-lg border border-white/10 bg-background px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent"
             >
               <option value="all">All Members</option>
               {roles.map((role) => (
@@ -77,24 +77,24 @@ export default function AdminEmailPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-primary mb-2">Subject</label>
+            <label className="block text-sm font-medium text-white mb-2">Subject</label>
             <input
               type="text"
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Email subject..."
-              className="w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full rounded-lg border border-white/10 bg-background px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-primary mb-2">Message</label>
+            <label className="block text-sm font-medium text-white mb-2">Message</label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write your message..."
               rows={8}
-              className="w-full rounded-lg border border-border bg-background px-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent resize-y"
+              className="w-full rounded-lg border border-white/10 bg-background px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent resize-y"
             />
           </div>
 

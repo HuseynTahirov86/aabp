@@ -77,18 +77,18 @@ export default function AdminMembersPage() {
   };
 
   const getRoleBadge = (role: string) => {
-    if (role === 'PENDING') return 'bg-amber-500/10 text-amber-500 border border-amber-500/30';
-    if (role === 'ADMIN' || role === 'SUPER_ADMIN') return 'bg-primary text-white';
-    if (role === 'EDITOR') return 'bg-accent text-white';
-    return 'bg-secondary text-primary';
+    if (role === 'PENDING') return 'bg-amber-500/20 text-amber-300 border border-amber-500/30';
+    if (role === 'ADMIN' || role === 'SUPER_ADMIN') return 'bg-red-500/25 text-white border border-red-500/30';
+    if (role === 'EDITOR') return 'bg-blue-500/25 text-white border border-blue-500/30';
+    return 'bg-white/10 text-white border border-white/10';
   };
 
   return (
     <div>
       <div className="mb-10 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Member Directory</h1>
-          <p className="text-muted-foreground mt-2">Manage user accounts, approvals, and roles.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Member Directory</h1>
+          <p className="text-white/70 mt-2">Manage user accounts, approvals, and roles.</p>
         </div>
         <div className="flex gap-3">
           <Button onClick={handleExportCsv} variant="outline">
@@ -103,7 +103,7 @@ export default function AdminMembersPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this user? This action cannot be undone.</p>
+          <p className="text-white/70">Are you sure you want to delete this user? This action cannot be undone.</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setDeleteOpen(false); setDeleteTarget(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -111,19 +111,19 @@ export default function AdminMembersPage() {
         </DialogContent>
       </Dialog>
 
-      <Card className="shadow-sm border-border">
+      <Card className="shadow-sm border-white/10">
         <CardHeader>
-          <CardTitle className="text-lg text-primary">All Registered Users ({users.length})</CardTitle>
+          <CardTitle className="text-lg text-white">All Registered Users ({users.length})</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="flex justify-center py-8"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>
+            <div className="flex justify-center py-8"><Loader2 className="w-8 h-8 animate-spin text-white" /></div>
           ) : users.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No members found.</p>
+            <p className="text-sm text-white/70">No members found.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left">
-                <thead className="text-xs text-muted-foreground uppercase bg-secondary/30">
+                <thead className="text-xs text-white/70 uppercase bg-white/5">
                   <tr>
                     <th className="px-4 py-3 rounded-tl-lg">Name</th>
                     <th className="px-4 py-3">Email</th>
@@ -134,10 +134,10 @@ export default function AdminMembersPage() {
                 </thead>
                 <tbody>
                   {users.map((user) => (
-                    <tr key={user.id} className="bg-card border-b border-border">
-                      <td className="px-4 py-3 font-medium text-primary whitespace-nowrap">{user.firstName} {user.lastName}</td>
-                      <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
-                      <td className="px-4 py-3 text-muted-foreground">{user.profession || '-'}</td>
+                    <tr key={user.id} className="bg-white/10 border-b border-white/10">
+                      <td className="px-4 py-3 font-medium text-white whitespace-nowrap">{user.firstName} {user.lastName}</td>
+                      <td className="px-4 py-3 text-white/70">{user.email}</td>
+                      <td className="px-4 py-3 text-white/70">{user.profession || '-'}</td>
                       <td className="px-4 py-3">
                         <span className={`px-2 py-1 rounded text-xs font-medium ${getRoleBadge(user.role || 'MEMBER')}`}>
                           {user.role || 'MEMBER'}

@@ -106,8 +106,8 @@ export default function AdminCMSPage() {
     <div>
       <div className="mb-10 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Articles CMS</h1>
-          <p className="text-muted-foreground mt-2">Manage news and articles for the platform.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Articles CMS</h1>
+          <p className="text-white/70 mt-2">Manage news and articles for the platform.</p>
         </div>
         <Button onClick={fetchArticles} variant="outline">Refresh List</Button>
       </div>
@@ -117,7 +117,7 @@ export default function AdminCMSPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this article? This action cannot be undone.</p>
+          <p className="text-white/70">Are you sure you want to delete this article? This action cannot be undone.</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -128,9 +128,9 @@ export default function AdminCMSPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Create new article form */}
         <div className="lg:col-span-1">
-          <Card className="shadow-sm border-border sticky top-8">
+          <Card className="shadow-sm border-white/10 sticky top-8">
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-lg text-primary flex items-center gap-2">
+              <CardTitle className="text-lg text-white flex items-center gap-2">
                 {editingArticleId ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />} 
                 {editingArticleId ? "Edit Article" : "New Article"}
               </CardTitle>
@@ -141,19 +141,19 @@ export default function AdminCMSPage() {
             <CardContent>
               <form onSubmit={handleSaveArticle} className="space-y-4">
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Title</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Title</label>
                   <Input required value={newArticle.title} onChange={e => setNewArticle({...newArticle, title: e.target.value})} placeholder="Article Title" />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Summary</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Summary</label>
                   <Textarea required value={newArticle.summary} onChange={e => setNewArticle({...newArticle, summary: e.target.value})} placeholder="Short description" rows={2} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Content (HTML allowed)</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Content (HTML allowed)</label>
                   <Textarea required value={newArticle.content} onChange={e => setNewArticle({...newArticle, content: e.target.value})} placeholder="Full content..." rows={5} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Image Upload</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Image Upload</label>
                   <Input 
                     type="file" 
                     accept="image/*"
@@ -182,7 +182,7 @@ export default function AdminCMSPage() {
                   {newArticle.imageUrl && <p className="text-xs text-green-600 mt-1">Image URL generated: {newArticle.imageUrl}</p>}
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Status</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Status</label>
                   <select
                     value={newArticle.status}
                     onChange={e => setNewArticle({...newArticle, status: e.target.value as 'Published' | 'Draft'})}
@@ -202,31 +202,31 @@ export default function AdminCMSPage() {
 
         {/* List of articles */}
         <div className="lg:col-span-2">
-          <Card className="shadow-sm border-border">
+          <Card className="shadow-sm border-white/10">
             <CardHeader>
-              <CardTitle className="text-lg text-primary">Published Articles</CardTitle>
+              <CardTitle className="text-lg text-white">Published Articles</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (
                 <div className="flex justify-center py-8">
-                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  <Loader2 className="w-8 h-8 animate-spin text-white" />
                 </div>
               ) : articles.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No articles found.</p>
+                <p className="text-sm text-white/70">No articles found.</p>
               ) : (
                 <div className="space-y-4">
                   {articles.map((article) => (
-                    <div key={article.id} className="flex justify-between items-start p-4 bg-secondary/30 rounded-lg border border-border">
+                    <div key={article.id} className="flex justify-between items-start p-4 bg-white/5 rounded-lg border border-white/10">
                       <div>
-                        <h4 className="font-semibold text-primary">{article.title}</h4>
-                        <p className="text-sm text-muted-foreground mt-1 line-clamp-1">{article.summary}</p>
-                        <div className="flex gap-2 mt-2 text-xs text-muted-foreground">
-                          <span className="bg-secondary px-2 py-1 rounded">{article.status}</span>
+                        <h4 className="font-semibold text-white">{article.title}</h4>
+                        <p className="text-sm text-white/70 mt-1 line-clamp-1">{article.summary}</p>
+                        <div className="flex gap-2 mt-2 text-xs text-white/70">
+                          <span className="bg-white/10">{article.status}</span>
                           <span className="px-2 py-1">{new Date(article.createdAt?.toDate?.() || article.createdAt).toLocaleDateString()}</span>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10" onClick={() => startEdit(article)}>
+                        <Button variant="ghost" size="icon" className="text-white hover:bg-primary/10" onClick={() => startEdit(article)}>
                           <Edit className="w-4 h-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => article.id && handleDelete(article.id)}>

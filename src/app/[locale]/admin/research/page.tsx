@@ -126,8 +126,8 @@ export default function AdminResearchPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Research CMS</h1>
-          <p className="text-muted-foreground mt-1">Manage platform research publications.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Research CMS</h1>
+          <p className="text-white/70 mt-1">Manage platform research publications.</p>
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={(open) => {
@@ -182,7 +182,7 @@ export default function AdminResearchPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this publication? This action cannot be undone.</p>
+          <p className="text-white/70">Are you sure you want to delete this publication? This action cannot be undone.</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -190,13 +190,13 @@ export default function AdminResearchPage() {
         </DialogContent>
       </Dialog>
 
-      <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
+      <div className="bg-white/10 p-6 rounded-2xl shadow-sm border border-white/10">
         <div className="flex items-center gap-4 mb-6">
           <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 w-4 h-4" />
             <Input
               placeholder="Search publications..."
-              className="pl-9 bg-secondary/30"
+              className="pl-9 bg-white/5"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -206,7 +206,7 @@ export default function AdminResearchPage() {
         <div className="rounded-md border">
           <Table>
             <TableHeader>
-              <TableRow className="bg-secondary/20">
+              <TableRow className="bg-white/5">
                 <TableHead>Title</TableHead>
                 <TableHead>Field</TableHead>
                 <TableHead>Authors</TableHead>
@@ -218,17 +218,17 @@ export default function AdminResearchPage() {
               {isLoading ? (
                 <TableRow>
                   <TableCell colSpan={5} className="text-center py-8">
-                    <Loader2 className="w-6 h-6 animate-spin mx-auto text-muted-foreground" />
+                    <Loader2 className="w-6 h-6 animate-spin mx-auto text-white/70" />
                   </TableCell>
                 </TableRow>
               ) : filteredList.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">No publications found. Add one to get started.</TableCell>
+                  <TableCell colSpan={5} className="text-center py-8 text-white/70">No publications found. Add one to get started.</TableCell>
                 </TableRow>
               ) : (
                 filteredList.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell className="font-medium text-primary max-w-[250px] truncate" title={item.title}>
+                    <TableCell className="font-medium text-white max-w-[250px] truncate" title={item.title}>
                       {item.title}
                     </TableCell>
                     <TableCell>{item.field}</TableCell>
@@ -236,7 +236,7 @@ export default function AdminResearchPage() {
                     <TableCell>{item.date}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => openEditDialog(item)}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-primary/10" onClick={() => openEditDialog(item)}>
                           <Pencil className="h-4 w-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => item.id && handleDelete(item.id)}>

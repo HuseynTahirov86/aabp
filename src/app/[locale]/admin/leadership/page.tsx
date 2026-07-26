@@ -97,8 +97,8 @@ export default function AdminLeadershipPage() {
     <div>
       <div className="mb-10 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Leadership CMS</h1>
-          <p className="text-muted-foreground mt-2">Manage Executive Committee members.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Leadership CMS</h1>
+          <p className="text-white/70 mt-2">Manage Executive Committee members.</p>
         </div>
         <Button onClick={fetchMembers} variant="outline">Refresh List</Button>
       </div>
@@ -108,7 +108,7 @@ export default function AdminLeadershipPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this member? This action cannot be undone.</p>
+          <p className="text-white/70">Are you sure you want to delete this member? This action cannot be undone.</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -118,9 +118,9 @@ export default function AdminLeadershipPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1">
-          <Card className="shadow-sm border-border sticky top-8">
+          <Card className="shadow-sm border-white/10 sticky top-8">
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-lg text-primary flex items-center gap-2">
+              <CardTitle className="text-lg text-white flex items-center gap-2">
                 {editingMemberId ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />} 
                 {editingMemberId ? "Edit Member" : "New Member"}
               </CardTitle>
@@ -131,27 +131,27 @@ export default function AdminLeadershipPage() {
             <CardContent>
               <form onSubmit={handleSaveMember} className="space-y-4">
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Full Name</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Full Name</label>
                   <Input required value={newMember.name} onChange={e => setNewMember({...newMember, name: e.target.value})} placeholder="e.g. Dr. John Doe" />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Role / Title</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Role / Title</label>
                   <Input required value={newMember.role} onChange={e => setNewMember({...newMember, role: e.target.value})} placeholder="e.g. Chairman" />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Short Bio</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Short Bio</label>
                   <Textarea required value={newMember.bio} onChange={e => setNewMember({...newMember, bio: e.target.value})} placeholder="Short description" rows={3} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">LinkedIn Profile (Optional)</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">LinkedIn Profile (Optional)</label>
                   <Input value={newMember.linkedin} onChange={e => setNewMember({...newMember, linkedin: e.target.value})} placeholder="https://linkedin.com/in/..." />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Display Order</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Display Order</label>
                   <Input type="number" required value={newMember.order} onChange={e => setNewMember({...newMember, order: parseInt(e.target.value) || 0})} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1 block">Profile Photo Upload</label>
+                  <label className="text-xs font-medium text-white/70 mb-1 block">Profile Photo Upload</label>
                   <Input 
                     type="file" 
                     accept="image/*"
@@ -187,38 +187,38 @@ export default function AdminLeadershipPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <Card className="shadow-sm border-border">
+          <Card className="shadow-sm border-white/10">
             <CardHeader>
-              <CardTitle className="text-lg text-primary">Committee Members</CardTitle>
+              <CardTitle className="text-lg text-white">Committee Members</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (
                 <div className="flex justify-center py-8">
-                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  <Loader2 className="w-8 h-8 animate-spin text-white" />
                 </div>
               ) : members.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No members found.</p>
+                <p className="text-sm text-white/70">No members found.</p>
               ) : (
                 <div className="space-y-4">
                   {members.map((member) => (
-                    <div key={member.id} className="flex justify-between items-start p-4 bg-secondary/30 rounded-lg border border-border">
+                    <div key={member.id} className="flex justify-between items-start p-4 bg-white/5 rounded-lg border border-white/10">
                       <div className="flex gap-4">
                         {member.imageUrl ? (
                           <Image src={member.imageUrl} alt={member.name} width={64} height={64} className="rounded-full object-cover" />
                         ) : (
-                          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                          <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white font-bold">
                             {member.name.charAt(0)}
                           </div>
                         )}
                         <div>
-                          <h4 className="font-semibold text-primary">{member.name}</h4>
+                          <h4 className="font-semibold text-white">{member.name}</h4>
                           <p className="text-sm font-medium text-accent">{member.role}</p>
-                          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{member.bio}</p>
-                          <p className="text-xs text-muted-foreground mt-1">Order: {member.order}</p>
+                          <p className="text-xs text-white/70 mt-1 line-clamp-2">{member.bio}</p>
+                          <p className="text-xs text-white/70 mt-1">Order: {member.order}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10" onClick={() => startEdit(member)}>
+                        <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" onClick={() => startEdit(member)}>
                           <Edit className="w-4 h-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => member.id && handleDelete(member.id)}>

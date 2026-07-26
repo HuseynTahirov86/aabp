@@ -142,8 +142,8 @@ export default function AdminEventsPage() {
     <div>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-primary">Events CMS</h1>
-          <p className="text-muted-foreground mt-1">Manage and publish platform events.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Events CMS</h1>
+          <p className="text-white/70 mt-1">Manage and publish platform events.</p>
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={(open) => {
@@ -178,7 +178,7 @@ export default function AdminEventsPage() {
                 <select 
                   value={category} 
                   onChange={e => setCategory(e.target.value)} 
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   <option value="Conference">Conference</option>
                   <option value="Seminar">Seminar</option>
@@ -250,7 +250,7 @@ export default function AdminEventsPage() {
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
-          <p className="text-muted-foreground">Are you sure you want to delete this event? This action cannot be undone.</p>
+          <p className="text-white/70">Are you sure you want to delete this event? This action cannot be undone.</p>
           <DialogFooter>
             <Button variant="outline" onClick={() => { setIsDeleteOpen(false); setDeleteTargetId(null); }}>Cancel</Button>
             <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
@@ -267,16 +267,16 @@ export default function AdminEventsPage() {
             {regLoading ? (
               <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin" /></div>
             ) : registrations.filter(Boolean).length === 0 ? (
-              <p className="text-sm text-muted-foreground text-center py-8">No registrations yet.</p>
+              <p className="text-sm text-white/70 text-center py-8">No registrations yet.</p>
             ) : (
               <div className="space-y-2">
                 {registrations.filter(Boolean).map((u, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
+                  <div key={i} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                     <div>
                       <p className="font-semibold text-sm">{u!.firstName} {u!.lastName}</p>
-                      <p className="text-xs text-muted-foreground">{u!.email}</p>
+                      <p className="text-xs text-white/70">{u!.email}</p>
                     </div>
-                    <span className="text-xs text-muted-foreground">{u!.profession || '-'}</span>
+                    <span className="text-xs text-white/70">{u!.profession || '-'}</span>
                   </div>
                 ))}
               </div>
@@ -285,13 +285,13 @@ export default function AdminEventsPage() {
         </DialogContent>
       </Dialog>
 
-      <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
+      <div className="bg-white/10 p-6 rounded-2xl shadow-sm border border-white/10">
         <div className="flex items-center gap-4 mb-6">
           <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-white/70 w-4 h-4" />
             <Input 
               placeholder="Search events..." 
-              className="pl-9 bg-secondary/30"
+              className="pl-9 bg-white/5"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -301,7 +301,7 @@ export default function AdminEventsPage() {
         <div className="rounded-md border">
           <Table>
             <TableHeader>
-              <TableRow className="bg-secondary/20">
+              <TableRow className="bg-white/5">
                 <TableHead>Event Title</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Location</TableHead>
@@ -313,11 +313,11 @@ export default function AdminEventsPage() {
             <TableBody>
               {isLoading ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">Loading events...</TableCell>
+                  <TableCell colSpan={6} className="text-center py-8 text-white/70">Loading events...</TableCell>
                 </TableRow>
               ) : events.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">No events found. Create one to get started.</TableCell>
+                  <TableCell colSpan={6} className="text-center py-8 text-white/70">No events found. Create one to get started.</TableCell>
                 </TableRow>
               ) : (
                 events
@@ -328,7 +328,7 @@ export default function AdminEventsPage() {
                   )
                   .map((event) => (
                   <TableRow key={event.id}>
-                    <TableCell className="font-medium text-primary">{event.title}</TableCell>
+                    <TableCell className="font-medium text-white">{event.title}</TableCell>
                     <TableCell>{event.date}</TableCell>
                     <TableCell>{event.location}</TableCell>
                     <TableCell>{event.category}</TableCell>
@@ -339,10 +339,10 @@ export default function AdminEventsPage() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => handleViewRegistrations(event)} title="View Registrations">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-primary/10" onClick={() => handleViewRegistrations(event)} title="View Registrations">
                           <Users className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => openEditDialog(event)}>
+                        <Button variant="ghost" size="sm" className="h-8 w-8 text-white hover:bg-primary/10" onClick={() => openEditDialog(event)}>
                           Edit
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => event.id && handleDeleteEvent(event.id)}>

@@ -156,8 +156,8 @@ export default function SeedPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-serif text-3xl font-bold text-primary">Seed Demo Data</h1>
-        <p className="text-muted-foreground mt-2">
+        <h1 className="font-serif text-3xl font-bold text-white">Seed Demo Data</h1>
+        <p className="text-white/70 mt-2">
           Populate Firebase with sample AABP content for testing and demos.
         </p>
       </div>

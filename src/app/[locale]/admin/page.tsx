@@ -115,7 +115,7 @@ export default function AdminDashboardPage() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center pt-32">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        <Loader2 className="w-8 h-8 animate-spin text-white" />
       </div>
     );
   }
@@ -123,52 +123,52 @@ export default function AdminDashboardPage() {
   return (
     <div>
       <div className="mb-10">
-        <h1 className="text-3xl font-bold font-serif text-primary">System Overview</h1>
-        <p className="text-muted-foreground mt-2">Monitor platform metrics and recent activities.</p>
+        <h1 className="text-3xl font-bold font-serif text-white">System Overview</h1>
+        <p className="text-white/70 mt-2">Monitor platform metrics and recent activities.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-        <Card className="shadow-sm border-border">
+        <Card className="shadow-sm border-white/10">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total Members</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/70">Total Members</CardTitle>
             <Users className="w-4 h-4 text-accent" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-primary">{stats.members}</div>
-            <p className="text-xs text-muted-foreground mt-1">Registered users</p>
+            <div className="text-3xl font-bold text-white">{stats.members}</div>
+            <p className="text-xs text-white/70 mt-1">Registered users</p>
           </CardContent>
         </Card>
         
-        <Card className="shadow-sm border-border border-amber-500/30">
+        <Card className="shadow-sm border-white/10 border-amber-500/30">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Pending Approval</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/70">Pending Approval</CardTitle>
             <UserCheck className="w-4 h-4 text-amber-500" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-amber-500">{stats.pending}</div>
-            <p className="text-xs text-muted-foreground mt-1">Awaiting review</p>
+            <p className="text-xs text-white/70 mt-1">Awaiting review</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-sm border-border">
+        <Card className="shadow-sm border-white/10">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Active Events</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/70">Active Events</CardTitle>
             <CalendarDays className="w-4 h-4 text-accent" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-primary">{stats.events}</div>
-            <p className="text-xs text-muted-foreground mt-1">Total platform events</p>
+            <div className="text-3xl font-bold text-white">{stats.events}</div>
+            <p className="text-xs text-white/70 mt-1">Total platform events</p>
           </CardContent>
         </Card>
 
-        <Card className="shadow-sm border-border">
+        <Card className="shadow-sm border-white/10">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Research Publications</CardTitle>
+            <CardTitle className="text-sm font-medium text-white/70">Research Publications</CardTitle>
             <FileText className="w-4 h-4 text-accent" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-primary">{stats.research}</div>
-            <p className="text-xs text-muted-foreground mt-1">Total publications</p>
+            <div className="text-3xl font-bold text-white">{stats.research}</div>
+            <p className="text-xs text-white/70 mt-1">Total publications</p>
           </CardContent>
         </Card>
       </div>
@@ -176,43 +176,43 @@ export default function AdminDashboardPage() {
       {!analyticsLoading && (
         <>
           <div className="mb-8">
-            <h2 className="text-xl font-bold font-serif text-primary mb-6">Analytics</h2>
+            <h2 className="text-xl font-bold font-serif text-white mb-6">Analytics</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <Card className="shadow-sm border-border">
+              <Card className="shadow-sm border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-base text-primary">Attendance Overview</CardTitle>
+                  <CardTitle className="text-base text-white">Attendance Overview</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center gap-6">
-                    <div className="flex-1 p-4 bg-secondary/30 rounded-lg text-center">
+                    <div className="flex-1 p-4 bg-white/5 rounded-lg text-center">
                       <Ticket className="w-5 h-5 text-accent mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-primary">{attendanceStats.total}</div>
-                      <p className="text-xs text-muted-foreground">Total Registrations</p>
+                      <div className="text-2xl font-bold text-white">{attendanceStats.total}</div>
+                      <p className="text-xs text-white/70">Total Registrations</p>
                     </div>
-                    <div className="flex-1 p-4 bg-secondary/30 rounded-lg text-center">
+                    <div className="flex-1 p-4 bg-white/5 rounded-lg text-center">
                       <TrendingUp className="w-5 h-5 text-accent mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-primary">{attendanceStats.avg.toFixed(1)}</div>
-                      <p className="text-xs text-muted-foreground">Avg per Event</p>
+                      <div className="text-2xl font-bold text-white">{attendanceStats.avg.toFixed(1)}</div>
+                      <p className="text-xs text-white/70">Avg per Event</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="shadow-sm border-border">
+              <Card className="shadow-sm border-white/10">
                 <CardHeader>
-                  <CardTitle className="text-base text-primary">Top Events</CardTitle>
+                  <CardTitle className="text-base text-white">Top Events</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {topEvents.length === 0 ? (
-                    <p className="text-sm text-muted-foreground">No registrations yet.</p>
+                    <p className="text-sm text-white/70">No registrations yet.</p>
                   ) : (
                     <div className="space-y-2">
                       {topEvents.map((ev, i) => (
-                        <div key={i} className="flex items-center justify-between p-2 bg-secondary/30 rounded">
+                        <div key={i} className="flex items-center justify-between p-2 bg-white/5 rounded">
                           <div className="flex items-center gap-2 min-w-0">
-                            <span className="text-xs font-bold text-muted-foreground w-5 shrink-0">#{i + 1}</span>
-                            <span className="text-sm text-primary truncate">{ev.title}</span>
+                            <span className="text-xs font-bold text-white/70 w-5 shrink-0">#{i + 1}</span>
+                            <span className="text-sm text-white truncate">{ev.title}</span>
                           </div>
                           <span className="text-sm font-semibold text-accent shrink-0 ml-2">{ev.count}</span>
                         </div>
@@ -223,13 +223,13 @@ export default function AdminDashboardPage() {
               </Card>
             </div>
 
-            <Card className="shadow-sm border-border">
+            <Card className="shadow-sm border-white/10">
               <CardHeader>
-                <CardTitle className="text-base text-primary">Monthly Registrations</CardTitle>
+                <CardTitle className="text-base text-white">Monthly Registrations</CardTitle>
               </CardHeader>
               <CardContent>
                 {monthlyData.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">No data available.</p>
+                  <p className="text-sm text-white/70">No data available.</p>
                 ) : (
                   <div className="flex items-end justify-between gap-2 h-40">
                     {monthlyData.map((m, i) => {
@@ -238,7 +238,7 @@ export default function AdminDashboardPage() {
                       return (
                         <div key={i} className="flex flex-col items-center flex-1 min-w-0">
                           <div className="flex flex-col items-center w-full">
-                            <span className="text-xs font-semibold text-primary mb-1">{m.count}</span>
+                            <span className="text-xs font-semibold text-white mb-1">{m.count}</span>
                             <div className="w-full bg-border rounded-t-sm" style={{ height: '100px', position: 'relative' }}>
                               <div
                                 className="absolute bottom-0 w-full bg-accent rounded-t-sm transition-all duration-300"
@@ -246,7 +246,7 @@ export default function AdminDashboardPage() {
                               />
                             </div>
                           </div>
-                          <span className="text-xs text-muted-foreground mt-2">{m.label}</span>
+                          <span className="text-xs text-white/70 mt-2">{m.label}</span>
                         </div>
                       );
                     })}
@@ -259,21 +259,21 @@ export default function AdminDashboardPage() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="shadow-sm border-border">
+        <Card className="shadow-sm border-white/10">
           <CardHeader>
-            <CardTitle className="text-lg text-primary">Recent Member Registrations</CardTitle>
+            <CardTitle className="text-lg text-white">Recent Member Registrations</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {recentUsers.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No recent registrations.</p>
+                <p className="text-sm text-white/70">No recent registrations.</p>
               ) : recentUsers.map((user, i) => (
-                <div key={user.id || i} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
+                <div key={user.id || i} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                   <div>
-                    <p className="font-semibold text-primary text-sm">{user.firstName} {user.lastName}</p>
-                    <p className="text-xs text-muted-foreground">{user.email}</p>
+                    <p className="font-semibold text-white text-sm">{user.firstName} {user.lastName}</p>
+                    <p className="text-xs text-white/70">{user.email}</p>
                   </div>
-                  <span className={`text-xs border px-2 py-1 rounded ${user.role === 'PENDING' ? 'bg-amber-500/10 border-amber-500/30 text-amber-500' : 'bg-secondary border-border text-foreground'}`}>
+                  <span className={`text-xs border px-2 py-1 rounded ${user.role === 'PENDING' ? 'bg-amber-500/20 border-amber-500/30 text-amber-300' : 'bg-white/10 border-white/10 text-white'}`}>
                     {user.role || 'MEMBER'}
                   </span>
                 </div>
@@ -282,21 +282,21 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
         
-        <Card className="shadow-sm border-border">
+        <Card className="shadow-sm border-white/10">
           <CardHeader>
-            <CardTitle className="text-lg text-primary">Recent Events</CardTitle>
+            <CardTitle className="text-lg text-white">Recent Events</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {upcomingEvents.length === 0 ? (
-                <p className="text-sm text-muted-foreground">No events found.</p>
+                <p className="text-sm text-white/70">No events found.</p>
               ) : upcomingEvents.map((ev, i) => (
-                <div key={ev.id || i} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg border-l-4 border-accent">
+                <div key={ev.id || i} className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-4 border-accent">
                   <div>
-                    <p className="font-semibold text-primary text-sm">{ev.title}</p>
-                    <p className="text-xs text-muted-foreground">{ev.date}</p>
+                    <p className="font-semibold text-white text-sm">{ev.title}</p>
+                    <p className="text-xs text-white/70">{ev.date}</p>
                   </div>
-                  <span className="text-xs font-bold text-primary">{ev.status}</span>
+                  <span className="text-xs font-bold text-white">{ev.status}</span>
                 </div>
               ))}
             </div>

@@ -73,8 +73,8 @@ export default function DashboardPage() {
       <Section className="py-12 md:py-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
-            <h1 className="text-4xl font-bold font-serif text-primary mb-2">{t('title')}</h1>
-            <p className="text-muted-foreground text-lg">{t('welcome', { name: firstName })}</p>
+            <h1 className="text-4xl font-bold font-serif text-foreground mb-2">{t('title')}</h1>
+            <p className="text-foreground/70 text-lg">{t('welcome', { name: firstName })}</p>
           </div>
           <div className="flex gap-3 mt-4 md:mt-0">
             {userData?.role === 'ADMIN' || userData?.role === 'SUPER_ADMIN' ? (
@@ -99,41 +99,41 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {/* Quick Stat Cards */}
-          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm">
+          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/80">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{t('myEvents')}</CardTitle>
+              <CardTitle className="text-sm font-medium text-foreground/70">{t('myEvents')}</CardTitle>
               <Calendar className="w-4 h-4 text-accent" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">{eventsLoading ? "-" : userEvents.length}</div>
-              <p className="text-xs text-muted-foreground mt-1">{t('upcomingEvents')}</p>
+              <div className="text-2xl font-bold text-foreground">{eventsLoading ? "-" : userEvents.length}</div>
+              <p className="text-xs text-foreground/60 mt-1">{t('upcomingEvents')}</p>
             </CardContent>
           </Card>
           
-          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/50 backdrop-blur-sm">
+          <Card className="shadow-sm border-border hover:shadow-md transition-all duration-300 hover:-translate-y-1 bg-card/80">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">{t('publications')}</CardTitle>
+              <CardTitle className="text-sm font-medium text-foreground/70">{t('publications')}</CardTitle>
               <FileText className="w-4 h-4 text-accent" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">{publicationsCount}</div>
-              <p className="text-xs text-muted-foreground mt-1">{t('foundMatches')}</p>
+              <div className="text-2xl font-bold text-foreground">{publicationsCount}</div>
+              <p className="text-xs text-foreground/60 mt-1">{t('foundMatches')}</p>
             </CardContent>
           </Card>
 
           <Link href="/dashboard/network" className="block group">
-            <Card className="shadow-sm border-border transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 h-full cursor-pointer bg-card/50 backdrop-blur-sm relative overflow-hidden">
+            <Card className="shadow-sm border-border transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-1 h-full cursor-pointer bg-card/80 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-tr from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <CardHeader className="flex flex-row items-center justify-between pb-2 relative z-10">
-                <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
+                <CardTitle className="text-sm font-medium text-foreground/70 flex items-center gap-2">
                   {t('network')}
                   <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent" />
                 </CardTitle>
                 <User className="w-4 h-4 text-accent" />
               </CardHeader>
               <CardContent className="relative z-10">
-                <div className="text-2xl font-bold text-primary">{networkCount}</div>
-                <p className="text-xs text-muted-foreground mt-1">{t('connectionsMade')}</p>
+                <div className="text-2xl font-bold text-foreground">{networkCount}</div>
+                <p className="text-xs text-foreground/60 mt-1">{t('connectionsMade')}</p>
               </CardContent>
             </Card>
           </Link>
@@ -151,24 +151,24 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold font-serif text-primary mb-6">{t('recentActivity')}</h2>
+            <h2 className="text-2xl font-bold font-serif text-foreground mb-6">{t('recentActivity')}</h2>
             {eventsLoading ? (
                <div className="grid gap-4">
                  <Skeleton className="h-24 w-full rounded-xl" />
                  <Skeleton className="h-24 w-full rounded-xl" />
                </div>
             ) : userEvents.length === 0 ? (
-              <Card className="shadow-sm border-border p-8 text-center text-muted-foreground">
+              <Card className="shadow-sm border-border p-8 text-center text-foreground/60 bg-card/80">
                 <p>{t('noRecentEvents')}</p>
                 <Button variant="outline" className="mt-4" onClick={() => router.push('/events')}>{t('browseEvents')}</Button>
               </Card>
             ) : (
               <div className="grid gap-4">
                 {userEvents.map(ev => (
-                  <Card key={ev.id} className="shadow-sm border-border p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center hover:shadow-md transition-all duration-300 group bg-card/50 backdrop-blur-sm">
+                  <Card key={ev.id} className="shadow-sm border-border p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center hover:shadow-md transition-all duration-300 group bg-card/80">
                     <div>
-                      <h4 className="font-semibold text-primary group-hover:text-accent transition-colors">{ev.title}</h4>
-                      <p className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
+                      <h4 className="font-semibold text-foreground group-hover:text-accent transition-colors">{ev.title}</h4>
+                      <p className="text-sm text-foreground/60 flex items-center gap-2 mt-1">
                         <Calendar className="w-3 h-3" /> {ev.date} | <MapPin className="w-3 h-3 ml-2" /> {ev.location}
                       </p>
                     </div>
@@ -180,28 +180,28 @@ export default function DashboardPage() {
           </div>
           
           <div>
-            <h2 className="text-2xl font-bold font-serif text-primary mb-6">{t('quickLinks')}</h2>
-            <div className="bg-card/50 backdrop-blur-md p-6 rounded-2xl shadow-sm border border-border flex flex-col gap-3">
+            <h2 className="text-2xl font-bold font-serif text-foreground mb-6">{t('quickLinks')}</h2>
+            <div className="bg-card/80 p-6 rounded-2xl shadow-sm border border-border flex flex-col gap-3">
               <a href="mailto:research@aabporg.uk" className="w-full">
-                <Button variant="ghost" className="justify-start w-full text-primary hover:text-accent hover:bg-secondary group transition-all">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
                   {t('submitResearch')}
                   <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
                 </Button>
               </a>
               <Link href="/career" passHref className="w-full">
-                <Button variant="ghost" className="justify-start w-full text-primary hover:text-accent hover:bg-secondary group transition-all">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
                   {t('findCareer')}
                   <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
                 </Button>
               </Link>
               <Link href="/dashboard/settings" passHref className="w-full">
-                <Button variant="ghost" className="justify-start w-full text-primary hover:text-accent hover:bg-secondary group transition-all">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
                   {t('updateProfile')}
                   <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
                 </Button>
               </Link>
               <a href="mailto:contact@aabporg.uk" className="w-full">
-                <Button variant="ghost" className="justify-start w-full text-primary hover:text-accent hover:bg-secondary group transition-all">
+                <Button variant="ghost" className="justify-start w-full text-foreground hover:text-accent hover:bg-secondary group transition-all">
                   {t('contactSupport')}
                   <ArrowRight className="ml-auto w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-accent" />
                 </Button>

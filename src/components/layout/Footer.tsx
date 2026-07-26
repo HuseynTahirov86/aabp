@@ -25,6 +25,12 @@ const InstagramIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const FacebookIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+  </svg>
+);
+
 export async function Footer() {
   const t = await getTranslations('Footer');
   const year = new Date().getFullYear();
@@ -53,8 +59,11 @@ export async function Footer() {
               <a href="https://twitter.com/aabporg" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
                 <TwitterIcon className="h-4 w-4" />
               </a>
-              <a href="https://instagram.com/aabporg" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
+              <a href="https://instagram.com/aabporg_uk" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
                 <InstagramIcon className="h-4 w-4" />
+              </a>
+              <a href="https://www.facebook.com/p/Association-of-Azerbaijan-British-Professionals-61565702764153/" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
+                <FacebookIcon className="h-4 w-4" />
               </a>
             </div>
           </div>

@@ -160,3 +160,17 @@ export const checkUserRegistration = async (eventId: string, userId: string): Pr
     return false;
   }
 };
+
+export const getEventRegistrations = async (eventId: string): Promise<{ userId: string; createdAt: unknown }[]> => {
+  try {
+    const q = query(
+      collection(getDb(), REGISTRATIONS_COLLECTION),
+      where('eventId', '==', eventId)
+    );
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => doc.data() as { userId: string; createdAt: unknown });
+  } catch (error) {
+    console.error("Error fetching event registrations:", error);
+    return [];
+  }
+};

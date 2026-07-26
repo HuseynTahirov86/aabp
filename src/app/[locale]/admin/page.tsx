@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, CalendarDays, FileText, ArrowUpRight, Loader2 } from "lucide-react";
-import { getTotalUsersCount, getAllUsers, AABPUser } from "@/lib/firebase/db-users";
+import { Users, CalendarDays, FileText, Loader2, UserCheck } from "lucide-react";
+import { getTotalUsersCount, getPendingUsersCount, getAllUsers, AABPUser } from "@/lib/firebase/db-users";
 import { getEvents, AABPEvent } from "@/lib/firebase/db-events";
 import { getResearch } from "@/lib/firebase/db-research";
 
 export default function AdminDashboardPage() {
-  const [stats, setStats] = useState({ members: 0, events: 0, research: 0 });
+  const [stats, setStats] = useState({ members: 0, events: 0, research: 0, pending: 0 });
   const [recentUsers, setRecentUsers] = useState<AABPUser[]>([]);
   const [upcomingEvents, setUpcomingEvents] = useState<AABPEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -16,14 +16,18 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
-        const membersCount = await getTotalUsersCount();
-        const allEvents = await getEvents(true); // Published only
-        const allResearch = await getResearch();
+        const [membersCount, pendingCount, allEvents, allResearch] = await Promise.all([
+          getTotalUsersCount(),
+          getPendingUsersCount(),
+          getEvents(true),
+          getResearch(),
+        ]);
         
         setStats({
           members: membersCount,
           events: allEvents.length,
-          research: allResearch.length
+          research: allResearch.length,
+          pending: pendingCount,
         });
         
         const users = await getAllUsers(5);
@@ -54,8 +58,7 @@ export default function AdminDashboardPage() {
         <p className="text-muted-foreground mt-2">Monitor platform metrics and recent activities.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <Card className="shadow-sm border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Total Members</CardTitle>
@@ -63,12 +66,21 @@ export default function AdminDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-primary">{stats.members}</div>
-            <p className="text-xs text-green-600 flex items-center mt-1 font-medium">
-              <ArrowUpRight className="w-3 h-3 mr-1" /> Live count
-            </p>
+            <p className="text-xs text-muted-foreground mt-1">Registered users</p>
           </CardContent>
         </Card>
         
+        <Card className="shadow-sm border-border border-amber-500/30">
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">Pending Approval</CardTitle>
+            <UserCheck className="w-4 h-4 text-amber-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold text-amber-500">{stats.pending}</div>
+            <p className="text-xs text-muted-foreground mt-1">Awaiting review</p>
+          </CardContent>
+        </Card>
+
         <Card className="shadow-sm border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">Active Events</CardTitle>
@@ -87,9 +99,7 @@ export default function AdminDashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-primary">{stats.research}</div>
-            <p className="text-xs text-green-600 flex items-center mt-1 font-medium">
-              <ArrowUpRight className="w-3 h-3 mr-1" /> Live count
-            </p>
+            <p className="text-xs text-muted-foreground mt-1">Total publications</p>
           </CardContent>
         </Card>
       </div>
@@ -109,7 +119,9 @@ export default function AdminDashboardPage() {
                     <p className="font-semibold text-primary text-sm">{user.firstName} {user.lastName}</p>
                     <p className="text-xs text-muted-foreground">{user.email}</p>
                   </div>
-                  <span className="text-xs bg-secondary border border-border px-2 py-1 rounded text-foreground">{user.role}</span>
+                  <span className={`text-xs border px-2 py-1 rounded ${user.role === 'PENDING' ? 'bg-amber-500/10 border-amber-500/30 text-amber-500' : 'bg-secondary border-border text-foreground'}`}>
+                    {user.role || 'MEMBER'}
+                  </span>
                 </div>
               ))}
             </div>

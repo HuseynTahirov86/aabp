@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Plus, Search, Trash2 } from "lucide-react";
+import { Plus, Search, Trash2, Users, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
-import { getEvents, addEvent, updateEvent, deleteEvent, AABPEvent } from "@/lib/firebase/db-events";
+import { getEvents, addEvent, updateEvent, deleteEvent, getEventRegistrations, AABPEvent } from "@/lib/firebase/db-events";
+import { getUserProfile, AABPUser } from "@/lib/firebase/db-users";
 
 export default function AdminEventsPage() {
   const [events, setEvents] = useState<AABPEvent[]>([]);
@@ -27,6 +28,10 @@ export default function AdminEventsPage() {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [regViewOpen, setRegViewOpen] = useState(false);
+  const [regEventTitle, setRegEventTitle] = useState("");
+  const [registrations, setRegistrations] = useState<(AABPUser | null)[]>([]);
+  const [regLoading, setRegLoading] = useState(false);
 
   useEffect(() => {
     fetchEvents();
@@ -109,6 +114,22 @@ export default function AdminEventsPage() {
     } finally {
       setIsDeleteOpen(false);
       setDeleteTargetId(null);
+    }
+  };
+
+  const handleViewRegistrations = async (event: AABPEvent) => {
+    if (!event.id) return;
+    setRegEventTitle(event.title);
+    setRegViewOpen(true);
+    setRegLoading(true);
+    try {
+      const regs = await getEventRegistrations(event.id);
+      const userProfiles = await Promise.all(regs.map(r => getUserProfile(r.userId)));
+      setRegistrations(userProfiles);
+    } catch {
+      toast.error("Failed to load registrations");
+    } finally {
+      setRegLoading(false);
     }
   };
 
@@ -222,6 +243,33 @@ export default function AdminEventsPage() {
         </DialogContent>
       </Dialog>
 
+      <Dialog open={regViewOpen} onOpenChange={setRegViewOpen}>
+        <DialogContent className="sm:max-w-[500px]">
+          <DialogHeader>
+            <DialogTitle>Registrations — {regEventTitle}</DialogTitle>
+          </DialogHeader>
+          <div className="max-h-[400px] overflow-y-auto">
+            {regLoading ? (
+              <div className="flex justify-center py-8"><Loader2 className="w-6 h-6 animate-spin" /></div>
+            ) : registrations.filter(Boolean).length === 0 ? (
+              <p className="text-sm text-muted-foreground text-center py-8">No registrations yet.</p>
+            ) : (
+              <div className="space-y-2">
+                {registrations.filter(Boolean).map((u, i) => (
+                  <div key={i} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
+                    <div>
+                      <p className="font-semibold text-sm">{u!.firstName} {u!.lastName}</p>
+                      <p className="text-xs text-muted-foreground">{u!.email}</p>
+                    </div>
+                    <span className="text-xs text-muted-foreground">{u!.profession || '-'}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+
       <div className="bg-card p-6 rounded-2xl shadow-sm border border-border">
         <div className="flex items-center gap-4 mb-6">
           <div className="relative flex-1 max-w-sm">
@@ -275,7 +323,10 @@ export default function AdminEventsPage() {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
+                      <div className="flex justify-end gap-1">
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => handleViewRegistrations(event)} title="View Registrations">
+                          <Users className="h-4 w-4" />
+                        </Button>
                         <Button variant="ghost" size="sm" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => openEditDialog(event)}>
                           Edit
                         </Button>

@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllUsers, AABPUser, updateUserProfile } from "@/lib/firebase/db-users";
-import { Loader2 } from "lucide-react";
+import { getAllUsers, updateUserRole, deleteUser, AABPUser } from "@/lib/firebase/db-users";
+import { Loader2, Download, CheckCircle, XCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 export default function AdminMembersPage() {
   const [users, setUsers] = useState<AABPUser[]>([]);
   const [loading, setLoading] = useState(true);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  useEffect(() => { fetchUsers(); }, []);
 
   async function fetchUsers() {
     setLoading(true);
@@ -22,20 +23,55 @@ export default function AdminMembersPage() {
     setLoading(false);
   }
 
-  const toggleUserRole = async (userId: string, currentRole: string) => {
+  const handleApprove = async (userId: string) => {
     try {
-      let newRole = 'MEMBER';
-      if (currentRole === 'MEMBER' || !currentRole) newRole = 'EDITOR';
-      else if (currentRole === 'EDITOR') newRole = 'ADMIN';
-      else if (currentRole === 'ADMIN') newRole = 'MEMBER';
+      await updateUserRole(userId, "MEMBER");
+      setUsers(users.map(u => u.id === userId ? { ...u, role: "MEMBER" } : u));
+      toast.success("Member approved");
+    } catch { toast.error("Failed to approve"); }
+  };
 
-      await updateUserProfile(userId, { role: newRole });
-      setUsers(users.map(u => u.id === userId ? { ...u, role: newRole } : u));
-      toast.success(`Role updated to ${newRole}`);
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to update role");
-    }
+  const handleReject = async (userId: string) => {
+    try {
+      await deleteUser(userId);
+      setUsers(users.filter(u => u.id !== userId));
+      toast.success("Application rejected and removed");
+    } catch { toast.error("Failed to reject"); }
+  };
+
+  const handleDelete = (userId: string) => {
+    setDeleteTarget(userId);
+    setDeleteOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!deleteTarget) return;
+    try {
+      await deleteUser(deleteTarget);
+      setUsers(users.filter(u => u.id !== deleteTarget));
+      toast.success("User deleted");
+    } catch { toast.error("Failed to delete user"); }
+    finally { setDeleteOpen(false); setDeleteTarget(null); }
+  };
+
+  const handleExportCsv = () => {
+    const headers = "Name,Email,Profession,Role,Phone,LinkedIn,Registered\n";
+    const rows = users.map(u =>
+      `"${u.firstName} ${u.lastName}","${u.email}","${u.profession || ''}","${u.role}","${u.phone || ''}","${u.linkedin || ''}","${u.createdAt || ''}"`
+    ).join("\n");
+    const blob = new Blob([headers + rows], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "aabp-members.csv"; a.click();
+    URL.revokeObjectURL(url);
+    toast.success("CSV exported");
+  };
+
+  const getRoleBadge = (role: string) => {
+    if (role === 'PENDING') return 'bg-amber-500/10 text-amber-500 border border-amber-500/30';
+    if (role === 'ADMIN' || role === 'SUPER_ADMIN') return 'bg-primary text-white';
+    if (role === 'EDITOR') return 'bg-accent text-white';
+    return 'bg-secondary text-primary';
   };
 
   return (
@@ -43,20 +79,36 @@ export default function AdminMembersPage() {
       <div className="mb-10 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold font-serif text-primary">Member Directory</h1>
-          <p className="text-muted-foreground mt-2">Manage user accounts and roles.</p>
+          <p className="text-muted-foreground mt-2">Manage user accounts, approvals, and roles.</p>
         </div>
-        <Button onClick={fetchUsers} variant="outline">Refresh List</Button>
+        <div className="flex gap-3">
+          <Button onClick={handleExportCsv} variant="outline">
+            <Download className="w-4 h-4 mr-2" /> Export CSV
+          </Button>
+          <Button onClick={fetchUsers} variant="outline">Refresh List</Button>
+        </div>
       </div>
+
+      <Dialog open={deleteOpen} onOpenChange={setDeleteOpen}>
+        <DialogContent className="sm:max-w-[400px]">
+          <DialogHeader>
+            <DialogTitle>Confirm Delete</DialogTitle>
+          </DialogHeader>
+          <p className="text-muted-foreground">Are you sure you want to delete this user? This action cannot be undone.</p>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => { setDeleteOpen(false); setDeleteTarget(null); }}>Cancel</Button>
+            <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <Card className="shadow-sm border-border">
         <CardHeader>
-          <CardTitle className="text-lg text-primary">All Registered Users</CardTitle>
+          <CardTitle className="text-lg text-primary">All Registered Users ({users.length})</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="flex justify-center py-8">
-              <Loader2 className="w-8 h-8 animate-spin text-primary" />
-            </div>
+            <div className="flex justify-center py-8"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>
           ) : users.length === 0 ? (
             <p className="text-sm text-muted-foreground">No members found.</p>
           ) : (
@@ -64,35 +116,42 @@ export default function AdminMembersPage() {
               <table className="w-full text-sm text-left">
                 <thead className="text-xs text-muted-foreground uppercase bg-secondary/30">
                   <tr>
-                    <th className="px-6 py-3 rounded-tl-lg">Name</th>
-                    <th className="px-6 py-3">Email</th>
-                    <th className="px-6 py-3">Profession</th>
-                    <th className="px-6 py-3">Role</th>
-                    <th className="px-6 py-3 rounded-tr-lg">Action</th>
+                    <th className="px-4 py-3 rounded-tl-lg">Name</th>
+                    <th className="px-4 py-3">Email</th>
+                    <th className="px-4 py-3">Profession</th>
+                    <th className="px-4 py-3">Role</th>
+                    <th className="px-4 py-3 rounded-tr-lg">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.map((user) => (
                     <tr key={user.id} className="bg-card border-b border-border">
-                      <td className="px-6 py-4 font-medium text-primary whitespace-nowrap">
-                        {user.firstName} {user.lastName}
-                      </td>
-                      <td className="px-6 py-4 text-muted-foreground">{user.email}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{user.profession || '-'}</td>
-                      <td className="px-6 py-4">
-                        <span className={`px-2 py-1 rounded text-xs font-medium ${user.role === 'ADMIN' || user.role === 'SUPER_ADMIN' ? 'bg-primary text-white' : user.role === 'EDITOR' ? 'bg-accent text-white' : 'bg-secondary text-primary'}`}>
+                      <td className="px-4 py-3 font-medium text-primary whitespace-nowrap">{user.firstName} {user.lastName}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{user.profession || '-'}</td>
+                      <td className="px-4 py-3">
+                        <span className={`px-2 py-1 rounded text-xs font-medium ${getRoleBadge(user.role || 'MEMBER')}`}>
                           {user.role || 'MEMBER'}
                         </span>
                       </td>
-                      <td className="px-6 py-4">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={() => toggleUserRole(user.id, user.role || 'MEMBER')}
-                          disabled={user.role === 'SUPER_ADMIN'}
-                        >
-                          Change Role
-                        </Button>
+                      <td className="px-4 py-3">
+                        <div className="flex gap-1">
+                          {user.role === 'PENDING' && (
+                            <>
+                              <Button variant="ghost" size="icon" className="h-8 w-8 text-green-500 hover:text-green-700 hover:bg-green-50" onClick={() => handleApprove(user.id)} title="Approve">
+                                <CheckCircle className="h-4 w-4" />
+                              </Button>
+                              <Button variant="ghost" size="icon" className="h-8 w-8 text-amber-500 hover:text-amber-700 hover:bg-amber-50" onClick={() => handleReject(user.id)} title="Reject">
+                                <XCircle className="h-4 w-4" />
+                              </Button>
+                            </>
+                          )}
+                          {user.role !== 'SUPER_ADMIN' && user.role !== 'PENDING' && (
+                            <Button variant="ghost" size="icon" className="h-8 w-8 text-red-500 hover:text-red-700 hover:bg-red-50" onClick={() => handleDelete(user.id)} title="Delete">
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   ))}

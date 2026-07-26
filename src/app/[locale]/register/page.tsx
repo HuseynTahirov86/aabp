@@ -77,7 +77,7 @@ export default function RegisterPage() {
         phone,
         linkedin,
         cvUrl,
-        role: "MEMBER",
+        role: "PENDING",
         publicProfile: true,
         createdAt: new Date().toISOString()
       });

@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, getDocs, getDoc, query, where, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, query, where, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 
 export interface AABPUser {
   id: string;
@@ -131,5 +131,37 @@ export const getAllUsers = async (maxLimit?: number): Promise<AABPUser[]> => {
   } catch (error) {
     console.error("Error fetching all users:", error);
     return [];
+  }
+};
+
+export const getPendingUsersCount = async (): Promise<number> => {
+  try {
+    const { getCountFromServer } = await import('firebase/firestore');
+    const usersRef = collection(getDb(), USERS_COLLECTION);
+    const q = query(usersRef, where('role', '==', 'PENDING'));
+    const snapshot = await getCountFromServer(q);
+    return snapshot.data().count;
+  } catch (error) {
+    console.error("Error fetching pending users count:", error);
+    return 0;
+  }
+};
+
+export const updateUserRole = async (id: string, role: string): Promise<void> => {
+  try {
+    const docRef = doc(getDb(), USERS_COLLECTION, id);
+    await updateDoc(docRef, { role });
+  } catch (error) {
+    console.error("Error updating user role:", error);
+    throw error;
+  }
+};
+
+export const deleteUser = async (id: string): Promise<void> => {
+  try {
+    await deleteDoc(doc(getDb(), USERS_COLLECTION, id));
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    throw error;
   }
 };

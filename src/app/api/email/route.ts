@@ -51,6 +51,31 @@ export async function POST(req: Request) {
           </div>
         </div>
       `;
+    } else if (type === 'APPROVAL') {
+      subject = 'Your AABP Membership Has Been Approved';
+      htmlContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <h2 style="color: #003366;">Congratulations, ${firstName || 'Member'}!</h2>
+          <p>Your membership application for the <strong>Association of Azerbaijan British Professionals</strong> has been approved.</p>
+          <p>You now have full access to member features including events, networking opportunities, and exclusive content.</p>
+          <p>Log in to your account to get started.</p>
+          <br/>
+          <p>Best regards,<br/><strong>The AABP Executive Committee</strong></p>
+        </div>
+      `;
+    } else if (type === 'EVENT_CONFIRMATION') {
+      const { eventTitle, eventDate } = body;
+      subject = `Registration Confirmed: ${eventTitle || 'Event'}`;
+      htmlContent = `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <h2 style="color: #003366;">Registration Confirmed, ${firstName || 'Member'}!</h2>
+          <p>You have successfully registered for <strong>${eventTitle || 'the event'}</strong>.</p>
+          <p><strong>Date:</strong> ${eventDate || 'TBA'}</p>
+          <p>We look forward to seeing you there. If you have any questions, please feel free to contact us.</p>
+          <br/>
+          <p>Best regards,<br/><strong>The AABP Executive Committee</strong></p>
+        </div>
+      `;
     }
 
     const adminEmail = process.env.CONTACT_EMAIL || process.env.SMTP_EMAIL || 'contact@aabporg.uk';

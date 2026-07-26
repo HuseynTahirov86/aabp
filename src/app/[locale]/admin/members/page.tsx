@@ -25,9 +25,18 @@ export default function AdminMembersPage() {
 
   const handleApprove = async (userId: string) => {
     try {
+      const user = users.find(u => u.id === userId);
       await updateUserRole(userId, "MEMBER");
       setUsers(users.map(u => u.id === userId ? { ...u, role: "MEMBER" } : u));
       toast.success("Member approved");
+
+      if (user?.email) {
+        fetch('/api/email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: user.email, firstName: user.firstName, type: 'APPROVAL' }),
+        }).catch(() => {});
+      }
     } catch { toast.error("Failed to approve"); }
   };
 

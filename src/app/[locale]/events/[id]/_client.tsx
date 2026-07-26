@@ -70,6 +70,20 @@ export function EventDetailsClient() {
         setIsFull(true);
       }
       toast.success("Successfully registered for the event!");
+
+      if (event) {
+        fetch('/api/email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: currentUser.email,
+            firstName: currentUser.displayName || '',
+            type: 'EVENT_CONFIRMATION',
+            eventTitle: event.title,
+            eventDate: event.date,
+          }),
+        }).catch(() => {});
+      }
     } catch {
       toast.error("Failed to register. Please try again.");
     } finally {

@@ -53,7 +53,7 @@ export async function Footer() {
               {t('description')}
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://linkedin.com/company/aabporg" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
+              <a href="https://uk.linkedin.com/company/association-of-azerbaijani-british-professionals" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
                 <LinkedinIcon className="h-4 w-4" />
               </a>
               <a href="https://twitter.com/aabporg" target="_blank" rel="noopener noreferrer" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">

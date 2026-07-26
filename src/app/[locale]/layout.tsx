@@ -126,7 +126,7 @@ export default async function RootLayout({
             foundingDate: "2015",
             description:
               "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
-            sameAs: ["https://linkedin.com/company/aabporg"],
+            sameAs: ["https://uk.linkedin.com/company/association-of-azerbaijani-british-professionals", "https://instagram.com/aabporg_uk", "https://www.facebook.com/p/Association-of-Azerbaijan-British-Professionals-61565702764153/"],
             logo: "https://aabporg.uk/logo.png",
             address: {
               "@type": "PostalAddress",

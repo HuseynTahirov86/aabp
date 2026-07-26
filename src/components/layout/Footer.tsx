@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { getTranslations, getLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 const LinkedinIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
@@ -27,7 +27,6 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 
 export async function Footer() {
   const t = await getTranslations('Footer');
-  const locale = await getLocale();
   const year = new Date().getFullYear();
   return (
     <footer className="bg-primary text-white pt-20 pb-10">
@@ -149,18 +148,10 @@ export async function Footer() {
       </div>
       <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
         <p className="text-white/20 text-xs">
-          {(() => {
-            const nameLink = (
-              <a key="name" href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/70 hover:text-accent transition-colors text-lg">
-                Hüseyn Tahirov
-              </a>
-            );
-            const isAz = locale === "az";
-            if (isAz) {
-              return <>{nameLink} tərəfindən hazırlanıb.</>;
-            }
-            return <>{t('developedBy')} {nameLink}</>;
-          })()}
+          Developed with dedication by{' '}
+          <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/70 hover:text-accent transition-colors text-lg">
+            Hüseyn Tahirov
+          </a>
         </p>
       </div>
     </footer>

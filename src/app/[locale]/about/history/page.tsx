@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { Timeline } from '@/components/shared/data-display/Timeline';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HistoryPage() {
-  const t = useTranslations('About');
+export default async function HistoryPage() {
+  const t = await getTranslations('About');
   const historyEvents = [
     {
       year: "2015",

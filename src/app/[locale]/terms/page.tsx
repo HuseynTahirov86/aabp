@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Section } from '@/components/shared/Section';
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TermsPage() {
-  const t = useTranslations('Terms');
+export default async function TermsPage() {
+  const t = await getTranslations('Terms');
 
   return (
     <main className="flex min-h-screen flex-col bg-background pt-8">

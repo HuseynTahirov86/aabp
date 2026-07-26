@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Target, Lightbulb, Users, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function MissionPage() {
-  const t = useTranslations('About');
+export default async function MissionPage() {
+  const t = await getTranslations('About');
   
   const values = [
     {

@@ -9,7 +9,6 @@ import { Footer } from "@/components/layout/Footer";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
@@ -137,13 +136,8 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px]">
-        <ThemeProvider
-          attribute="class"
-          forcedTheme="dark"
-          disableTransitionOnChange
-        >
-          <AuthProvider>
+      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px] dark">
+        <AuthProvider>
             <NextIntlClientProvider messages={messages} locale={locale}>
               <TooltipProvider>
                 <Preloader />
@@ -159,7 +153,6 @@ export default async function RootLayout({
               <Toaster richColors position="bottom-right" />
             </NextIntlClientProvider>
           </AuthProvider>
-        </ThemeProvider>
       </body>
     </html>
   );

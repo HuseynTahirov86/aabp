@@ -1,22 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, Link } from "@/i18n/routing";
+import { useRouter } from "@/i18n/routing";
 import { Section, SectionHeader } from "@/components/shared/Section";
 import { Hero } from "@/components/shared/Hero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Loader2, Download, FileText, ArrowLeft, BookOpen } from "lucide-react";
+import { Loader2, Download, FileText, BookOpen } from "lucide-react";
 import { getResources, Resource } from "@/lib/firebase/db-resources";
 import { useAuth } from "@/lib/firebase/useAuth";
-import { useTranslations } from "next-intl";
 
 const CATEGORIES = ["All", "Medical Science", "Natural Science", "Life Science", "Social Science", "Engineering", "Career", "Events"];
 
 export function ResourcesClient() {
-  const t = useTranslations();
   const router = useRouter();
   const { user, loading } = useAuth();
   const [resources, setResources] = useState<Resource[]>([]);
@@ -40,7 +38,7 @@ export function ResourcesClient() {
   if (loading || !user) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-background">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }

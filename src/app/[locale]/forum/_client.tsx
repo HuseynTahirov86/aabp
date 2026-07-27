@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Hero } from "@/components/shared/Hero";
 import { Section, SectionHeader } from "@/components/shared/Section";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,12 +12,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Loader2, Plus, MessageSquare, Calendar, User } from "lucide-react";
 import { Link } from "@/i18n/routing";
+import { useParams } from "next/navigation";
 import { useAuth } from "@/lib/firebase/useAuth";
-import { getTopics, createTopic, FORUM_CATEGORIES, ForumTopic } from "@/lib/firebase/db-forum";
+import { getTopics, createTopic, FORUM_CATEGORIES, ForumTopic, FirestoreTimestamp } from "@/lib/firebase/db-forum";
 import { toast } from "sonner";
 
 export function ForumClient() {
-  const { user, loading: authLoading } = useAuth();
+  const { user } = useAuth();
+  const params = useParams();
+  const locale = (params?.locale as string) || "en";
   const [topics, setTopics] = useState<ForumTopic[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -57,10 +60,10 @@ export function ForumClient() {
     }
   };
 
-  const formatDate = (ts: any) => {
+  const formatDate = (ts: FirestoreTimestamp | undefined) => {
     if (!ts) return "";
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+    const d = typeof ts === "object" && "toDate" in ts ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric" });
   };
 
   return (

@@ -12,6 +12,8 @@ export const FORUM_CATEGORIES = [
   'Events',
 ] as const;
 
+export type FirestoreTimestamp = { toDate: () => Date } | string;
+
 export interface ForumTopic {
   id?: string;
   title: string;
@@ -20,9 +22,8 @@ export interface ForumTopic {
   authorId: string;
   authorName: string;
   replyCount: number;
-  lastReplyAt?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createdAt?: any;
+  lastReplyAt?: FirestoreTimestamp;
+  createdAt?: FirestoreTimestamp;
 }
 
 export interface ForumReply {
@@ -31,8 +32,7 @@ export interface ForumReply {
   content: string;
   authorId: string;
   authorName: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createdAt?: any;
+  createdAt?: FirestoreTimestamp;
 }
 
 const TOPICS_COLLECTION = 'forum_topics';

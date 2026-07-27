@@ -26,7 +26,7 @@ type Tab = "profile" | "find" | "my";
 
 export default function MentorshipPage() {
   const router = useRouter();
-  const { user, userData, loading } = useAuth();
+  const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("profile");
 
   useEffect(() => {
@@ -107,7 +107,7 @@ function ProfileTab({ userId }: { userId: string }) {
       toast.success("Mentorship profile saved!");
       const p = await getMyMentorshipProfile(userId);
       setProfile(p);
-    } catch (err) {
+    } catch {
       toast.error("Failed to save profile.");
     } finally {
       setSaving(false);

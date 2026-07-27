@@ -1,46 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { useRouter as useI18nRouter } from "@/i18n/routing";
+import { useCallback, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { Section } from "@/components/shared/Section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Loader2, ArrowLeft, Send, User, Calendar, MessageSquare } from "lucide-react";
 import { useAuth } from "@/lib/firebase/useAuth";
-import { getTopic, createReply, ForumTopic, ForumReply } from "@/lib/firebase/db-forum";
+import { getTopic, createReply, ForumTopic, ForumReply, FirestoreTimestamp } from "@/lib/firebase/db-forum";
 import { toast } from "sonner";
 
 export function ForumTopicClient() {
   const params = useParams();
-  const router = useI18nRouter();
+  const locale = (params?.locale as string) || "en";
+  const router = useRouter();
   const { user } = useAuth();
   const [data, setData] = useState<{ topic: ForumTopic; replies: ForumReply[] } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [replyContent, setReplyContent] = useState("");
   const [replying, setReplying] = useState(false);
 
-  const fetchTopicData = async () => {
+  const fetchTopicData = useCallback(async () => {
     if (!params.id || typeof params.id !== "string") return;
-    setIsLoading(true);
     const result = await getTopic(params.id);
     setData(result);
     setIsLoading(false);
-  };
+  }, [params.id]);
 
   useEffect(() => {
-    fetchTopicData();
-  }, [params.id]);
+    void Promise.resolve().then(fetchTopicData);
+  }, [fetchTopicData]);
 
   const handleReply = async () => {
     if (!user) return toast.error("Please sign in to reply.");
     if (!replyContent.trim()) return toast.error("Please write a reply.");
     if (!data?.topic.id) return;
 
-    setReplying(false);
+    setReplying(true);
     try {
       await createReply({
         topicId: data.topic.id,
@@ -58,16 +57,16 @@ export function ForumTopicClient() {
     }
   };
 
-  const formatDate = (ts: any) => {
+  const formatDate = (ts: FirestoreTimestamp | undefined) => {
     if (!ts) return "";
-    const d = ts.toDate ? ts.toDate() : new Date(ts);
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+    const d = typeof ts === "object" && "toDate" in ts ? ts.toDate() : new Date(ts);
+    return d.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
   };
 
   if (isLoading) {
     return (
       <main className="min-h-screen bg-background pt-32 flex items-center justify-center">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Publications — AABP",
+  title: "Publications",
   description: "Discover academic and professional publications by AABP members — research papers, articles, and collaborative works across medical, natural, life, and social sciences, and engineering.",
   openGraph: {
     title: "Publications — AABP",

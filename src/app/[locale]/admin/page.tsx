@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, CalendarDays, FileText, Loader2, UserCheck, BarChart2, Ticket, TrendingUp } from "lucide-react";
+import { Users, CalendarDays, FileText, Loader2, UserCheck, Ticket, TrendingUp } from "lucide-react";
 import { getTotalUsersCount, getPendingUsersCount, getAllUsers, AABPUser } from "@/lib/firebase/db-users";
 import { getEvents, getEventRegistrations, AABPEvent } from "@/lib/firebase/db-events";
 import { getResearch } from "@/lib/firebase/db-research";

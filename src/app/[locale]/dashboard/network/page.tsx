@@ -12,7 +12,7 @@ import { useAuth } from "@/lib/firebase/useAuth";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from 'next-intl';
 import { toast } from "sonner";
-import { getPendingConnections, getUserConnections, acceptConnection, rejectConnection, Connection } from "@/lib/firebase/db-connections";
+import { getPendingConnections, getUserConnections, acceptConnection, rejectConnection, sendConnectionRequest, Connection } from "@/lib/firebase/db-connections";
 
 export default function MyNetworkPage() {
   const t = useTranslations('Dashboard');
@@ -34,6 +34,7 @@ export default function MyNetworkPage() {
   const [connectedUsers, setConnectedUsers] = useState<AABPUser[]>([]);
   const [activeTab, setActiveTab] = useState<"discover" | "pending" | "connected">("discover");
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [connectingIds, setConnectingIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     if (!loading && !user) {
@@ -121,6 +122,24 @@ export default function MyNetworkPage() {
       toast.error("Failed to reject connection");
     } finally {
       setActionLoading(null);
+    }
+  };
+
+  const handleConnect = async (userId: string) => {
+    if (!user) return;
+    setConnectingIds(prev => new Set(prev).add(userId));
+    try {
+      await sendConnectionRequest(user.uid, userId);
+      toast.success("Connection request sent!");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to send request";
+      toast.error(message);
+    } finally {
+      setConnectingIds(prev => {
+        const next = new Set(prev);
+        next.delete(userId);
+        return next;
+      });
     }
   };
 
@@ -223,7 +242,7 @@ export default function MyNetworkPage() {
 
               {isLoading ? (
                 <div className="flex justify-center items-center py-20">
-                  <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                  <Loader2 className="w-8 h-8 animate-spin text-accent" />
                 </div>
               ) : filteredUsers.length === 0 ? (
                 <div className="text-center py-20 bg-card rounded-2xl border border-border">
@@ -232,16 +251,33 @@ export default function MyNetworkPage() {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                   {filteredUsers.map((u, i) => (
-                    <CommitteeCard 
-                      key={u.id}
-                      name={`${u.firstName} ${u.lastName}`}
-                      role={u.profession || "Member"}
-                      bio={u.bio || ""}
-                      email={u.email}
-                      linkedinUrl={u.linkedin}
-                      imageUrl={u.photoUrl}
-                      index={i}
-                    />
+                    <div key={u.id} className="relative">
+                      <CommitteeCard
+                        name={`${u.firstName} ${u.lastName}`}
+                        role={u.profession || "Member"}
+                        bio={u.bio || ""}
+                        email={u.email}
+                        linkedinUrl={u.linkedin}
+                        imageUrl={u.photoUrl}
+                        index={i}
+                      />
+                      {!connectedUserIds.has(u.id) && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="absolute top-4 right-4 rounded-full w-9 h-9 p-0"
+                          onClick={() => handleConnect(u.id)}
+                          disabled={connectingIds.has(u.id)}
+                          title="Send connection request"
+                        >
+                          {connectingIds.has(u.id) ? (
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          ) : (
+                            <UserPlus className="w-4 h-4" />
+                          )}
+                        </Button>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
@@ -262,11 +298,11 @@ export default function MyNetworkPage() {
                     return (
                       <div key={req.id} className="flex items-center justify-between p-4 bg-secondary/20 rounded-xl">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                          <div className="w-12 h-12 rounded-full bg-accent/15 flex items-center justify-center text-accent font-bold">
                             {profile ? `${profile.firstName[0]}${profile.lastName[0]}` : "??"}
                           </div>
                           <div>
-                            <p className="font-semibold">
+                            <p className="font-semibold text-foreground">
                               {profile ? `${profile.firstName} ${profile.lastName}` : "Unknown User"}
                             </p>
                             <p className="text-sm text-muted-foreground">

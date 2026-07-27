@@ -203,7 +203,7 @@ export function EventsClient() {
               {selectedDate && getEventsForDate(selectedDate).length > 0 && (
                 <div className="mt-6 pt-4 border-t border-border">
                   <h4 className="font-semibold text-sm text-muted-foreground mb-3">
-                    Events on {new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                    Events on {new Date(selectedDate).toLocaleDateString(locale, { weekday: 'long', month: 'long', day: 'numeric' })}
                   </h4>
                   <div className="space-y-2">
                     {getEventsForDate(selectedDate).map(e => (

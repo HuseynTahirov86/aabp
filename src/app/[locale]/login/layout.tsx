@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign In — AABP",
+  title: "Sign In",
   description: "Sign in to the AABP Member Portal to access your dashboard, registered events, network connections, and exclusive member benefits.",
   openGraph: {
     title: "Sign In — AABP",

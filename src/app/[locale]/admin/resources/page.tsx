@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Plus, Trash2, Loader2, Upload } from "lucide-react";
+import { Plus, Trash2, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
 import { getResources, addResource, deleteResource, Resource } from "@/lib/firebase/db-resources";
@@ -168,7 +168,7 @@ export default function AdminResourcesPage() {
                   </div>
                 )}
                 {fileUrl && (
-                  <p className="text-xs text-green-600 truncate">Uploaded: {fileUrl}</p>
+                  <p className="text-xs text-emerald-400 truncate">Uploaded: {fileUrl}</p>
                 )}
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where, serverTimestamp, getDoc, orderBy } from 'firebase/firestore';
+import { collection, addDoc, getDocs, updateDoc, doc, query, where, serverTimestamp } from 'firebase/firestore';
 
 export interface MentorshipProfile {
   id?: string;

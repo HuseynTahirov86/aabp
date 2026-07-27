@@ -180,7 +180,7 @@ export default function AdminProjectsPage() {
                     }
                   }} 
                 />
-                {imageUrl && <p className="text-xs text-green-600 mt-1">Image URL generated: {imageUrl}</p>}
+                {imageUrl && <p className="text-xs text-emerald-400 mt-1">Image URL generated: {imageUrl}</p>}
               </div>
             </div>
             <DialogFooter>

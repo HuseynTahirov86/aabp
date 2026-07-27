@@ -176,7 +176,7 @@ export default function AdminLeadershipPage() {
                       }
                     }} 
                   />
-                  {newMember.imageUrl && <p className="text-xs text-green-600 mt-1 line-clamp-1">Uploaded: {newMember.imageUrl}</p>}
+                  {newMember.imageUrl && <p className="text-xs text-emerald-400 mt-1 line-clamp-1">Uploaded: {newMember.imageUrl}</p>}
                 </div>
                 <Button type="submit" className="w-full" disabled={isAdding || uploadingImage}>
                   {isAdding ? "Saving..." : (editingMemberId ? "Update Member" : "Add Member")}

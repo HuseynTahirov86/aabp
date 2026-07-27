@@ -179,7 +179,7 @@ export default function AdminCMSPage() {
                       }
                     }} 
                   />
-                  {newArticle.imageUrl && <p className="text-xs text-green-600 mt-1">Image URL generated: {newArticle.imageUrl}</p>}
+                  {newArticle.imageUrl && <p className="text-xs text-emerald-400 mt-1">Image URL generated: {newArticle.imageUrl}</p>}
                 </div>
                 <div>
                   <label className="text-xs font-medium text-white/70 mb-1 block">Status</label>

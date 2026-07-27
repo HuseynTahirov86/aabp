@@ -310,10 +310,10 @@ function MyMentorshipsTab({ userId }: { userId: string }) {
 
   const statusBadge = (status: string) => {
     const colors: Record<string, string> = {
-      pending: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400",
-      accepted: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
-      rejected: "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400",
-      ended: "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400",
+      pending: "bg-amber-500/20 text-amber-300 border border-amber-500/30",
+      accepted: "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30",
+      rejected: "bg-red-500/20 text-red-300 border border-red-500/30",
+      ended: "bg-muted text-muted-foreground border border-border",
     };
     return <Badge className={colors[status] || ""}>{status}</Badge>;
   };

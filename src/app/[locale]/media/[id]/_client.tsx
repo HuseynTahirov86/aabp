@@ -37,7 +37,7 @@ export function ArticleClient() {
   if (isLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-background">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }
@@ -45,7 +45,7 @@ export function ArticleClient() {
   if (!article) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center bg-background pt-8">
-        <h1 className="text-3xl font-serif text-primary mb-4">{t('notFound')}</h1>
+        <h1 className="text-3xl font-serif text-foreground mb-4">{t('notFound')}</h1>
         <Button variant="outline" onClick={() => router.push('/media')}>{t('returnToMedia')}</Button>
       </main>
     );

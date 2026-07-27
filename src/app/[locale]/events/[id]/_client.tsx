@@ -6,7 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import { Hero } from '@/components/shared/Hero';
 import { Section } from '@/components/shared/Section';
 import { getEventById, AABPEvent, registerForEvent, checkUserRegistration, getEventRegistrations } from '@/lib/firebase/db-events';
-import { Loader2, ArrowLeft, Calendar, MapPin, Tag, Users } from "lucide-react";
+import { Loader2, ArrowLeft, Calendar, MapPin, Tag, Users, CalendarPlus } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { getAuthInstance } from "@/lib/firebase/config";
@@ -53,6 +53,48 @@ export function EventDetailsClient() {
     fetchEvent();
   }, [params.id]);
 
+  const handleAddToCalendar = () => {
+    if (!event) return;
+    const parsed = new Date(event.date);
+    const hasValidDate = !isNaN(parsed.getTime());
+    const start = hasValidDate ? parsed : new Date();
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000); // default 2h duration
+
+    const toICSDate = (d: Date) =>
+      d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+
+    const escapeICS = (text: string) =>
+      text.replace(/[\\,;]/g, (m) => `\\${m}`).replace(/\n/g, "\\n");
+
+    const description = escapeICS(event.description?.replace(/<[^>]+>/g, "") ?? "");
+
+    const ics = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//AABP//Events//EN",
+      "BEGIN:VEVENT",
+      `UID:${event.id ?? Date.now()}@aabporg.uk`,
+      `DTSTAMP:${toICSDate(new Date())}`,
+      `DTSTART:${toICSDate(start)}`,
+      `DTEND:${toICSDate(end)}`,
+      `SUMMARY:${escapeICS(event.title)}`,
+      `DESCRIPTION:${description}`,
+      `LOCATION:${escapeICS(event.location)}`,
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${event.title.replace(/[^a-z0-9]+/gi, "-")}.ics`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   const handleRegister = async () => {
     const currentUser = getAuthInstance().currentUser;
     if (!currentUser) {
@@ -94,7 +136,7 @@ export function EventDetailsClient() {
   if (isLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center bg-background">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }
@@ -102,7 +144,7 @@ export function EventDetailsClient() {
   if (!event) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center bg-background pt-8">
-        <h1 className="text-3xl font-serif text-primary mb-4">Event not found</h1>
+        <h1 className="text-3xl font-serif text-foreground mb-4">Event not found</h1>
         <Button variant="outline" onClick={() => router.push('/events')}>Return to Events</Button>
       </main>
     );
@@ -174,7 +216,7 @@ export function EventDetailsClient() {
             )}
           </div>
 
-          <div className="flex justify-center border-t border-border pt-10">
+          <div className="flex flex-wrap justify-center gap-4 border-t border-border pt-10">
             {isFull && !isRegistered ? (
               <Button
                 size="lg"
@@ -193,6 +235,14 @@ export function EventDetailsClient() {
                 {isRegistering ? <Loader2 className="w-5 h-5 animate-spin" /> : isRegistered ? "Already Registered" : "Register for Event"}
               </Button>
             )}
+            <Button
+              size="lg"
+              variant="outline"
+              className="rounded-full h-14 px-10 text-lg"
+              onClick={handleAddToCalendar}
+            >
+              <CalendarPlus className="w-5 h-5 mr-2" /> Add to Calendar
+            </Button>
           </div>
         </div>
       </Section>

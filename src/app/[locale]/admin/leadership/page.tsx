@@ -98,8 +98,8 @@ export default function AdminLeadershipPage() {
     <div>
       <div className="mb-10 flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold font-serif text-white">Leadership CMS</h1>
-          <p className="text-white/70 mt-2">Manage Executive Committee members.</p>
+          <h1 className="text-3xl font-bold font-serif text-white">Board of Directors CMS</h1>
+          <p className="text-white/70 mt-2">Manage Board of Directors members.</p>
         </div>
         <Button onClick={fetchMembers} variant="outline">Refresh List</Button>
       </div>
@@ -185,7 +185,7 @@ export default function AdminLeadershipPage() {
         <div className="lg:col-span-2">
           <Card className="shadow-sm border-white/10">
             <CardHeader>
-              <CardTitle className="text-lg text-white">Committee Members</CardTitle>
+              <CardTitle className="text-lg text-white">Board Members</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (

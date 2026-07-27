@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const sidebarLinks = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  { name: "Leadership CMS", href: "/admin/leadership", icon: Users },
+  { name: "Board of Directors CMS", href: "/admin/leadership", icon: Users },
   { name: "Articles CMS", href: "/admin/articles", icon: Newspaper },
   { name: "Events CMS", href: "/admin/events", icon: CalendarDays },
   { name: "Career CMS", href: "/admin/career", icon: Briefcase },

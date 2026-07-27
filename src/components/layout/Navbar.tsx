@@ -40,6 +40,7 @@ function MobileSearch() {
       size="icon"
       className="text-white hover:bg-white/10"
       onClick={openCommandPalette}
+      aria-label="Search"
     >
       <Search className="h-6 w-6" />
     </Button>
@@ -59,6 +60,7 @@ const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger
         className="p-2 rounded-full hover:bg-white/10 transition-colors text-white"
+        aria-label="Change language"
       >
         <Globe className="h-5 w-5" />
       </DropdownMenuTrigger>
@@ -275,7 +277,7 @@ export function Navbar() {
             <MobileSearch />
             <LanguageSwitcher />
             <Sheet>
-              <SheetTrigger className="p-2 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors text-white">
+              <SheetTrigger className="p-2 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors text-white" aria-label="Open menu">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-card border-border">

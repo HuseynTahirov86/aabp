@@ -77,7 +77,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           AABP Admin
         </Link>
         <Sheet>
-          <SheetTrigger render={<Button variant="ghost" size="icon" className="text-white hover:bg-white/10" />}>
+          <SheetTrigger render={<Button variant="ghost" size="icon" className="text-white hover:bg-white/10" aria-label="Open menu" />}>
             <Menu className="w-6 h-6" />
           </SheetTrigger>
           <SheetContent side="left" className="p-0 bg-primary border-none w-64">

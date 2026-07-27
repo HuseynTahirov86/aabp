@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { usePathname } from "@/i18n/routing";
-import { LayoutDashboard, CalendarDays, Users, FileText, LogOut, Newspaper, Menu, Database, Briefcase, Mail } from "lucide-react";
+import { LayoutDashboard, CalendarDays, Users, FileText, LogOut, Newspaper, Menu, Briefcase, Mail } from "lucide-react";
 import { useRouter } from "@/i18n/routing";
 import { getAuthInstance } from "@/lib/firebase/config";
 import { signOut } from "firebase/auth";
@@ -20,7 +20,6 @@ const sidebarLinks = [
   { name: "Email Members", href: "/admin/email", icon: Mail },
   { name: "Publications", href: "/admin/research", icon: FileText },
   { name: "Projects", href: "/admin/projects", icon: FileText },
-  { name: "Seed Data", href: "/admin/seed", icon: Database },
 ];
 
 const SidebarContent = () => {

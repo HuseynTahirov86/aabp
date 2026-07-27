@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { getEvents, addEvent, updateEvent, deleteEvent, getEventRegistrations, AABPEvent } from "@/lib/firebase/db-events";
+import { uploadFile } from "@/lib/upload";
 import { getUserProfile, AABPUser } from "@/lib/firebase/db-users";
 
 export default function AdminEventsPage() {
@@ -219,17 +220,11 @@ export default function AdminEventsPage() {
                     if (!file) return;
                     setUploadingImage(true);
                     try {
-                      const formData = new FormData();
-                      formData.append('file', file);
-                      formData.append('folder', 'events');
-                      const res = await fetch('/api/upload', { method: 'POST', body: formData });
-                      if (!res.ok) throw new Error("Upload failed");
-                      const data = await res.json();
-                      setImageUrl(data.url);
+                      const url = await uploadFile(file, 'events');
+                      setImageUrl(url);
                       toast.success("Image uploaded successfully");
                     } catch (err) {
-                      toast.error("Failed to upload image");
-                      console.error(err);
+                      toast.error(err instanceof Error ? err.message : "Failed to upload image");
                     } finally {
                       setUploadingImage(false);
                     }

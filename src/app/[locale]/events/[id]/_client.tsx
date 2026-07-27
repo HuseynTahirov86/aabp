@@ -114,17 +114,22 @@ export function EventDetailsClient() {
       toast.success("Successfully registered for the event!");
 
       if (event) {
-        fetch('/api/email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            email: currentUser.email,
-            firstName: currentUser.displayName || '',
-            type: 'EVENT_CONFIRMATION',
-            eventTitle: event.title,
-            eventDate: event.date,
-          }),
-        }).catch(() => {});
+        currentUser.getIdToken().then((idToken) =>
+          fetch('/api/email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${idToken}`,
+            },
+            body: JSON.stringify({
+              email: currentUser.email,
+              firstName: currentUser.displayName || '',
+              type: 'EVENT_CONFIRMATION',
+              eventTitle: event.title,
+              eventDate: event.date,
+            }),
+          })
+        ).catch(() => {});
       }
     } catch {
       toast.error("Failed to register. Please try again.");

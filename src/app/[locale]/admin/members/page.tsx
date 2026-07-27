@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getAllUsers, updateUserRole, deleteUser, AABPUser } from "@/lib/firebase/db-users";
+import { getAuthInstance } from "@/lib/firebase/config";
 import { Loader2, Download, CheckCircle, XCircle, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
@@ -31,11 +32,17 @@ export default function AdminMembersPage() {
       toast.success("Member approved");
 
       if (user?.email) {
-        fetch('/api/email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: user.email, firstName: user.firstName, type: 'APPROVAL' }),
-        }).catch(() => {});
+        const idToken = await getAuthInstance().currentUser?.getIdToken();
+        if (idToken) {
+          fetch('/api/email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${idToken}`,
+            },
+            body: JSON.stringify({ email: user.email, firstName: user.firstName, type: 'APPROVAL' }),
+          }).catch(() => {});
+        }
       }
     } catch { toast.error("Failed to approve"); }
   };

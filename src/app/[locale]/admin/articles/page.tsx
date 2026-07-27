@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getArticles, addArticle, updateArticle, deleteArticle, AABPArticle } from "@/lib/firebase/db-articles";
+import { uploadFile } from "@/lib/upload";
 import { Loader2, Trash2, Plus, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -163,17 +164,11 @@ export default function AdminCMSPage() {
                       if (!file) return;
                       setUploadingImage(true);
                       try {
-                        const formData = new FormData();
-                        formData.append('file', file);
-                        formData.append('folder', 'articles');
-                        const res = await fetch('/api/upload', { method: 'POST', body: formData });
-                        if (!res.ok) throw new Error("Upload failed");
-                        const data = await res.json();
-                        setNewArticle({ ...newArticle, imageUrl: data.url });
+                        const url = await uploadFile(file, 'articles');
+                        setNewArticle({ ...newArticle, imageUrl: url });
                         toast.success("Image uploaded successfully");
                       } catch (err) {
-                        toast.error("Failed to upload image");
-                        console.error(err);
+                        toast.error(err instanceof Error ? err.message : "Failed to upload image");
                       } finally {
                         setUploadingImage(false);
                       }

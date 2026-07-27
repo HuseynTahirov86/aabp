@@ -1,8 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getAIProvider } from '@/lib/ai/provider';
+import { verifyRequestUser } from '@/lib/firebase/require-auth';
 
 export async function POST(req: Request) {
   try {
+    const user = await verifyRequestUser(req);
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await req.json();
     const { prompt, context, system } = body;
 

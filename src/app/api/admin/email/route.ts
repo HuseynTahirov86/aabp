@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getAdminDb } from '@/lib/firebase/admin';
+import { requireAdmin } from '@/lib/firebase/require-auth';
 import type { Query } from 'firebase-admin/firestore';
 
 const transporter = nodemailer.createTransport({
@@ -18,6 +19,11 @@ const transporter = nodemailer.createTransport({
 
 export async function POST(req: Request) {
   try {
+    const admin = await requireAdmin(req);
+    if (!admin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await req.json();
     const { subject, message, filter } = body;
 

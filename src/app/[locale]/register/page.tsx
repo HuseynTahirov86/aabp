@@ -10,10 +10,11 @@ import { ArrowLeft, Upload, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "@/i18n/routing";
 import { getAuthInstance, getDb } from "@/lib/firebase/config";
-import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile, sendEmailVerification, deleteUser } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
+import { uploadFile } from "@/lib/upload";
 
 export default function RegisterPage() {
   const t = useTranslations('Auth');
@@ -43,24 +44,19 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("file", cvFile);
-      formData.append("folder", "cvs");
-
-      const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const uploadErr = await uploadRes.json();
-        throw new Error(uploadErr.error || "Failed to upload CV.");
-      }
-
-      const { url: cvUrl } = await uploadRes.json();
-
       const userCredential = await createUserWithEmailAndPassword(getAuthInstance(), email, password);
       const user = userCredential.user;
+
+      // Upload the CV now that we have an authenticated user (the upload
+      // endpoint requires a valid Firebase ID token). If this fails, roll
+      // back the just-created account so the user can retry cleanly.
+      let cvUrl: string;
+      try {
+        cvUrl = await uploadFile(cvFile, "cvs");
+      } catch (uploadErr) {
+        await deleteUser(user).catch(() => {});
+        throw new Error(uploadErr instanceof Error ? uploadErr.message : "Failed to upload CV.");
+      }
 
       await updateProfile(user, {
         displayName: `${firstName} ${lastName}`
@@ -83,9 +79,13 @@ export default function RegisterPage() {
       });
 
       try {
+        const idToken = await user.getIdToken();
         await fetch('/api/email', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${idToken}`,
+          },
           body: JSON.stringify({ email, firstName, type: 'WELCOME' })
         });
       } catch (emailErr) {

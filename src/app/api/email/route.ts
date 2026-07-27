@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { requireAdmin, verifyRequestUser } from '@/lib/firebase/require-auth';
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST || 'mail.aabporg.uk',
@@ -21,6 +22,22 @@ export async function POST(req: Request) {
 
     if (!email) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+    }
+
+    // The public contact form is intentionally open. Every other email
+    // type sends AABP-branded mail to an arbitrary address, so it must
+    // be triggered by an authenticated request — APPROVAL additionally
+    // requires an admin, since only admins should trigger it.
+    if (type === 'APPROVAL') {
+      const admin = await requireAdmin(req);
+      if (!admin) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+    } else if (type !== 'CONTACT') {
+      const user = await verifyRequestUser(req);
+      if (!user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
     }
 
     let subject = 'Hello from AABP';

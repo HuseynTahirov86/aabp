@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, Send } from "lucide-react";
 import { toast } from "sonner";
+import { getAuthInstance } from "@/lib/firebase/config";
 
 export default function AdminEmailPage() {
   const [subject, setSubject] = useState("");
@@ -22,9 +23,19 @@ export default function AdminEmailPage() {
 
     setSending(true);
     try {
+      const idToken = await getAuthInstance().currentUser?.getIdToken();
+      if (!idToken) {
+        toast.error("You must be signed in as an admin to send emails.");
+        setSending(false);
+        return;
+      }
+
       const res = await fetch("/api/admin/email", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${idToken}`,
+        },
         body: JSON.stringify({
           subject: subject.trim(),
           message: message.trim(),

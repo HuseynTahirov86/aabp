@@ -9,6 +9,7 @@ import { Plus, Search, Trash2, Loader2, Image as ImageIcon, Pencil } from "lucid
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 import { getProjects, addProject, updateProject, deleteProject, AABPProject } from "@/lib/firebase/db-projects";
+import { uploadFile } from "@/lib/upload";
 import Image from "next/image";
 
 export default function AdminProjectsPage() {
@@ -165,16 +166,11 @@ export default function AdminProjectsPage() {
                     if (!file) return;
                     setUploadingImage(true);
                     try {
-                      const formData = new FormData();
-                      formData.append('file', file);
-                      const res = await fetch('/api/upload', { method: 'POST', body: formData });
-                      if (!res.ok) throw new Error("Upload failed");
-                      const data = await res.json();
-                      setImageUrl(data.url);
+                      const url = await uploadFile(file, 'projects');
+                      setImageUrl(url);
                       toast.success("Image uploaded successfully");
                     } catch (err) {
-                      toast.error("Failed to upload image");
-                      console.error(err);
+                      toast.error(err instanceof Error ? err.message : "Failed to upload image");
                     } finally {
                       setUploadingImage(false);
                     }

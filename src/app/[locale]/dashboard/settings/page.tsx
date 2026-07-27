@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useAuth } from "@/lib/firebase/useAuth";
 import { updateUserProfile } from "@/lib/firebase/db-users";
+import { uploadFile } from "@/lib/upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -76,21 +77,8 @@ export default function SettingsPage() {
 
     setIsUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("folder", "profiles");
-
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!res.ok) {
-        throw new Error("Upload failed");
-      }
-
-      const data = await res.json();
-      setPhotoUrl(data.url);
+      const url = await uploadFile(file, "profiles");
+      setPhotoUrl(url);
       toast.success(t('imageUploaded'));
     } catch (err) {
       console.error(err);

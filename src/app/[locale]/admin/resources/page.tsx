@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
 import { getResources, addResource, deleteResource, Resource } from "@/lib/firebase/db-resources";
 import { getAuthInstance } from "@/lib/firebase/config";
+import { uploadFile } from "@/lib/upload";
 
 const CATEGORIES = ["Medical Science", "Natural Science", "Life Science", "Social Science", "Engineering", "Career", "Events"];
 
@@ -51,20 +52,11 @@ export default function AdminResourcesPage() {
 
     setUploading(true);
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("folder", "resources");
-
-      const res = await fetch("/api/upload", { method: "POST", body: formData });
-      const data = await res.json();
-      if (data.url) {
-        setFileUrl(data.url);
-        toast.success("File uploaded");
-      } else {
-        toast.error(data.error || "Upload failed");
-      }
-    } catch {
-      toast.error("Upload failed");
+      const url = await uploadFile(file, "resources");
+      setFileUrl(url);
+      toast.success("File uploaded");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Upload failed");
     } finally {
       setUploading(false);
     }

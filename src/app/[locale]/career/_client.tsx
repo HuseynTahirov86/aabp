@@ -39,7 +39,7 @@ export function CareerClient() {
       <Section className="bg-secondary/10 pt-10 pb-24">
         {isLoading ? (
           <div className="flex justify-center items-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            <Loader2 className="w-8 h-8 animate-spin text-accent" />
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-12 text-center">
@@ -56,7 +56,7 @@ export function CareerClient() {
               <Card key={job.id} className="shadow-sm border-border hover:shadow-md transition-shadow">
                 <CardHeader className="pb-3 flex flex-col md:flex-row justify-between items-start md:items-center">
                   <div>
-                    <CardTitle className="text-xl font-bold text-primary mb-1">{job.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold text-foreground mb-1">{job.title}</CardTitle>
                     <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                       <span className="flex items-center gap-1"><Building className="w-4 h-4" /> {job.company}</span>
                       <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {job.location}</span>

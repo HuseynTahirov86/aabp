@@ -59,7 +59,7 @@ export function ResearchClient() {
                       <Button
                         key={field}
                         variant="ghost"
-                        className={`justify-start hover:text-accent ${selectedField === field ? 'font-medium text-primary bg-secondary/30' : 'font-normal text-muted-foreground'}`}
+                        className={`justify-start hover:text-accent ${selectedField === field ? 'font-medium text-accent bg-secondary/30' : 'font-normal text-muted-foreground'}`}
                         onClick={() => setSelectedField(field)}
                       >
                         {field}
@@ -82,7 +82,7 @@ export function ResearchClient() {
 
             {isLoading ? (
               <div className="flex justify-center items-center py-20">
-                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                <Loader2 className="w-8 h-8 animate-spin text-accent" />
               </div>
             ) : error ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">

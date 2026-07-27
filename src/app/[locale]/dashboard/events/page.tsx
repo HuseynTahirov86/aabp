@@ -66,7 +66,7 @@ export default function MyEventsPage() {
                 {userEvents.map(ev => (
                   <Card key={ev.id} className="shadow-sm border-border p-6 flex flex-col md:flex-row justify-between items-start md:items-center">
                     <div>
-                      <h4 className="text-xl font-semibold text-primary">{ev.title}</h4>
+                      <h4 className="text-xl font-semibold text-foreground">{ev.title}</h4>
                       <p className="text-sm text-muted-foreground flex flex-col sm:flex-row sm:items-center gap-2 mt-3">
                         <span className="flex items-center gap-1"><Calendar className="w-4 h-4" /> {ev.date}</span>
                         <span className="hidden sm:inline">|</span>

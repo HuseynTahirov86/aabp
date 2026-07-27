@@ -41,7 +41,7 @@ export default function ProjectsPage() {
         <div className="max-w-6xl mx-auto py-12">
           {isLoading ? (
             <div className="flex justify-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              <Loader2 className="w-8 h-8 animate-spin text-accent" />
             </div>
           ) : projects.length === 0 ? (
             <div className="text-center py-12">
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
                 {t('projectsDesc')}
               </p>
               <div className="bg-secondary/30 p-8 rounded-2xl border border-border inline-block">
-                <h3 className="text-xl font-semibold text-primary mb-2">{t('newProjects')}</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-2">{t('newProjects')}</h3>
                 <p className="text-muted-foreground">{t('stayTuned')}</p>
               </div>
             </div>

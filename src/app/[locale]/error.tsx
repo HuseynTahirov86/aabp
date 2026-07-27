@@ -20,10 +20,10 @@ export default function ErrorPage({
 
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">
-      <div className="w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-6">
+      <div className="w-16 h-16 bg-red-500/15 text-red-400 border border-red-500/30 rounded-full flex items-center justify-center mb-6">
         <AlertCircle className="w-8 h-8" />
       </div>
-      <h2 className="text-2xl font-bold font-serif text-primary mb-2">{t("errorTitle")}</h2>
+      <h2 className="text-2xl font-bold font-serif text-foreground mb-2">{t("errorTitle")}</h2>
       <p className="text-muted-foreground mb-8 max-w-md mx-auto">{t("errorDesc")}</p>
       <div className="flex gap-4">
         <Button onClick={() => reset()} className="bg-primary text-white hover:bg-primary/90">

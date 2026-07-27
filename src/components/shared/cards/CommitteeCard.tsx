@@ -28,7 +28,7 @@ export function CommitteeCard({ name, role, bio, imageUrl, linkedinUrl, email, i
     >
       <Avatar className="w-32 h-32 mb-6 border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-500">
         <AvatarImage src={imageUrl} alt={name} className="object-cover" />
-        <AvatarFallback className="bg-secondary text-primary font-serif text-2xl font-bold">
+        <AvatarFallback className="bg-secondary text-accent font-serif text-2xl font-bold">
           {name.charAt(0)}
         </AvatarFallback>
       </Avatar>
@@ -46,7 +46,7 @@ export function CommitteeCard({ name, role, bio, imageUrl, linkedinUrl, email, i
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-accent hover:bg-primary hover:text-white transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ export function CommitteeCard({ name, role, bio, imageUrl, linkedinUrl, email, i
         {email && (
           <a
             href={`mailto:${email}`}
-            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-accent hover:bg-primary hover:text-white transition-colors"
           >
             <Mail className="w-4 h-4" />
           </a>

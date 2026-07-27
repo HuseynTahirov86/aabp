@@ -39,7 +39,7 @@ export default function PublicationsPage() {
         
         {isLoading ? (
           <div className="flex justify-center py-12">
-            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            <Loader2 className="w-8 h-8 animate-spin text-accent" />
           </div>
         ) : publications.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">

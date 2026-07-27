@@ -160,7 +160,7 @@ export function EventsClient() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-card rounded-2xl shadow-glass p-6 border border-border">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-serif font-bold text-primary">
+                <h3 className="text-xl font-serif font-bold text-foreground">
                   {monthNames[month]} {year}
                 </h3>
                 <div className="flex gap-2">

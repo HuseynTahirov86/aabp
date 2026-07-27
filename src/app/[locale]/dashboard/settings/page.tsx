@@ -91,7 +91,7 @@ export default function SettingsPage() {
   if (loading || !user) {
     return (
       <main className="min-h-screen bg-secondary/20 pt-32 flex items-center justify-center">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }
@@ -100,10 +100,10 @@ export default function SettingsPage() {
     <main className="min-h-screen bg-secondary/20 pt-8 pb-12">
       <div className="max-w-3xl mx-auto px-6">
         <div className="mb-8">
-          <Link href="/dashboard" className="text-muted-foreground hover:text-primary flex items-center gap-2 mb-4 w-fit transition-colors">
+          <Link href="/dashboard" className="text-muted-foreground hover:text-accent flex items-center gap-2 mb-4 w-fit transition-colors">
             <ArrowLeft className="w-4 h-4" /> {t('backToDashboard')}
           </Link>
-          <h1 className="text-3xl font-bold font-serif text-primary">{t('settingsTitle')}</h1>
+          <h1 className="text-3xl font-bold font-serif text-foreground">{t('settingsTitle')}</h1>
           <p className="text-muted-foreground mt-1">{t('settingsDesc')}</p>
         </div>
 
@@ -129,7 +129,7 @@ export default function SettingsPage() {
                   disabled={isUploading}
                   className="w-full cursor-pointer"
                 />
-                {isUploading && <Loader2 className="w-5 h-5 animate-spin text-primary" />}
+                {isUploading && <Loader2 className="w-5 h-5 animate-spin text-accent" />}
               </div>
               <p className="text-xs text-muted-foreground">{t('selectImage')}</p>
             </div>

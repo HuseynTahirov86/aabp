@@ -57,9 +57,7 @@ export function Hero({
           <motion.span
             variants={fadeVariants}
             custom={1}
-            className={`text-sm md:text-base font-semibold tracking-widest uppercase mb-6 ${
-              backgroundImage ? "text-accent" : "text-primary"
-            }`}
+            className="text-sm md:text-base font-semibold tracking-widest uppercase mb-6 text-accent"
           >
             {subtitle}
           </motion.span>
@@ -69,7 +67,7 @@ export function Hero({
             variants={slideUpVariants}
             custom={2}
             className={`font-serif text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 ${
-              backgroundImage ? "text-white" : "text-primary"
+              backgroundImage ? "text-white" : "text-foreground"
             }`}
           >
             {title}
@@ -98,7 +96,7 @@ export function Hero({
                 className={`rounded-md px-8 h-14 text-lg border-2 font-medium ${
                   backgroundImage
                     ? "text-white border-white hover:bg-white hover:text-primary"
-                    : "text-primary border-primary hover:bg-primary hover:text-white"
+                    : "text-accent border-accent hover:bg-accent hover:text-white"
                 }`}
               >
                 {secondaryAction.label} <ArrowRight className="ml-2 h-5 w-5" />

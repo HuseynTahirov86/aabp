@@ -61,7 +61,7 @@ export default function DashboardPage() {
   if (loading || !user) {
     return (
       <main className="min-h-screen bg-secondary/20 pt-32 flex items-center justify-center">
-        <Loader2 className="w-10 h-10 animate-spin text-primary" />
+        <Loader2 className="w-10 h-10 animate-spin text-accent" />
       </main>
     );
   }

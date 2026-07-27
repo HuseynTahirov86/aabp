@@ -68,5 +68,55 @@ service cloud.firestore {
       allow read: if (resource == null) || (resource.data.status == "Published") || isEditor();
       allow write: if isEditor();
     }
+
+    // Forum — open discussion board, public read, members can post
+    match /forum_topics/{topicId} {
+      allow read: if true;
+      allow create: if isAuthenticated() && request.resource.data.authorId == request.auth.uid;
+      // Reply creation bumps replyCount/lastReplyAt on the topic doc, so any
+      // authenticated member may update it (not just the original author).
+      allow update: if isAuthenticated();
+      allow delete: if isOwner(resource.data.authorId) || isAdmin();
+    }
+
+    match /forum_replies/{replyId} {
+      allow read: if true;
+      allow create: if isAuthenticated() && request.resource.data.authorId == request.auth.uid;
+      allow update, delete: if isOwner(resource.data.authorId) || isAdmin();
+    }
+
+    // Resource Library — member-only reading, editor/admin manage uploads
+    match /resources/{resourceId} {
+      allow read: if isAuthenticated();
+      allow write: if isEditor();
+    }
+
+    // Member-to-member connections
+    match /connections/{connectionId} {
+      allow read: if isAuthenticated() &&
+        (request.auth.uid == resource.data.fromUserId || request.auth.uid == resource.data.toUserId);
+      allow create: if isAuthenticated() && request.resource.data.fromUserId == request.auth.uid;
+      // Only the recipient can accept/reject a pending request.
+      allow update: if isAuthenticated() && request.auth.uid == resource.data.toUserId;
+      allow delete: if isAdmin();
+    }
+
+    // Mentorship — member-only directory and requests
+    match /mentorship_profiles/{profileId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow delete: if isOwner(resource.data.userId) || isAdmin();
+    }
+
+    match /mentorships/{mentorshipId} {
+      allow read: if isAuthenticated() &&
+        (request.auth.uid == resource.data.mentorId || request.auth.uid == resource.data.menteeId);
+      allow create: if isAuthenticated() && request.resource.data.menteeId == request.auth.uid;
+      // The mentor accepts/rejects; either side can mark it ended.
+      allow update: if isAuthenticated() &&
+        (request.auth.uid == resource.data.mentorId || request.auth.uid == resource.data.menteeId);
+      allow delete: if isAdmin();
+    }
   }
 }

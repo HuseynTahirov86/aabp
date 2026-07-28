@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Hero } from '@/components/shared/Hero';
 import { Section, SectionHeader } from '@/components/shared/Section';
 import { CommitteeCard } from '@/components/shared/cards/CommitteeCard';
-import { getCommitteeMembers, AABPCommitteeMember } from '@/lib/firebase/db-committee';
+import { getCommitteeMembers, splitFeaturedPresident, AABPCommitteeMember } from '@/lib/firebase/db-committee';
 import { Loader2 } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
@@ -52,18 +52,40 @@ export default function LeadershipPage() {
             {t('noCommittee')}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {committeeMembers.map((member, i) => (
-              <CommitteeCard 
-                key={member.id || i} 
-                name={member.name} 
-                role={member.role || t('committeeMember')} 
-                bio={member.bio || ""} 
-                imageUrl={member.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"} 
-                index={i} 
-              />
-            ))}
-          </div>
+          (() => {
+            const { president, rest } = splitFeaturedPresident(committeeMembers);
+            return (
+              <div className="max-w-6xl mx-auto">
+                {president && (
+                  <div className="flex justify-center mb-8">
+                    <div className="w-full max-w-xs">
+                      <CommitteeCard
+                        key={president.id}
+                        name={president.name}
+                        role={president.role || t('committeeMember')}
+                        bio={president.bio || ""}
+                        imageUrl={president.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}
+                        index={0}
+                        featured
+                      />
+                    </div>
+                  </div>
+                )}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {rest.map((member, i) => (
+                    <CommitteeCard
+                      key={member.id || i}
+                      name={member.name}
+                      role={member.role || t('committeeMember')}
+                      bio={member.bio || ""}
+                      imageUrl={member.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}
+                      index={i + 1}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })()
         )}
       </Section>
     </main>

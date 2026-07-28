@@ -62,3 +62,21 @@ export const deleteCommitteeMember = async (id: string): Promise<void> => {
     throw error;
   }
 };
+
+/**
+ * Splits the committee list into a single featured leader (the "President",
+ * or failing that the "Founder and Director") shown centered above the
+ * grid, and the rest in their existing order — which already places
+ * Organizing Committee right after the featured entry in the source data.
+ */
+export function splitFeaturedPresident(members: AABPCommitteeMember[]): {
+  president: AABPCommitteeMember | null;
+  rest: AABPCommitteeMember[];
+} {
+  const president =
+    members.find((m) => m.role === "President") ??
+    members.find((m) => m.role === "Founder and Director") ??
+    null;
+  const rest = members.filter((m) => m !== president);
+  return { president, rest };
+}

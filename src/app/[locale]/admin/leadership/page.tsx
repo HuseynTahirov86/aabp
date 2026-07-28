@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getCommitteeMembers, addCommitteeMember, updateCommitteeMember, deleteCommitteeMember, AABPCommitteeMember } from "@/lib/firebase/db-committee";
 import { uploadFile } from "@/lib/upload";
-import { Loader2, Trash2, Plus, Edit } from "lucide-react";
+import { Loader2, Trash2, Plus, Edit, ChevronUp, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -54,6 +54,23 @@ export default function AdminLeadershipPage() {
       toast.error("Failed to save member");
     } finally {
       setIsAdding(false);
+    }
+  };
+
+  const handleMove = async (index: number, direction: 'up' | 'down') => {
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= members.length) return;
+    const a = members[index];
+    const b = members[targetIndex];
+    if (!a.id || !b.id) return;
+    try {
+      await updateCommitteeMember(a.id, { order: b.order });
+      await updateCommitteeMember(b.id, { order: a.order });
+      toast.success("Order updated");
+      fetchMembers();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to update order");
     }
   };
 
@@ -196,7 +213,7 @@ export default function AdminLeadershipPage() {
                 <p className="text-sm text-white/70">No members found.</p>
               ) : (
                 <div className="space-y-4">
-                  {members.map((member) => (
+                  {members.map((member, index) => (
                     <div key={member.id} className="flex justify-between items-start p-4 bg-white/5 rounded-lg border border-white/10">
                       <div className="flex gap-4">
                         {member.imageUrl ? (
@@ -213,7 +230,15 @@ export default function AdminLeadershipPage() {
                           <p className="text-xs text-white/70 mt-1">Order: {member.order}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1">
+                        <div className="flex flex-col gap-0.5">
+                          <Button variant="ghost" size="icon" className="h-6 w-6 text-white/60 hover:text-white hover:bg-white/10" disabled={index === 0} onClick={() => handleMove(index, 'up')}>
+                            <ChevronUp className="w-4 h-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="h-6 w-6 text-white/60 hover:text-white hover:bg-white/10" disabled={index === members.length - 1} onClick={() => handleMove(index, 'down')}>
+                            <ChevronDown className="w-4 h-4" />
+                          </Button>
+                        </div>
                         <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" onClick={() => startEdit(member)}>
                           <Edit className="w-4 h-4" />
                         </Button>

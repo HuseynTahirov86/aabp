@@ -46,5 +46,8 @@ next-env.d.ts
 # local storage uploads
 /storage
 
+# old WordPress site export, staged locally to extract asset files from
+/uploads
+
 # generated files
 tree.txt

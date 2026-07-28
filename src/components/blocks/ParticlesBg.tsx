@@ -10,7 +10,13 @@ interface Particle {
   size: number;
 }
 
-export function ParticlesBg() {
+interface ParticlesBgProps {
+  /** "light" for use over light/white sections (dark particles, multiply blend).
+   *  "dark" for use over dark navy sections (light particles, screen blend). */
+  variant?: "light" | "dark";
+}
+
+export function ParticlesBg({ variant = "light" }: ParticlesBgProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -43,11 +49,11 @@ export function ParticlesBg() {
       }
     };
 
+    const particleColor = variant === "dark" ? 'rgba(255, 255, 255, 0.5)' : 'rgba(18, 32, 54, 0.35)';
+    const lineColor = variant === "dark" ? 'rgba(255, 255, 255, 0.15)' : 'rgba(18, 32, 54, 0.12)';
+
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      const particleColor = 'rgba(18, 32, 54, 0.3)';
-      const lineColor = 'rgba(18, 32, 54, 0.1)';
 
       particles.forEach((p, index) => {
         p.x += p.vx;
@@ -89,12 +95,12 @@ export function ParticlesBg() {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [variant]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-screen"
+      className={`absolute inset-0 w-full h-full pointer-events-none z-0 ${variant === "dark" ? "mix-blend-screen" : "mix-blend-multiply"}`}
     />
   );
 }

@@ -66,7 +66,7 @@ export default async function Home() {
 
       {/* CTA Section */}
       <Section className="relative bg-primary text-white overflow-hidden" animate={false}>
-        <ParticlesBg />
+        <ParticlesBg variant="dark" />
         <div className="relative max-w-4xl mx-auto text-center py-12 z-10">
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
             {t('readyToJoin')}

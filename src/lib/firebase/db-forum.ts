@@ -1,5 +1,5 @@
 import { getDb } from './config';
-import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where, serverTimestamp, getDoc, orderBy } from 'firebase/firestore';
+import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where, serverTimestamp, getDoc, orderBy, increment } from 'firebase/firestore';
 
 export const FORUM_CATEGORIES = [
   'General',
@@ -107,14 +107,10 @@ export const createReply = async (data: Omit<ForumReply, 'id' | 'createdAt'>): P
     });
 
     const topicRef = doc(getDb(), TOPICS_COLLECTION, data.topicId);
-    const topicSnap = await getDoc(topicRef);
-    if (topicSnap.exists()) {
-      const currentCount = topicSnap.data().replyCount || 0;
-      await updateDoc(topicRef, {
-        replyCount: currentCount + 1,
-        lastReplyAt: serverTimestamp(),
-      });
-    }
+    await updateDoc(topicRef, {
+      replyCount: increment(1),
+      lastReplyAt: serverTimestamp(),
+    });
 
     return docRef.id;
   } catch (error) {

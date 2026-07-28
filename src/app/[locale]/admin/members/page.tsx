@@ -118,7 +118,7 @@ export default function AdminMembersPage() {
         </DialogContent>
       </Dialog>
 
-      <Card className="shadow-sm border-white/10">
+      <Card className="shadow-sm border-white/10 bg-[#0A192F]">
         <CardHeader>
           <CardTitle className="text-lg text-white">All Registered Users ({users.length})</CardTitle>
         </CardHeader>

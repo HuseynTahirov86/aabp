@@ -128,7 +128,7 @@ export default function AdminDashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-        <Card className="shadow-sm border-white/10">
+        <Card className="shadow-sm border-white/10 bg-[#0A192F]">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-white/70">Total Members</CardTitle>
             <Users className="w-4 h-4 text-accent" />
@@ -139,7 +139,7 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
         
-        <Card className="shadow-sm border-white/10 border-amber-500/30">
+        <Card className="shadow-sm border-white/10 border-amber-500/30 bg-[#0A192F]">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-white/70">Pending Approval</CardTitle>
             <UserCheck className="w-4 h-4 text-amber-500" />
@@ -150,7 +150,7 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-sm border-white/10">
+        <Card className="shadow-sm border-white/10 bg-[#0A192F]">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-white/70">Active Events</CardTitle>
             <CalendarDays className="w-4 h-4 text-accent" />
@@ -161,7 +161,7 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="shadow-sm border-white/10">
+        <Card className="shadow-sm border-white/10 bg-[#0A192F]">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-white/70">Research Publications</CardTitle>
             <FileText className="w-4 h-4 text-accent" />
@@ -179,7 +179,7 @@ export default function AdminDashboardPage() {
             <h2 className="text-xl font-bold font-serif text-white mb-6">Analytics</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <Card className="shadow-sm border-white/10">
+              <Card className="shadow-sm border-white/10 bg-[#0A192F]">
                 <CardHeader>
                   <CardTitle className="text-base text-white">Attendance Overview</CardTitle>
                 </CardHeader>
@@ -199,7 +199,7 @@ export default function AdminDashboardPage() {
                 </CardContent>
               </Card>
 
-              <Card className="shadow-sm border-white/10">
+              <Card className="shadow-sm border-white/10 bg-[#0A192F]">
                 <CardHeader>
                   <CardTitle className="text-base text-white">Top Events</CardTitle>
                 </CardHeader>
@@ -223,7 +223,7 @@ export default function AdminDashboardPage() {
               </Card>
             </div>
 
-            <Card className="shadow-sm border-white/10">
+            <Card className="shadow-sm border-white/10 bg-[#0A192F]">
               <CardHeader>
                 <CardTitle className="text-base text-white">Monthly Registrations</CardTitle>
               </CardHeader>
@@ -259,7 +259,7 @@ export default function AdminDashboardPage() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="shadow-sm border-white/10">
+        <Card className="shadow-sm border-white/10 bg-[#0A192F]">
           <CardHeader>
             <CardTitle className="text-lg text-white">Recent Member Registrations</CardTitle>
           </CardHeader>
@@ -282,7 +282,7 @@ export default function AdminDashboardPage() {
           </CardContent>
         </Card>
         
-        <Card className="shadow-sm border-white/10">
+        <Card className="shadow-sm border-white/10 bg-[#0A192F]">
           <CardHeader>
             <CardTitle className="text-lg text-white">Recent Events</CardTitle>
           </CardHeader>

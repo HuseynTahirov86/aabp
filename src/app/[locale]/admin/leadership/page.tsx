@@ -119,7 +119,7 @@ export default function AdminLeadershipPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1">
-          <Card className="shadow-sm border-white/10 sticky top-8">
+          <Card className="shadow-sm border-white/10 bg-[#0A192F] sticky top-8">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle className="text-lg text-white flex items-center gap-2">
                 {editingMemberId ? <Edit className="w-5 h-5" /> : <Plus className="w-5 h-5" />} 
@@ -183,7 +183,7 @@ export default function AdminLeadershipPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <Card className="shadow-sm border-white/10">
+          <Card className="shadow-sm border-white/10 bg-[#0A192F]">
             <CardHeader>
               <CardTitle className="text-lg text-white">Board Members</CardTitle>
             </CardHeader>

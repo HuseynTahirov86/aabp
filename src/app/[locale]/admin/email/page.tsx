@@ -66,7 +66,7 @@ export default function AdminEmailPage() {
         <p className="text-white/70 mt-2">Send bulk emails to members based on role or to all members.</p>
       </div>
 
-      <Card className="shadow-sm border-white/10 max-w-2xl">
+      <Card className="shadow-sm border-white/10 bg-[#0A192F] max-w-2xl">
         <CardHeader>
           <CardTitle className="text-lg text-white">Compose Email</CardTitle>
         </CardHeader>

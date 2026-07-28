@@ -31,22 +31,51 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-2"
-        >
-          <Image
-            src="/logo.png"
-            alt="AABP Logo"
-            width={120}
-            height={120}
-            className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-md"
-            priority
-          />
-        </motion.div>
+        {/* Logo + flags */}
+        <div className="flex items-center justify-center gap-4 md:gap-6 mb-2">
+          <motion.span
+            aria-hidden
+            className="text-3xl md:text-4xl lg:text-5xl origin-bottom drop-shadow-sm"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0, rotate: [-6, 6, -6] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.15 },
+              x: { duration: 0.5, delay: 0.15 },
+              rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+            }}
+          >
+            🇦🇿
+          </motion.span>
+
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Image
+              src="/logo.png"
+              alt="AABP Logo"
+              width={120}
+              height={120}
+              className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-md"
+              priority
+            />
+          </motion.div>
+
+          <motion.span
+            aria-hidden
+            className="text-3xl md:text-4xl lg:text-5xl origin-bottom drop-shadow-sm"
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0, rotate: [6, -6, 6] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.15 },
+              x: { duration: 0.5, delay: 0.15 },
+              rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+            }}
+          >
+            🇬🇧
+          </motion.span>
+        </div>
 
         {/* Headline */}
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-4">

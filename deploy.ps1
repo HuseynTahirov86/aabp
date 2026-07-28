@@ -3,19 +3,38 @@ $ErrorActionPreference = "Stop"
 $serverHost = "aabporg.uk"
 $serverUser = "aabporg"
 $serverPath = "/home/aabporg/app"
-$standalone = ".next\standalone"
+$standalone = ".next/standalone"
+$sshTarget  = "${serverUser}@${serverHost}"
+$scpTarget  = "${serverUser}@${serverHost}:${serverPath}"
 
-if (-not (Test-Path $standalone)) {
-    Write-Host "Xeta: $standalone tapilmadi. Evvel build edin." -ForegroundColor Red
-    exit 1
+Write-Host "=== 1. LOKAL BUILD ===" -ForegroundColor Cyan
+npm run build
+if ($LASTEXITCODE -ne 0) { throw "Build ugursuz" }
+
+Write-Host "`n=== 2. STANDALONE HAZIRLANIR ===" -ForegroundColor Cyan
+if (-not (Test-Path $standalone)) { throw "Standalone tapilmadi" }
+
+Write-Host "  public/ kopyalanir..."
+Copy-Item -Path "public" -Destination "$standalone/public" -Recurse -Force
+
+Write-Host "  .next/static/ kopyalanir..."
+New-Item -ItemType Directory -Path "$standalone/.next" -Force | Out-Null
+Copy-Item -Path ".next/static" -Destination "$standalone/.next/static" -Recurse -Force
+
+if (Test-Path "storage") {
+    Write-Host "  storage/ kopyalanir..."
+    Copy-Item -Path "storage" -Destination "$standalone/storage" -Recurse -Force
 }
 
-Write-Host "=== Server temizlenir (.env + storage/ qorunur) ===" -ForegroundColor Cyan
-ssh "$serverUser@$serverHost" "cd $serverPath; find . -mindepth 1 -not -name '.env' -not -name 'storage' -exec rm -rf {} +"
+Write-Host "  .env kopyalanir..."
+Copy-Item -Path ".env" -Destination "$standalone/.env" -Force
+
+Write-Host "`n=== 3. SERVER TEMIZLENIR (.env + storage/ qorunur) ===" -ForegroundColor Cyan
+ssh $sshTarget "cd $serverPath; rm -rf `$(ls -A | grep -v -E '^\.env$|^storage$')"
 if ($LASTEXITCODE -ne 0) { throw "Temizleme ugursuz" }
 
-Write-Host "`n=== Fayllar yuklenir ===" -ForegroundColor Cyan
-scp -r "$standalone\*" "$serverUser@$serverHost:$serverPath"
+Write-Host "`n=== 4. FAYLLAR YUKLENIR ===" -ForegroundColor Cyan
+scp -r "$standalone/." "$scpTarget/"
 if ($LASTEXITCODE -ne 0) { throw "Yukleme ugursuz" }
 
-Write-Host "`n=== Bitdi. cPanel-den restart edin. ===" -ForegroundColor Green
+Write-Host "`n=== BITDI. cPanel-den restart edin. ===" -ForegroundColor Green

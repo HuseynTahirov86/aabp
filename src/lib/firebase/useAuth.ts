@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { User, onAuthStateChanged, signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuthInstance, getDb } from "./config";
@@ -38,9 +38,12 @@ export function useAuth() {
     return () => unsubscribe();
   }, []);
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     await signOut(getAuthInstance());
-  };
+  }, []);
 
-  return { user, userData, loading, logout };
+  return useMemo(
+    () => ({ user, userData, loading, logout }),
+    [user, userData, loading, logout]
+  );
 }

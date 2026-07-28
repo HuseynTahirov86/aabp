@@ -120,7 +120,7 @@ export default function AdminResourcesPage() {
               Add Resource
             </Button>
           } />
-          <DialogContent className="sm:max-w-[500px]">
+          <DialogContent className="sm:max-w-[500px] bg-[#0A192F] text-white border-white/10">
             <DialogHeader>
               <DialogTitle>Add New Resource</DialogTitle>
             </DialogHeader>
@@ -172,7 +172,7 @@ export default function AdminResourcesPage() {
       </div>
 
       <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
-        <DialogContent className="sm:max-w-[400px]">
+        <DialogContent className="sm:max-w-[400px] bg-[#0A192F] text-white border-white/10">
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>

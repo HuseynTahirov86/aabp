@@ -157,7 +157,7 @@ export default function AdminEventsPage() {
               Create Event
             </Button>
           } />
-          <DialogContent className="sm:max-w-[500px]">
+          <DialogContent className="sm:max-w-[500px] bg-[#0A192F] text-white border-white/10">
             <DialogHeader>
               <DialogTitle>{editingEventId ? "Edit Event" : "Create New Event"}</DialogTitle>
             </DialogHeader>
@@ -241,7 +241,7 @@ export default function AdminEventsPage() {
       </div>
 
       <Dialog open={isDeleteOpen} onOpenChange={setIsDeleteOpen}>
-        <DialogContent className="sm:max-w-[400px]">
+        <DialogContent className="sm:max-w-[400px] bg-[#0A192F] text-white border-white/10">
           <DialogHeader>
             <DialogTitle>Confirm Delete</DialogTitle>
           </DialogHeader>
@@ -254,7 +254,7 @@ export default function AdminEventsPage() {
       </Dialog>
 
       <Dialog open={regViewOpen} onOpenChange={setRegViewOpen}>
-        <DialogContent className="sm:max-w-[500px]">
+        <DialogContent className="sm:max-w-[500px] bg-[#0A192F] text-white border-white/10">
           <DialogHeader>
             <DialogTitle>Registrations — {regEventTitle}</DialogTitle>
           </DialogHeader>

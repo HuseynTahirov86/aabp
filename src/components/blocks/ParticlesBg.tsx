@@ -46,9 +46,8 @@ export function ParticlesBg() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      const isDark = document.documentElement.classList.contains('dark');
-      const particleColor = isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(255, 255, 255, 0.3)';
-      const lineColor = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(255, 255, 255, 0.1)';
+      const particleColor = 'rgba(18, 32, 54, 0.3)';
+      const lineColor = 'rgba(18, 32, 54, 0.1)';
 
       particles.forEach((p, index) => {
         p.x += p.vx;

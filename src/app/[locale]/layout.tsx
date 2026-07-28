@@ -136,7 +136,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px] dark">
+      <body className="min-h-full flex flex-col font-sans pt-[72px] lg:pt-[150px]">
         <AuthProvider>
             <NextIntlClientProvider messages={messages} locale={locale}>
               <TooltipProvider>

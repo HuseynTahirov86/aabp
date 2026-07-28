@@ -70,7 +70,7 @@ const SidebarContent = () => {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen overflow-hidden bg-white/5 flex-col md:flex-row">
+    <div className="flex h-screen overflow-hidden bg-[#0A192F] flex-col md:flex-row">
       {/* Mobile Header with Hamburger */}
       <div className="md:hidden flex items-center justify-between bg-primary text-white p-4 shrink-0">
         <Link href="/" className="font-serif font-bold text-xl tracking-tighter">

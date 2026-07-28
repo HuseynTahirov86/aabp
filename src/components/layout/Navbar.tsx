@@ -170,7 +170,7 @@ export function Navbar() {
                 AABP
               </span>
               <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.15em] mt-0.5">
-                Association of Azerbaijan British Professionals
+                Association of Azerbaijani British Professionals
               </span>
             </div>
           </Link>

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Leadership",
-  description: "Meet the Executive Committee of the Association of Azerbaijan British Professionals — leaders from diverse sectors united by a dedication to excellence.",
+  description: "Meet the Executive Committee of the Association of Azerbaijani British Professionals — leaders from diverse sectors united by a dedication to excellence.",
   openGraph: {
     title: "Leadership — AABP",
-    description: "Meet the Executive Committee leading the Association of Azerbaijan British Professionals — leaders united by a dedication to professional excellence.",
+    description: "Meet the Executive Committee leading the Association of Azerbaijani British Professionals — leaders united by a dedication to professional excellence.",
   },
 };
 

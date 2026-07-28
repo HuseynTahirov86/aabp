@@ -8,7 +8,7 @@ export const MOCK_ARTICLES: AABPArticle[] = [
     content: `
 # AABP Annual Medical Symposium 2026
 
-The Association of Azerbaijan British Professionals (AABP) successfully hosted its highly anticipated Medical Symposium at the Royal College of Physicians in London. The event brought together leading experts from both countries to explore cutting-edge developments in healthcare.
+The Association of Azerbaijani British Professionals (AABP) successfully hosted its highly anticipated Medical Symposium at the Royal College of Physicians in London. The event brought together leading experts from both countries to explore cutting-edge developments in healthcare.
 
 ## Key Highlights
 

@@ -1,9 +1,9 @@
 {
   "Index": {
     "loadingText": "Loading AABP...",
-    "title": "Association of Azerbaijan British Professionals",
+    "title": "Association of Azerbaijani British Professionals",
     "description": "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
-    "empoweringTitle": "Empowering Azerbaijan-British Professionals",
+    "empoweringTitle": "Empowering Azerbaijani-British Professionals",
     "ourMission": "Our Mission",
     "learnAbout": "Learn About Us",
     "readyToJoin": "Ready to Join Our Network?",
@@ -23,7 +23,7 @@
     "aboutAabp": "About AABP"
   },
   "Navbar": {
-    "officialWebsite": "Official Website of the Association of Azerbaijan British Professionals",
+    "officialWebsite": "Official Website of the Association of Azerbaijani British Professionals",
     "discover": "Discover",
     "about": "About Us",
     "aboutDesc": "Learn about our mission, vision, and the board of directors leading AABP.",
@@ -40,7 +40,7 @@
     "event3Title": "Community & Events",
     "event3Desc": "Launched regular networking events, professional development programmes, and collaborative opportunities for members.",
     "event4Title": "Digital Platform Launch",
-    "event4Desc": "Unveiled the new digital platform to better serve our growing community of Azerbaijan-British professionals.",
+    "event4Desc": "Unveiled the new digital platform to better serve our growing community of Azerbaijani-British professionals.",
     "leadership": "Leadership",
     "execCommittee": "Board of Directors",
     "ourLeaders": "Our Leaders",
@@ -65,8 +65,8 @@
     "russian": "Русский"
   },
   "Footer": {
-    "tagline": "Built with ❤️ for the Azerbaijan-British professional community",
-    "description": "The Association of Azerbaijan British Professionals represents excellence in science, medicine, engineering, education, and international collaboration.",
+    "tagline": "Built with ❤️ for the Azerbaijani-British professional community",
+    "description": "The Association of Azerbaijani British Professionals represents excellence in science, medicine, engineering, education, and international collaboration.",
     "platform": "Platform",
     "about": "About Us",
     "research": "Research Hub",
@@ -113,13 +113,13 @@
     "event3Title": "Community & Events",
     "event3Desc": "Launched regular networking events, professional development programmes, and collaborative opportunities for members.",
     "event4Title": "Digital Platform Launch",
-    "event4Desc": "Unveiled the new digital platform to better serve our growing community of Azerbaijan-British professionals.",
+    "event4Desc": "Unveiled the new digital platform to better serve our growing community of Azerbaijani-British professionals.",
     "leadership": "Leadership",
     "execCommittee": "Board of Directors",
     "ourLeaders": "Our Leaders",
     "noCommittee": "No board members found.",
     "committeeMember": "Board Member",
-    "historyP1": "The Association of Azerbaijan British Professionals began as a small initiative in London to connect local experts, and has since blossomed into a global powerhouse representing thousands of professionals across various sectors.",
+    "historyP1": "The Association of Azerbaijani British Professionals began as a small initiative in London to connect local experts, and has since blossomed into a global powerhouse representing thousands of professionals across various sectors.",
     "historyP2": "Our growth is a testament to the dedication of our members and the enduring bonds between the UK and Azerbaijan. Below is a timeline of our most significant milestones.",
     "leadershipDesc": "The Board of Directors is the driving force behind AABP, responsible for setting our strategic direction, organizing our flagship events, and ensuring that our members receive the highest quality of professional support. Comprising leaders from diverse sectors, our board is united by a shared dedication to fostering excellence.",
     "heroQuote": "Empowering the next generation of leaders.",
@@ -194,7 +194,7 @@
     "signInSubtitle": "Sign in to the AABP Member Portal",
     "signInBtn": "Sign In with Email",
     "loginHeroTitle": "Empowering Professionals Globally",
-    "loginHeroDesc": "Join the Association of Azerbaijan British Professionals to connect, collaborate, and grow with leading minds across industries.",
+    "loginHeroDesc": "Join the Association of Azerbaijani British Professionals to connect, collaborate, and grow with leading minds across industries.",
     "registerHeroTitle": "Join the Network",
     "registerHeroDesc": "Create an account to access exclusive events, network with peers, and contribute to the community.",
     "rememberMe": "Remember me",
@@ -352,7 +352,7 @@
   "Privacy": {
     "title": "Privacy Policy",
     "sec1Title": "1. Information We Collect",
-    "sec1Desc": "The Association of Azerbaijan British Professionals (AABP) collects information that you provide directly to us when you register for an account, apply for membership, register for events, or communicate with us. This may include your name, email address, professional title, company, phone number, and any other information you choose to provide.",
+    "sec1Desc": "The Association of Azerbaijani British Professionals (AABP) collects information that you provide directly to us when you register for an account, apply for membership, register for events, or communicate with us. This may include your name, email address, professional title, company, phone number, and any other information you choose to provide.",
     "sec2Title": "2. How We Use Your Information",
     "sec2Desc": "We use the information we collect to operate and improve our platform, process your membership application, manage your event registrations, communicate with you about our services, and foster networking opportunities among our members.",
     "sec3Title": "3. Information Sharing",
@@ -377,7 +377,7 @@
   "Hero": {
     "badge": "Bridging the UK & Azerbaijan",
     "heroLine1": "Empowering",
-    "heroLine2": "Azerbaijan-British",
+    "heroLine2": "Azerbaijani-British",
     "heroLine3": "Professionals",
     "heroSubtitle": "Connecting professionals across medical science, natural science, life science, social science, and engineering. Join a community that drives collaboration between the UK and Azerbaijan.",
     "applyBtn": "Apply for Membership",
@@ -431,7 +431,7 @@
   "Terms": {
     "title": "Terms of Service",
     "sec1Title": "1. Acceptance of Terms",
-    "sec1Desc": "By accessing and using the platform provided by the Association of Azerbaijan British Professionals (AABP), you accept and agree to be bound by the terms and provisions of this agreement.",
+    "sec1Desc": "By accessing and using the platform provided by the Association of Azerbaijani British Professionals (AABP), you accept and agree to be bound by the terms and provisions of this agreement.",
     "sec2Title": "2. Membership Rules",
     "sec2Desc": "Membership is granted subject to approval. Members must provide accurate information and maintain the confidentiality of their account credentials. AABP reserves the right to suspend or terminate memberships that violate our community standards.",
     "sec3Title": "3. User Conduct",

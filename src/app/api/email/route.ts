@@ -48,7 +48,7 @@ export async function POST(req: Request) {
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <h2 style="color: #003366;">Welcome to AABP, ${firstName || 'Professional'}!</h2>
-          <p>Thank you for submitting your application to join the <strong>Association of Azerbaijan British Professionals</strong>.</p>
+          <p>Thank you for submitting your application to join the <strong>Association of Azerbaijani British Professionals</strong>.</p>
           <p>We have received your details and our team will review your application shortly. You can now access the member portal to complete your profile and explore our network.</p>
           <br/>
           <p>Best regards,<br/><strong>The AABP Executive Committee</strong></p>
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
       htmlContent = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
           <h2 style="color: #003366;">Congratulations, ${firstName || 'Member'}!</h2>
-          <p>Your membership application for the <strong>Association of Azerbaijan British Professionals</strong> has been approved.</p>
+          <p>Your membership application for the <strong>Association of Azerbaijani British Professionals</strong> has been approved.</p>
           <p>You now have full access to member features including events, networking opportunities, and exclusive content.</p>
           <p>Log in to your account to get started.</p>
           <br/>

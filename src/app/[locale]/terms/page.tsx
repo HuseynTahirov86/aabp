@@ -5,7 +5,7 @@ import { Section } from '@/components/shared/Section';
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Review the terms of service governing membership and use of the AABP (Association of Azerbaijan British Professionals) website and community.",
+    "Review the terms of service governing membership and use of the AABP (Association of Azerbaijani British Professionals) website and community.",
   openGraph: {
     title: "Terms of Service — AABP",
     description:

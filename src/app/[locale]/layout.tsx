@@ -38,7 +38,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "AABP | Association of Azerbaijan British Professionals",
+    default: "AABP | Association of Azerbaijani British Professionals",
     template: "%s | AABP",
   },
   description:
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     "engineering",
   ],
   openGraph: {
-    title: "Association of Azerbaijan British Professionals",
+    title: "Association of Azerbaijani British Professionals",
     description:
       "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
     url: "https://aabporg.uk",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: "https://aabporg.uk/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AABP — Association of Azerbaijan British Professionals",
+        alt: "AABP — Association of Azerbaijani British Professionals",
       },
     ],
     locale: "en_GB",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   twitter: {
     card: "summary_large_image",
-    title: "AABP | Association of Azerbaijan British Professionals",
+    title: "AABP | Association of Azerbaijani British Professionals",
     description:
       "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
     images: ["https://aabporg.uk/og-image.png"],
@@ -118,7 +118,7 @@ export default async function RootLayout({
           data={{
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Association of Azerbaijan British Professionals",
+            name: "Association of Azerbaijani British Professionals",
             alternateName: "AABP",
             url: "https://aabporg.uk",
             email: "contact@aabporg.uk",
@@ -126,7 +126,7 @@ export default async function RootLayout({
             foundingDate: "2015",
             description:
               "Connecting Azerbaijan and British professionals across medical science, natural science, life science, social science, and engineering.",
-            sameAs: ["https://uk.linkedin.com/company/association-of-azerbaijani-british-professionals", "https://instagram.com/aabporg_uk", "https://www.facebook.com/p/Association-of-Azerbaijan-British-Professionals-61565702764153/"],
+            sameAs: ["https://uk.linkedin.com/company/association-of-azerbaijani-british-professionals", "https://instagram.com/aabporg_uk", "https://www.facebook.com/p/Association-of-Azerbaijani-British-Professionals-61565702764153/"],
             logo: "https://aabporg.uk/logo.png",
             address: {
               "@type": "PostalAddress",

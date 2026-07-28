@@ -15,7 +15,7 @@ export async function generateMetadata({
     title: article?.title ?? "Article",
     description:
       article?.summary ??
-      "AABP news and articles — updates from the Association of Azerbaijan British Professionals.",
+      "AABP news and articles — updates from the Association of Azerbaijani British Professionals.",
     openGraph: {
       title: article?.title ?? "AABP Article",
       description:

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Founded in London in 2015, AABP has grown from a small initiative to a global network of Azerbaijan and British professionals across five key disciplines.",
   openGraph: {
     title: "Our History — AABP",
-    description: "From a small London initiative in 2015 to a global network — discover the journey of the Association of Azerbaijan British Professionals.",
+    description: "From a small London initiative in 2015 to a global network — discover the journey of the Association of Azerbaijani British Professionals.",
   },
 };
 

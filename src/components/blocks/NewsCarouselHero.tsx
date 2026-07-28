@@ -26,7 +26,7 @@ interface NewsItem {
 const FALLBACK_NEWS = [
   {
     id: "aabp-launch",
-    title: "Association of Azerbaijan British Professionals — Connecting Talent Across Borders",
+    title: "Association of Azerbaijani British Professionals — Connecting Talent Across Borders",
     category: "About",
     date: "2024-01-01",
     description:

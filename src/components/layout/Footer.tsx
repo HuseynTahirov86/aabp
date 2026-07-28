@@ -62,7 +62,7 @@ export async function Footer() {
               <a href="https://instagram.com/aabporg_uk" target="_blank" rel="noopener noreferrer" aria-label="AABP on Instagram" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
                 <InstagramIcon className="h-4 w-4" />
               </a>
-              <a href="https://www.facebook.com/p/Association-of-Azerbaijan-British-Professionals-61565702764153/" target="_blank" rel="noopener noreferrer" aria-label="AABP on Facebook" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
+              <a href="https://www.facebook.com/p/Association-of-Azerbaijani-British-Professionals-61565702764153/" target="_blank" rel="noopener noreferrer" aria-label="AABP on Facebook" className="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors">
                 <FacebookIcon className="h-4 w-4" />
               </a>
             </div>

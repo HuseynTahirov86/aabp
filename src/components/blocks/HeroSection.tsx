@@ -33,9 +33,9 @@ export function HeroSection() {
       <div className="relative z-10 flex flex-col items-center">
         {/* Logo + flags */}
         <div className="flex items-center justify-center gap-4 md:gap-6 mb-2">
-          <motion.span
+          <motion.div
             aria-hidden
-            className="text-3xl md:text-4xl lg:text-5xl origin-bottom drop-shadow-sm"
+            className="origin-bottom drop-shadow-sm"
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0, rotate: [-6, 6, -6] }}
             transition={{
@@ -44,8 +44,13 @@ export function HeroSection() {
               rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
             }}
           >
-            🇦🇿
-          </motion.span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://flagcdn.com/w80/az.png"
+              alt="Azerbaijan flag"
+              className="w-9 h-6 md:w-11 md:h-7 lg:w-14 lg:h-9 object-cover rounded-sm shadow-sm"
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.9 }}
@@ -62,9 +67,9 @@ export function HeroSection() {
             />
           </motion.div>
 
-          <motion.span
+          <motion.div
             aria-hidden
-            className="text-3xl md:text-4xl lg:text-5xl origin-bottom drop-shadow-sm"
+            className="origin-bottom drop-shadow-sm"
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0, rotate: [6, -6, 6] }}
             transition={{
@@ -73,8 +78,13 @@ export function HeroSection() {
               rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
             }}
           >
-            🇬🇧
-          </motion.span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://flagcdn.com/w80/gb.png"
+              alt="United Kingdom flag"
+              className="w-9 h-6 md:w-11 md:h-7 lg:w-14 lg:h-9 object-cover rounded-sm shadow-sm"
+            />
+          </motion.div>
         </div>
 
         {/* Headline */}

@@ -8,11 +8,8 @@ import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { ParticlesBg } from "@/components/blocks/ParticlesBg";
 
-const FIELD_KEYS = ["medical", "natural", "life", "social", "engineering"] as const;
-
 export function HeroSection() {
   const t = useTranslations("Hero");
-  const tFields = useTranslations("Fields");
 
   return (
     <section className="min-h-[calc(100vh-72px)] lg:min-h-[calc(100vh-150px)] relative overflow-hidden bg-background flex flex-col items-center justify-center text-center px-6 py-3 md:py-6">
@@ -35,14 +32,10 @@ export function HeroSection() {
         <div className="flex items-center justify-center gap-4 md:gap-6 mb-2">
           <motion.div
             aria-hidden
-            className="origin-bottom drop-shadow-sm"
+            className="drop-shadow-sm"
             initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0, rotate: [-6, 6, -6] }}
-            transition={{
-              opacity: { duration: 0.5, delay: 0.15 },
-              x: { duration: 0.5, delay: 0.15 },
-              rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
-            }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -60,23 +53,19 @@ export function HeroSection() {
             <Image
               src="/logo.png"
               alt="AABP Logo"
-              width={120}
-              height={120}
-              className="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain drop-shadow-md"
+              width={160}
+              height={160}
+              className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain drop-shadow-md"
               priority
             />
           </motion.div>
 
           <motion.div
             aria-hidden
-            className="origin-bottom drop-shadow-sm"
+            className="drop-shadow-sm"
             initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0, rotate: [6, -6, 6] }}
-            transition={{
-              opacity: { duration: 0.5, delay: 0.15 },
-              x: { duration: 0.5, delay: 0.15 },
-              rotate: { duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
-            }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -146,21 +135,6 @@ export function HeroSection() {
             {t("learnBtn")}
           </Button>
         </motion.div>
-
-        {/* Field tags */}
-        <div className="flex flex-wrap justify-center gap-3 mt-4">
-          {FIELD_KEYS.map((key, i) => (
-            <motion.span
-              key={key}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1.0 + i * 0.1 }}
-              className="bg-card border border-border text-muted-foreground text-xs font-medium px-4 py-2 rounded-full"
-            >
-              {tFields(`${key}.name`)}
-            </motion.span>
-          ))}
-        </div>
       </div>
 
       {/* Scroll indicator */}

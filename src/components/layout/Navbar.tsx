@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Globe, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CommandPalette } from "@/components/shared/CommandPalette";
-import { useAuth } from "@/lib/firebase/useAuth";
+import { NavAuthButton } from "@/components/layout/NavAuthButton";
 
 // Mobile search button — triggers the same CommandPalette used on desktop
 function MobileSearch() {
@@ -126,7 +126,6 @@ export function Navbar() {
   ];
 
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const { user, loading } = useAuth();
 
 
   React.useEffect(() => {
@@ -261,14 +260,7 @@ export function Navbar() {
             {/* Right Actions */}
             <div className="flex items-center gap-4 ml-auto">
               <CommandPalette />
-              <Link href={user ? "/dashboard" : "/login"}>
-                <Button
-                  className="rounded-full px-6 font-medium shadow-sm transition-all bg-accent text-white hover:bg-accent/90"
-                  disabled={loading}
-                >
-                  {loading ? "..." : user ? t('dashboard') : t('signIn')}
-                </Button>
-              </Link>
+              <NavAuthButton variant="desktop" />
             </div>
           </div>
 
@@ -298,11 +290,7 @@ export function Navbar() {
                     {t('memberDirectory')}
                   </Link>
                   <div className="mt-8">
-                    <Link href={user ? "/dashboard" : "/login"}>
-                      <Button className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12" disabled={loading}>
-                        {loading ? "..." : user ? t('dashboard') : t('signIn')}
-                      </Button>
-                    </Link>
+                    <NavAuthButton variant="mobile" />
                   </div>
                 </nav>
               </SheetContent>

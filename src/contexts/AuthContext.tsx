@@ -1,31 +1,39 @@
 "use client";
 
-import React, { createContext, useContext } from "react";
-import { useAuth as useFirebaseAuth } from "@/lib/firebase/useAuth";
+import React, { createContext, useContext, useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import type { User } from "firebase/auth";
 import type { AABPUser } from "@/lib/firebase/db-users";
 
-interface AuthContextType {
+export interface AuthContextValue {
   user: User | null;
   userData: AABPUser | null;
   loading: boolean;
   logout: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType>({
+const defaultAuthContext: AuthContextValue = {
   user: null,
   userData: null,
   loading: true,
   logout: async () => {},
-});
+};
+
+const AuthContext = createContext<AuthContextValue>(defaultAuthContext);
 
 export const useAuth = () => useContext(AuthContext);
 
+const AuthProviderInner = dynamic(() => import("./AuthProviderInner"), {
+  ssr: false,
+});
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const auth = useFirebaseAuth();
+  const [authState, setAuthState] = useState<AuthContextValue>(defaultAuthContext);
+  const handleChange = useCallback((value: AuthContextValue) => setAuthState(value), []);
 
   return (
-    <AuthContext.Provider value={auth}>
+    <AuthContext.Provider value={authState}>
+      <AuthProviderInner onChange={handleChange} />
       {children}
     </AuthContext.Provider>
   );

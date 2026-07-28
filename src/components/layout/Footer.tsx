@@ -29,8 +29,8 @@ export async function Footer() {
   const t = await getTranslations('Footer');
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-primary text-white pt-20 pb-10">
-      <div className="h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+    <footer className="relative bg-primary text-white pt-20 pb-10">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand & Intro */}
@@ -134,9 +134,15 @@ export async function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
-          <p>{t('rights', { year })}</p>
-          <div className="flex items-center gap-6">
+        <div className="pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 items-center gap-4 text-sm text-white/50">
+          <p className="text-center md:text-left order-2 md:order-1">{t('rights', { year })}</p>
+          <p className="text-center text-white/30 text-xs order-1 md:order-2">
+            Developed with dedication by{' '}
+            <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/70 hover:text-accent transition-colors text-lg">
+              Hüseyn Tahirov
+            </a>
+          </p>
+          <div className="flex items-center justify-center md:justify-end gap-6 order-3">
             <Link href="/privacy" className="hover:text-white transition-colors">
               {t('privacy')}
             </Link>
@@ -145,14 +151,6 @@ export async function Footer() {
             </Link>
           </div>
         </div>
-      </div>
-      <div className="border-t border-white/5 mt-12 pt-6 pb-2 text-center">
-        <p className="text-white/20 text-xs">
-          Developed with dedication by{' '}
-          <a href="https://www.instagram.com/huseyntahirov_/" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-caveat)] text-accent/70 hover:text-accent transition-colors text-lg">
-            Hüseyn Tahirov
-          </a>
-        </p>
       </div>
     </footer>
   );

@@ -78,6 +78,8 @@ export default function RegisterPage() {
         createdAt: new Date().toISOString()
       });
 
+      document.cookie = "userRole=PENDING; path=/; max-age=86400; SameSite=Strict";
+
       try {
         const idToken = await user.getIdToken();
         await fetch('/api/email', {

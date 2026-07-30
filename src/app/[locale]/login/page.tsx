@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { toast } from "sonner";
 import { Link } from "@/i18n/routing";
 import { useRouter } from "@/i18n/routing";
-import { getAuthInstance } from "@/lib/firebase/config";
+import { getAuthInstance, getDb } from "@/lib/firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
@@ -27,7 +28,11 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(getAuthInstance(), email, password);
+      const userCredential = await signInWithEmailAndPassword(getAuthInstance(), email, password);
+      const docSnap = await getDoc(doc(getDb(), "users", userCredential.user.uid));
+      if (docSnap.exists()) {
+        document.cookie = `userRole=${docSnap.data().role}; path=/; max-age=86400; SameSite=Strict`;
+      }
       router.push("/dashboard");
     } catch (err) {
       const e = err as Error;

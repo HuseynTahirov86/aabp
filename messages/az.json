@@ -193,6 +193,8 @@
   "Auth": {
     "emailLabel": "E-poçt",
     "passwordLabel": "Şifrə",
+    "confirmPasswordLabel": "Şifrəni Təsdiqləyin",
+    "passwordMismatch": "Şifrələr uyğun gəlmir.",
     "signInTitle": "Yenidən Xoş Gəlmisiniz",
     "signInSubtitle": "AABP Üzv Portalına daxil olun",
     "signInBtn": "E-poçt ilə daxil ol",

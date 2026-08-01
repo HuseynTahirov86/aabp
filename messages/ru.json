@@ -191,6 +191,8 @@
   "Auth": {
     "emailLabel": "Электронная почта",
     "passwordLabel": "Пароль",
+    "confirmPasswordLabel": "Подтвердите пароль",
+    "passwordMismatch": "Пароли не совпадают.",
     "signInTitle": "С возвращением",
     "signInSubtitle": "Войдите в портал для участников AABP",
     "signInBtn": "Войти по электронной почте",

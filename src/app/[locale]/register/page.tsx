@@ -26,6 +26,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [error, setError] = useState("");
@@ -41,22 +42,24 @@ export default function RegisterPage() {
       return;
     }
 
+    if (password !== confirmPassword) {
+      const msg = t('passwordMismatch');
+      setError(msg);
+      toast.error(msg);
+      return;
+    }
+
     setLoading(true);
 
+    // Once the Firebase Auth account exists, every subsequent step must
+    // succeed or the account gets rolled back -- a half-registered user
+    // (auth account with no Firestore doc/role) can't sign in cleanly.
+    let user: Awaited<ReturnType<typeof createUserWithEmailAndPassword>>["user"] | null = null;
     try {
       const userCredential = await createUserWithEmailAndPassword(getAuthInstance(), email, password);
-      const user = userCredential.user;
+      user = userCredential.user;
 
-      // Upload the CV now that we have an authenticated user (the upload
-      // endpoint requires a valid Firebase ID token). If this fails, roll
-      // back the just-created account so the user can retry cleanly.
-      let cvUrl: string;
-      try {
-        cvUrl = await uploadFile(cvFile, "cvs");
-      } catch (uploadErr) {
-        await deleteUser(user).catch(() => {});
-        throw new Error(uploadErr instanceof Error ? uploadErr.message : "Failed to upload CV.");
-      }
+      const cvUrl = await uploadFile(cvFile, "cvs");
 
       await updateProfile(user, {
         displayName: `${firstName} ${lastName}`
@@ -96,8 +99,13 @@ export default function RegisterPage() {
 
       router.push("/dashboard");
     } catch (err) {
+      if (user) {
+        await deleteUser(user).catch(() => {});
+      }
       const e = err as Error;
-      toast.error(e.message || t('errorRegister'));
+      const message = e.message || t('errorRegister');
+      setError(message);
+      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -223,12 +231,13 @@ export default function RegisterPage() {
             </div>
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">{t('profEmail')}</label>
-              <Input 
-                type="email" 
-                placeholder="john.smith@example.com" 
+              <Input
+                type="email"
+                placeholder="john.smith@example.com"
                 className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
                 required
               />
             </div>
@@ -280,18 +289,35 @@ export default function RegisterPage() {
                 )}
               </button>
             </div>
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">{t('passwordLabel')}</label>
-              <Input 
-                type="password" 
-                placeholder="••••••••" 
-                className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">{t('passwordLabel')}</label>
+                <Input
+                  type="password"
+                  placeholder="••••••••"
+                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="new-password"
+                  minLength={6}
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">{t('confirmPasswordLabel')}</label>
+                <Input
+                  type="password"
+                  placeholder="••••••••"
+                  className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  autoComplete="new-password"
+                  minLength={6}
+                  required
+                />
+              </div>
             </div>
-            
+
             <div className="pt-4">
               <Button 
                 type="submit" 

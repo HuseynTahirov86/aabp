@@ -12,18 +12,18 @@ export function HeroSection() {
 
   return (
     <section className="min-h-[calc(100vh-72px)] lg:min-h-[calc(100vh-150px)] relative overflow-hidden bg-background flex flex-col items-center justify-center text-center px-6 py-3 md:py-6">
-      {/* Background layers */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(183,152,74,0.15)_0%,transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(18,32,54,0.06)_0%,transparent_70%)]" />
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(18,32,54,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(18,32,54,0.5) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
+      {/* Background: Azerbaijan + UK flag photo, dark overlay for text legibility */}
+      <Image
+        src="/images/hero-flags-bg.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
-      <ParticlesBg />
+      <div className="absolute inset-0 bg-[#0A192F]/80 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#060e1a] via-[#0A192F]/60 to-[#0A192F]/30" />
+      <ParticlesBg variant="dark" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center">
@@ -76,7 +76,7 @@ export function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-4">
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] mb-4 drop-shadow-md">
           <motion.span
             className="block"
             initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-5 leading-relaxed"
+          className="text-lg md:text-xl text-white/80 max-w-2xl mb-5 leading-relaxed"
         >
           {t("heroSubtitle")}
         </motion.p>
@@ -129,7 +129,7 @@ export function HeroSection() {
           <Button
             render={<Link href="/about" />}
             variant="outline"
-            className="border border-foreground/20 text-foreground hover:bg-foreground/5 rounded-full h-12 px-9 text-base"
+            className="border border-white/30 text-white hover:bg-white/10 rounded-full h-12 px-9 text-base"
           >
             {t("learnBtn")}
           </Button>

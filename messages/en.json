@@ -192,6 +192,8 @@
   "Auth": {
     "emailLabel": "Email",
     "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "passwordMismatch": "Passwords do not match.",
     "signInTitle": "Welcome Back",
     "signInSubtitle": "Sign in to the AABP Member Portal",
     "signInBtn": "Sign In with Email",

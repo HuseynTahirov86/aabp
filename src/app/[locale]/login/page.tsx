@@ -5,7 +5,12 @@ import { toast } from "sonner";
 import { Link } from "@/i18n/routing";
 import { useRouter } from "@/i18n/routing";
 import { getAuthInstance, getDb } from "@/lib/firebase/config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +25,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +34,9 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(getAuthInstance(), email, password);
+      const auth = getAuthInstance();
+      await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const docSnap = await getDoc(doc(getDb(), "users", userCredential.user.uid));
       if (docSnap.exists()) {
         document.cookie = `userRole=${docSnap.data().role}; path=/; max-age=86400; SameSite=Strict`;
@@ -36,6 +44,7 @@ export default function LoginPage() {
       router.push("/dashboard");
     } catch (err) {
       const e = err as Error;
+      setError(e.message || t('errorSignIn'));
       toast.error(e.message || t('errorSignIn'));
     } finally {
       setLoading(false);
@@ -88,29 +97,36 @@ export default function LoginPage() {
           <form onSubmit={handleEmailSignIn} className="space-y-5 mb-8">
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">{t('emailLabel')}</label>
-              <Input 
-                type="email" 
-                placeholder="email@example.com" 
+              <Input
+                type="email"
+                placeholder="email@example.com"
                 className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
                 required
               />
             </div>
             <div>
               <label className="block text-sm font-semibold text-foreground mb-2">{t('passwordLabel')}</label>
-              <Input 
-                type="password" 
-                placeholder="••••••••" 
+              <Input
+                type="password"
+                placeholder="••••••••"
                 className="h-14 rounded-xl px-4 bg-secondary/50 border-transparent focus:bg-card focus:border-accent transition-all duration-300"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
                 required
               />
             </div>
             <div className="flex justify-between items-center text-sm pt-2">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" className="rounded text-accent focus:ring-accent w-4 h-4" />
+                <input
+                  type="checkbox"
+                  className="rounded text-accent focus:ring-accent w-4 h-4"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                />
                 <span className="text-muted-foreground font-medium">{t('rememberMe')}</span>
               </label>
               <Link href="/reset-password" className="text-accent hover:text-foreground transition-colors font-semibold">

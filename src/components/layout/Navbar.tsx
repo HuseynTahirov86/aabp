@@ -126,6 +126,7 @@ export function Navbar() {
   ];
 
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
 
   React.useEffect(() => {
@@ -268,7 +269,7 @@ export function Navbar() {
           <div className="flex lg:hidden items-center gap-2">
             <MobileSearch />
             <LanguageSwitcher />
-            <Sheet>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger className="p-2 inline-flex items-center justify-center rounded-md hover:bg-white/10 transition-colors text-white" aria-label="Open menu">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
@@ -278,6 +279,7 @@ export function Navbar() {
                     <Link
                       key={comp.href}
                       href={comp.href}
+                      onClick={() => setMobileMenuOpen(false)}
                       className="block px-2 py-1 text-lg font-medium text-foreground hover:text-accent transition-colors"
                     >
                       {comp.title}
@@ -285,6 +287,7 @@ export function Navbar() {
                   ))}
                   <Link
                     href="/network"
+                    onClick={() => setMobileMenuOpen(false)}
                     className="block px-2 py-1 text-lg font-medium text-foreground hover:text-accent transition-colors"
                   >
                     {t('memberDirectory')}

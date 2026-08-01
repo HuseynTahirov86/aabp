@@ -1,5 +1,4 @@
 $ErrorActionPreference = "Stop"
-
 $serverHost = "aabporg.uk"
 $serverUser = "aabporg"
 $serverPath = "/home/aabporg/app"
@@ -37,4 +36,7 @@ Write-Host "`n=== 4. FAYLLAR YUKLENIR ===" -ForegroundColor Cyan
 scp -r "$standalone/." "$scpTarget/"
 if ($LASTEXITCODE -ne 0) { throw "Yukleme ugursuz" }
 
-Write-Host "`n=== BITDI. cPanel-den restart edin. ===" -ForegroundColor Green
+Write-Host "`n=== 5. SERVERDE KOHNE PROSESLER TEMIZLENIR ===" -ForegroundColor Cyan
+ssh $sshTarget "pkill -9 -f 'next-server' 2>/dev/null; mkdir -p $serverPath/tmp; touch $serverPath/tmp/restart.txt; sleep 1; echo done"
+
+Write-Host "`n=== BITDI. Sayti yoxlayin: https://aabporg.uk ===" -ForegroundColor Green

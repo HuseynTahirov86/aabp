@@ -206,12 +206,16 @@ export function Navbar() {
               )}>
                 <Image src="/logo.png" alt="AABP Logo" width={40} height={40} className="object-contain" priority />
               </div>
-              <span className={cn(
-                "font-serif font-bold text-xs leading-tight tracking-tight text-white whitespace-normal lg:hidden lg:whitespace-nowrap",
-                isScrolled && "lg:block"
-              )}>
+              {/* Mobile: full org name, wraps onto 2 lines */}
+              <span className="font-serif font-bold text-xs leading-tight tracking-tight text-white whitespace-normal lg:hidden">
                 {tIndex('title')}
               </span>
+              {/* Desktop, scrolled: short mark only — there's no room for the full name next to the nav */}
+              {isScrolled && (
+                <span className="hidden lg:block font-serif font-bold text-lg tracking-tighter text-white whitespace-nowrap">
+                  AABP
+                </span>
+              )}
             </Link>
           </div>
 

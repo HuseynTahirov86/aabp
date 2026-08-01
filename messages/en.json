@@ -89,6 +89,7 @@
   "About": {
     "title": "About Us",
     "subtitle": "Our Story & Leadership",
+    "introText": "The first academic association in the UK connecting professionals across medical science, natural science, life science, social science, and engineering. Join a community that drives collaboration between the UK and Azerbaijan.",
     "visionTitle": "Building Bridges Between Nations",
     "visionSubtitle": "Our Vision",
     "visionDesc1": "While the core mission of AABP centers on facilitating networking opportunities and professional development, its impact extends significantly to the realms of medical science, natural science, life science, social science, and engineering.",
@@ -380,7 +381,7 @@
     "heroLine1": "Empowering",
     "heroLine2": "Azerbaijani-British",
     "heroLine3": "Professionals",
-    "heroSubtitle": "Connecting professionals across medical science, natural science, life science, social science, and engineering. Join a community that drives collaboration between the UK and Azerbaijan.",
+    "heroSubtitle": "The first academic association in the UK connecting professionals across medical science, natural science, life science, social science, and engineering. Join a community that drives collaboration between the UK and Azerbaijan.",
     "applyBtn": "Apply for Membership",
     "learnBtn": "Learn About Us",
     "scrollHint": "Scroll to explore"

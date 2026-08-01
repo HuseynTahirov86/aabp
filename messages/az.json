@@ -89,6 +89,7 @@
   "About": {
     "title": "Haqqımızda",
     "subtitle": "Hekayəmiz və Rəhbərlik",
+    "introText": "Böyük Britaniyada tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrində peşəkarları birləşdirən ilk akademik assosiasiya. Böyük Britaniya ilə Azərbaycan arasında əməkdaşlığı irəliləyən bir icmaya qoşulun.",
     "visionTitle": "Dövlətlər Arasında Körpülər Qururuq",
     "visionSubtitle": "Baxışımız",
     "visionDesc1": "AABP-nin əsas missiyası şəbəkələşmə imkanlarını asanlaşdırmaq və peşəkar inkişafı dəstəkləməkdir. Eyni zamanda, tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrindəki fəaliyyəti ilə geniş bir təsir əldə edir.",
@@ -381,7 +382,7 @@
     "heroLine1": "Azərbaycan-Britaniya",
     "heroLine2": "Peşəkarlarını",
     "heroLine3": "Gücləndiririk",
-    "heroSubtitle": "Tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrindəki peşəkarları bir araya gətiririk. Böyük Britaniya ilə Azərbaycan arasında əməkdaşlığı irəliləyən bir icmaya qoşulun.",
+    "heroSubtitle": "Böyük Britaniyada tibb elmləri, təbiət elmləri, həyat elmləri, sosial elmlər və mühəndislik sahələrində peşəkarları birləşdirən ilk akademik assosiasiya. Böyük Britaniya ilə Azərbaycan arasında əməkdaşlığı irəliləyən bir icmaya qoşulun.",
     "applyBtn": "Üzvlük üçün Müraciət et",
     "learnBtn": "Haqqımızda Öyrənin",
     "scrollHint": "Kəşf etmək üçün sürüşdürün"

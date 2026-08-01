@@ -37,6 +37,12 @@ export function AboutClient() {
         backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
       />
 
+      <Section className="bg-card border-b">
+        <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
+          {t('introText')}
+        </p>
+      </Section>
+
       {/* Mission & Vision */}
       <Section className="bg-card">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">

@@ -206,10 +206,10 @@ export function Navbar() {
                 <Image src="/logo.png" alt="AABP Logo" width={40} height={40} className="object-contain" priority />
               </div>
               <span className={cn(
-                "font-serif font-bold text-xl tracking-tighter text-white lg:hidden",
+                "font-serif font-bold text-sm leading-tight tracking-tight text-white lg:hidden",
                 isScrolled && "lg:block"
               )}>
-                AABP
+                {tIndex('title')}
               </span>
             </Link>
           </div>

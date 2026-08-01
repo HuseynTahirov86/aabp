@@ -38,9 +38,9 @@ export function HeroSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://flagcdn.com/w80/az.png"
+              src="/flags/az-waving.gif"
               alt="Azerbaijan flag"
-              className="w-9 h-6 md:w-11 md:h-7 lg:w-14 lg:h-9 object-cover rounded-sm shadow-sm"
+              className="w-12 h-8 md:w-16 md:h-10 lg:w-20 lg:h-12 object-cover rounded-md shadow-md"
             />
           </motion.div>
 
@@ -68,9 +68,9 @@ export function HeroSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://flagcdn.com/w80/gb.png"
+              src="/flags/uk-waving.gif"
               alt="United Kingdom flag"
-              className="w-9 h-6 md:w-11 md:h-7 lg:w-14 lg:h-9 object-cover rounded-sm shadow-sm"
+              className="w-12 h-8 md:w-16 md:h-10 lg:w-20 lg:h-12 object-cover rounded-md shadow-md"
             />
           </motion.div>
         </div>

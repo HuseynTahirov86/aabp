@@ -195,19 +195,19 @@ export function Navbar() {
           
           {/* Logo in Bottom Tier (Visible on mobile, or when scrolled on desktop) */}
           <div className={cn(
-            "flex items-center transition-all duration-300 overflow-hidden",
-            isScrolled ? "lg:w-auto lg:opacity-100 lg:mr-8" : "lg:w-0 lg:opacity-0 lg:mr-0",
-            "w-auto opacity-100 mr-4" // Always visible on mobile
+            "flex items-center min-w-0 transition-all duration-300",
+            isScrolled ? "lg:w-auto lg:opacity-100 lg:mr-8" : "lg:w-0 lg:opacity-0 lg:mr-0 lg:overflow-hidden",
+            "w-auto opacity-100 mr-3" // Always visible on mobile
           )}>
-            <Link href="/" className="flex items-center gap-3 whitespace-nowrap">
+            <Link href="/" className="flex items-center gap-2 min-w-0">
               <div className={cn(
-                "flex items-center justify-center lg:hidden",
+                "flex items-center justify-center shrink-0 lg:hidden",
                 isScrolled && "lg:flex"
               )}>
                 <Image src="/logo.png" alt="AABP Logo" width={40} height={40} className="object-contain" priority />
               </div>
               <span className={cn(
-                "font-serif font-bold text-sm leading-tight tracking-tight text-white lg:hidden",
+                "font-serif font-bold text-xs leading-tight tracking-tight text-white whitespace-normal lg:hidden lg:whitespace-nowrap",
                 isScrolled && "lg:block"
               )}>
                 {tIndex('title')}
@@ -266,7 +266,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Nav */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-1 shrink-0">
             <MobileSearch />
             <LanguageSwitcher />
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>

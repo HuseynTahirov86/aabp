@@ -129,7 +129,7 @@ export function HeroSection() {
           <Button
             render={<Link href="/about" />}
             variant="outline"
-            className="border border-white/30 text-white hover:bg-white/10 rounded-full h-12 px-9 text-base"
+            className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full h-12 px-9 text-base"
           >
             {t("learnBtn")}
           </Button>
